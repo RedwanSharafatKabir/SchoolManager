@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.AppAction.MainActivity;
 import com.classapp.kidssolution.AppAction.SplashScreen;
 import com.classapp.kidssolution.ModelClasses.StoreGuardianData;
@@ -208,7 +209,7 @@ public class RegisterActivity extends AppCompatActivity{
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 finish();
-                                Intent it = new Intent(RegisterActivity.this, MainActivity.class);
+                                Intent it = new Intent(RegisterActivity.this, GuardianMainActivity.class);
                                 startActivity(it);
                                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                             } else {

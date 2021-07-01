@@ -102,7 +102,6 @@ public class SigninTcActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         try {
                             emailObj = snapshot.getValue(String.class);
-                            Toast.makeText(SigninTcActivity.this, emailObj, Toast.LENGTH_SHORT).show();
                             mAuth.signInWithEmailAndPassword(emailObj, passObj).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {

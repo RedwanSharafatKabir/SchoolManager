@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.AppAction.MainActivity;
 import com.classapp.kidssolution.AppAction.SplashScreen;
 import com.classapp.kidssolution.R;
@@ -103,7 +104,7 @@ public class SigninGdActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         waitingDialog.dismiss();
                                         finish();
-                                        Intent it = new Intent(SigninGdActivity.this, MainActivity.class);
+                                        Intent it = new Intent(SigninGdActivity.this, GuardianMainActivity.class);
                                         startActivity(it);
                                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -160,7 +161,7 @@ public class SigninGdActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         waitingDialog.dismiss();
                                         finish();
-                                        Intent it = new Intent(SigninGdActivity.this, MainActivity.class);
+                                        Intent it = new Intent(SigninGdActivity.this, GuardianMainActivity.class);
                                         startActivity(it);
                                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
