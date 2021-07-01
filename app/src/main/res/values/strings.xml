@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Kids Solution</string>
+
+    <string name="register"><u>Sign up</u></string>
+    <string name="alert_title">Exit ?</string>
+    <string name="alert_message">Are you sure you want to turn off this application ?</string>
+    <string name="email_alert">Email is already used\nYou can use one email address only once</string>
+    <string name="drawerOpen">drawerOpen</string>
+    <string name="drawerClose">drawerClose</string>
+    <string name="about_app">Wheeler is an E-Commerce app which is available for android platform.\nYou can buy any car brand from this app.</string>
+
+</resources>

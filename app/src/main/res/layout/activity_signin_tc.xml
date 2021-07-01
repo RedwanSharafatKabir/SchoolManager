@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Authentication.SigninTcActivity"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/backToHomeFromParticularCarId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:layout_gravity="center|start"
+            android:layout_marginLeft="15dp"
+            android:onClick="backToSplashScreen"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Login as teacher"
+                android:textSize="22sp"
+                android:paddingRight="10dp"
+                android:textColor="#000000"
+                android:fontFamily="serif-monospace"
+                android:paddingLeft="5dp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="30dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/first">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/bdCountryCodeID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text=" +88"
+                        android:textSize="18sp"
+                        android:paddingRight="10dp"
+                        android:textColor="#000000"
+                        android:fontFamily="sans-serif"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="10dp"
+                        android:drawableLeft="@drawable/ic_phone_black_24dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/signinPhoneTcID"
+                            android:hint=" phone number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textColor="#000000"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/signinPasswordTcID"
+                        android:hint=" password: 7+ characters"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_lock_black_24dp"
+                        android:inputType="textPassword"
+                        android:textColor="#000000"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/rememberCheckBoxID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text=" Keep me logged in"
+                    android:textColor="#000000"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/SignupID"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center|bottom"
+                android:clickable="true"
+                android:src="@drawable/ic_arrow_forward_black_24dp"
+                android:background="@drawable/button_background"
+                android:layout_marginTop="30dp"
+                android:onClick="loginCompleteBtn"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
