@@ -23,7 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
+public class MainActivityGd extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
         NavigationView.OnNavigationItemSelectedListener{
 
     BottomNavigationView bottomNavigationView;
@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_gd);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationID);
+        bottomNavigationView = findViewById(R.id.bottomNavigationGdID);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         parentLayout = findViewById(android.R.id.content);
@@ -52,64 +52,64 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         netInfo = cm.getActiveNetworkInfo();
 
         switch (id){
-            case R.id.classesID:
+            case R.id.classesGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new TeacherMainActivity();
                     feedbackTransaction = getSupportFragmentManager().beginTransaction();
                     feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentID, fragment);
+                    feedbackTransaction.replace(R.id.fragmentGdID, fragment);
                     feedbackTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
-                    sbView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.Red));
+                    sbView.setBackgroundColor(ContextCompat.getColor(MainActivityGd.this, R.color.Red));
                     snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
                     snackbar.setDuration(10000).show();
                 }
                 break;
 
-            case R.id.noticeID:
+            case R.id.noticeGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new NoticeTcActivity();
                     feedbackTransaction = getSupportFragmentManager().beginTransaction();
                     feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentID, fragment);
+                    feedbackTransaction.replace(R.id.fragmentGdID, fragment);
                     feedbackTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
-                    sbView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.Red));
+                    sbView.setBackgroundColor(ContextCompat.getColor(MainActivityGd.this, R.color.Red));
                     snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
                     snackbar.setDuration(10000).show();
                 }
                 break;
 
-            case R.id.helpID:
+            case R.id.helpGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new HelpLine();
                     feedbackTransaction = getSupportFragmentManager().beginTransaction();
                     feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentID, fragment);
+                    feedbackTransaction.replace(R.id.fragmentGdID, fragment);
                     feedbackTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
-                    sbView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.Red));
+                    sbView.setBackgroundColor(ContextCompat.getColor(MainActivityGd.this, R.color.Red));
                     snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
                     snackbar.setDuration(10000).show();
                 }
                 break;
 
-            case R.id.profileID:
+            case R.id.profileGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new ProfileTcActivity();
                     feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.replace(R.id.fragmentID, fragment);
+                    feedbackTransaction.replace(R.id.fragmentGdID, fragment);
                     feedbackTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
-                    sbView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.Red));
+                    sbView.setBackgroundColor(ContextCompat.getColor(MainActivityGd.this, R.color.Red));
                     snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
                     snackbar.setDuration(10000).show();
                 }

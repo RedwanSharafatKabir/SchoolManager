@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#fff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp">
+                <EditText
+                    android:id="@+id/taskNameInputID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" Task"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:textColor="#000000"
+                    android:fontFamily="sans-serif"
+                    android:inputType="text"
+                    android:layout_gravity="center" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+                <EditText
+                    android:id="@+id/taskDetailsInputID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" Description"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:textColor="#000000"
+                    android:fontFamily="sans-serif"
+                    android:inputType="text"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+                <EditText
+                    android:id="@+id/executionDateInputID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" Date / Day"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:textColor="#000000"
+                    android:fontFamily="sans-serif"
+                    android:inputType="text"
+                    android:layout_gravity="center"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/saveTaskID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/create_class_design"
+                android:text="Save"
+                android:textSize="22dp"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:layout_marginTop="50dp"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

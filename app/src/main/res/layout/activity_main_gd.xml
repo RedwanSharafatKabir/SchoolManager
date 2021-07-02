@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppAction.MainActivity"
+    tools:context=".AppAction.MainActivityGd"
     android:orientation="vertical"
     android:background="#EAEAEA">
 
@@ -15,15 +15,15 @@
         android:orientation="vertical">
 
         <fragment
-            android:id="@+id/fragmentID"
-            android:name="com.classapp.kidssolution.AppAction.TeacherMainActivity"
+            android:id="@+id/fragmentGdID"
+            android:name="com.classapp.kidssolution.AppAction.GuardianMainActivity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationID"
+        android:id="@+id/bottomNavigationGdID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_navigation_menu"

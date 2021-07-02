@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppAction.GuardianMainActivity"
+    tools:context=".AppAction.TeacherMainActivity"
     android:orientation="vertical"
     android:background="#EAEAEA">
 
@@ -61,7 +61,7 @@
                     android:gravity="center">
 
                     <LinearLayout
-                        android:id="@+id/homePageGdId"
+                        android:id="@+id/homePageId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cardview_background"
@@ -88,7 +88,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/classesPageGdId"
+                        android:id="@+id/classesPageId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cardview_background"
@@ -125,7 +125,7 @@
                     android:gravity="center">
 
                     <LinearLayout
-                        android:id="@+id/noticePageGdId"
+                        android:id="@+id/noticePageId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cardview_background"
@@ -152,7 +152,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/helpLinePageGdId"
+                        android:id="@+id/helpLinePageId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/cardview_background"

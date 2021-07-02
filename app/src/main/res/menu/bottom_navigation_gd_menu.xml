@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/classesGdID"
+        android:title="Classes"
+        android:icon="@drawable/ic_baseline_class_24"/>
+    <item
+        android:id="@+id/noticeGdID"
+        android:title="Notice"
+        android:icon="@drawable/ic_baseline_notice"/>
+    <item
+        android:id="@+id/helpGdID"
+        android:title="Help"
+        android:icon="@drawable/ic_baseline_live_help_24"/>
+    <item
+        android:id="@+id/profileGdID"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_profile"/>
+
+</menu>

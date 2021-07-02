@@ -14,44 +14,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".ClassDetails.ClassListActivityGd"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".NoticeBoard.NoticeGdActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".NoticeBoard.NoticeTcActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Attendance.AttendanceGdActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Attendance.AttendanceTcActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".NoteBookHW.ParticularHwGdActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".NoteBookHW.ParticularHwTcActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".NoteBookHW.NoteBookGdActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".NoteBookHW.NoteBookTcActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ClassDetails.ParticularClassGdActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ClassDetails.ParticularClassTcActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ClassDetails.ClassListActivityTc"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".AppAction.GuardianMainActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".Authentication.SigninGdActivity"
             android:screenOrientation="portrait" />
@@ -79,6 +41,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".AppAction.MainActivityGd"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
