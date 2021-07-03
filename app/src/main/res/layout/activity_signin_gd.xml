@@ -125,7 +125,7 @@
                 android:src="@drawable/ic_arrow_forward_black_24dp"
                 android:background="@drawable/button_background"
                 android:layout_marginTop="30dp"
-                android:onClick="loginCompleteBtn"/>
+                android:onClick="loginCompleteBtnGd"/>
 
         </LinearLayout>
 

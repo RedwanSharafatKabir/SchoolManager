@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ClassDetails.ClassListActivityGd"
     android:orientation="vertical"
-    android:background="#fff">
+    android:background="#F4F4F4">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,16 +35,54 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/joinNewClassBtnId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/create_class_design"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Join a class"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="-20dp">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/classesRecyclerViewGdId"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/noClassIdGd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No classes to join"
+            android:fontFamily="serif-monospace"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:layout_margin="20dp"
+            android:gravity="center" />
 
         <ProgressBar
             android:id="@+id/classesListProgressbarGdId"

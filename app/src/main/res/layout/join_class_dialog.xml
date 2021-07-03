@@ -21,48 +21,29 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp">
-                <EditText
-                    android:id="@+id/classNameInputID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=" Class Name"
-                    android:textAllCaps="false"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:fontFamily="sans-serif"
-                    android:inputType="text"
-                    android:layout_gravity="center" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
+
                 <EditText
-                    android:id="@+id/classIdInputID"
+                    android:id="@+id/joinClassIdInputID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint=" Class Id"
+                    android:hint=" Enter Class Id"
                     android:textAllCaps="false"
                     android:textSize="16sp"
                     android:textColor="#000000"
                     android:fontFamily="sans-serif"
                     android:inputType="text"
                     android:layout_gravity="center"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/createClassCompleteID"
+                android:id="@+id/joinClassCompleteID"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@drawable/create_class_design"
-                android:text="Create"
+                android:text="Enroll"
                 android:textSize="18sp"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
@@ -71,6 +52,7 @@
                 android:textAllCaps="false"
                 android:layout_gravity="center"
                 android:gravity="center"/>
+
         </LinearLayout>
 
     </ScrollView>

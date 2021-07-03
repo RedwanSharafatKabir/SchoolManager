@@ -2,8 +2,12 @@ package com.classapp.kidssolution.ClassDetails;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.classapp.kidssolution.ModelClasses.StoreClassesData;
 import com.classapp.kidssolution.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,11 +29,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CreateClassDialog extends AppCompatDialogFragment implements View.OnClickListener{
 
-    EditText task, description, date;
-    Button save;
-    String Phone;
+    EditText className, classId;
+    Button create;
     DatabaseReference databaseReferenceClasses;
     View view;
+    ConnectivityManager cm;
+    NetworkInfo netInfo;
+    String alreadyExistedClassId;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -36,18 +43,20 @@ public class CreateClassDialog extends AppCompatDialogFragment implements View.O
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         view = inflater.inflate(R.layout.create_class_dialog, null);
-        builder.setView(view).setCancelable(false).setTitle("Create new task")
+        builder.setView(view).setCancelable(false).setTitle("Create new class")
                 .setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {}
                 });
 
-        task = view.findViewById(R.id.taskNameInputID);
-        description = view.findViewById(R.id.taskDetailsInputID);
-        date = view.findViewById(R.id.executionDateInputID);
+        cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        netInfo = cm.getActiveNetworkInfo();
 
-        save = view.findViewById(R.id.saveTaskID);
-        save.setOnClickListener(this);
+        className = view.findViewById(R.id.classNameInputID);
+        classId = view.findViewById(R.id.classIdInputID);
+
+        create = view.findViewById(R.id.createClassCompleteID);
+        create.setOnClickListener(this);
 
         databaseReferenceClasses = FirebaseDatabase.getInstance().getReference("Classes Information");
 
@@ -56,45 +65,74 @@ public class CreateClassDialog extends AppCompatDialogFragment implements View.O
 
     @Override
     public void onClick(View v) {
-        final String routineTitle = task.getText().toString();
-        final String routineDesc = description.getText().toString();
-        final String routineExecuteDate = date.getText().toString();
+        String classNameString = className.getText().toString();
+        String classIdString = classId.getText().toString();
 
-        if(v.getId()==R.id.saveTaskID){
-            if(routineTitle.isEmpty() || routineDesc.isEmpty() || routineExecuteDate.isEmpty()){
-                Toast.makeText(getActivity(), "Fill up all required fields", Toast.LENGTH_LONG).show();
+        if(v.getId()==R.id.createClassCompleteID){
+            if(classNameString.isEmpty()){
+                className.setError("Enter class name");
             }
-            else {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (user != null) {
-                    if (user.getDisplayName() != null) {
-                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("User Information")
-                                .child(user.getDisplayName()).child("phoneObj");
-                        ref.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                Phone = dataSnapshot.getValue(String.class);
-                                storeRoutineDataMethod(Phone, routineTitle, routineDesc, routineExecuteDate);
-                                task.setText("");
-                                description.setText("");
-                                date.setText("");
-                                getDialog().dismiss();
-                            }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {}
-                        });
+            if(classIdString.isEmpty()){
+                classId.setError("Enter class Id");
+            }
+
+            else {
+                if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user != null) {
+                        if (user.getDisplayName() != null) {
+                            DatabaseReference ref = databaseReferenceClasses.child(classIdString);
+                            ref.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    try {
+                                        alreadyExistedClassId = dataSnapshot.getValue(String.class);
+
+                                        String teacherPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                                        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Teacher Information").child(teacherPhone);
+                                        ref2.child("username").addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                try {
+                                                    String teacherName = dataSnapshot.getValue(String.class);
+                                                    storeClassesDataMethod(classNameString, classIdString, teacherName);
+
+                                                    className.setText("");
+                                                    classId.setText("");
+                                                    Toast.makeText(getActivity(), "Class created successfully", Toast.LENGTH_SHORT).show();
+                                                    getDialog().dismiss();
+                                                } catch (Exception e){
+                                                    classId.setError("Class Id already exists");
+                                                    Log.i("Database error", "Already exist");
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {}
+                                        });
+
+                                    } catch (Exception e){
+                                        classId.setError("Class Id already exists");
+                                        Log.i("Database error", "Already exist");
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {}
+                            });
+                        }
                     }
+                } else {
+                    Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_LONG).show();
                 }
             }
         }
     }
 
-    private void storeRoutineDataMethod(String Phone, String routineTitle,
-                                        String routineDesc, String routineExecuteDate) {
-
-        String Key_User_Info = Phone;
-//        StoreRoutineData storeRoutineData = new StoreRoutineData(routineTitle, routineDesc, routineExecuteDate);
-//        databaseReference.child(Key_User_Info).child(routineTitle).setValue(storeRoutineData);
+    private void storeClassesDataMethod(String classNameString, String classIdString, String teacherName) {
+        String Key_User_Info = classIdString;
+        StoreClassesData storeClassesData = new StoreClassesData(classNameString, classIdString, teacherName);
+        databaseReferenceClasses.child(Key_User_Info).setValue(storeClassesData);
     }
 }

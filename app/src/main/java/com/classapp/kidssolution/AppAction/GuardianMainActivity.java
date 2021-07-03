@@ -55,48 +55,48 @@ public class GuardianMainActivity extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.homePageId){
+        if(v.getId()==R.id.homePageGdId){
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                 fragment = new AboutInstitute();
                 feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentID, fragment);
+                feedbackTransaction.replace(R.id.fragmentGdID, fragment);
                 feedbackTransaction.commit();
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }
         }
 
-        if(v.getId()==R.id.classesPageId){
+        if(v.getId()==R.id.classesPageGdId){
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                 fragment = new ClassListActivityGd();
                 feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentID, fragment);
+                feedbackTransaction.replace(R.id.fragmentGdID, fragment);
                 feedbackTransaction.commit();
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }
         }
 
-        if(v.getId()==R.id.noticePageId){
+        if(v.getId()==R.id.noticePageGdId){
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                 fragment = new NoticeGdActivity();
                 feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentID, fragment);
+                feedbackTransaction.replace(R.id.fragmentGdID, fragment);
                 feedbackTransaction.commit();
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }
         }
 
-        if(v.getId()==R.id.helpLinePageId){
+        if(v.getId()==R.id.helpLinePageGdId){
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                 fragment = new HelpLine();
                 feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentID, fragment);
+                feedbackTransaction.replace(R.id.fragmentGdID, fragment);
                 feedbackTransaction.commit();
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();

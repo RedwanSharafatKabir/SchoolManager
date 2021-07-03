@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.classapp.kidssolution.Authentication.RegisterActivity;
 import com.classapp.kidssolution.Authentication.SigninGdActivity;
@@ -30,9 +31,9 @@ public class SplashScreen extends AppCompatActivity {
 
     int SPLASH_TIME_OUT = 3000;
     ImageView imageView;
-    Button signInTcButton;
+    Button signInTcButton, signInGdButton;
     FirebaseUser firebaseUser = null;
-    String passedString = "";
+    String passedStringTc = "", passedStringGd = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +41,31 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         signInTcButton = findViewById(R.id.signInTcPageID);
+        signInGdButton = findViewById(R.id.signInGdPageID);
         imageView = findViewById(R.id.splashImageID);
         imageView.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_in_fade_in));
 
-        new Handler(Looper.getMainLooper()).postDelayed(() -> signInTcButton.isClickable(), SPLASH_TIME_OUT);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            signInGdButton.isClickable();
+            signInTcButton.isClickable();
+        }, SPLASH_TIME_OUT);
     }
 
     @Override
     protected void onStart() {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         rememberMeMethod();
+        rememberMeGdMethod();
 
-        if (firebaseUser != null && !passedString.isEmpty()) {
+        if (firebaseUser != null && !passedStringTc.isEmpty()) {
             finish();
             Intent it = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(it);
+        }
+
+        if (firebaseUser != null && !passedStringGd.isEmpty()) {
+            finish();
+            Intent it = new Intent(getApplicationContext(), MainActivityGd.class);
             startActivity(it);
         }
         super.onStart();
@@ -80,19 +92,40 @@ public class SplashScreen extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    public void rememberMeMethod(){
+    private void rememberMeMethod(){
         try {
-            FileInputStream fileInputStream = openFileInput("Personal_Info.txt");
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String recievedMessage;
-            StringBuffer stringBuffer = new StringBuffer();
+            String recievedMessageTc;
+            FileInputStream fileInputStreamTc = openFileInput("Teacher_Info.txt");
+            InputStreamReader inputStreamReaderTc = new InputStreamReader(fileInputStreamTc);
+            BufferedReader bufferedReaderTc = new BufferedReader(inputStreamReaderTc);
+            StringBuffer stringBufferTc = new StringBuffer();
 
-            while((recievedMessage=bufferedReader.readLine())!=null){
-                stringBuffer.append(recievedMessage);
+            while((recievedMessageTc=bufferedReaderTc.readLine())!=null){
+                stringBufferTc.append(recievedMessageTc);
+            }
+            passedStringTc = stringBufferTc.toString();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void rememberMeGdMethod(){
+        try {
+            String recievedMessageGd;
+            FileInputStream fileInputStreamGd = openFileInput("Guardian_Info.txt");
+            InputStreamReader inputStreamReaderGd = new InputStreamReader(fileInputStreamGd);
+            BufferedReader bufferedReaderGd = new BufferedReader(inputStreamReaderGd);
+            StringBuffer stringBufferGd = new StringBuffer();
+
+            while((recievedMessageGd=bufferedReaderGd.readLine())!=null){
+                stringBufferGd.append(recievedMessageGd);
             }
 
-            passedString = stringBuffer.toString();
+            passedStringGd = stringBufferGd.toString();
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();

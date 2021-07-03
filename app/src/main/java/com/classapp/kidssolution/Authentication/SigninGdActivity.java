@@ -42,7 +42,7 @@ public class SigninGdActivity extends AppCompatActivity {
     ProgressDialog waitingDialog;
     EditText signinPhoneText, signinpasswordText;
     CheckBox checkBox;
-    String emailObj, passObj, passedString = "Remember me", phoneObj, phonenumber;
+    String emailObj, passObj, passedString = "I am guardian", phoneObj, phonenumber;
     boolean connection = false;
     DatabaseReference databaseReference;
 
@@ -62,7 +62,7 @@ public class SigninGdActivity extends AppCompatActivity {
         signinpasswordText = findViewById(R.id.signinPasswordGdID);
     }
 
-    public void loginCompleteBtn(View v){
+    public void loginCompleteBtnGd(View v){
         phoneObj = signinPhoneText.getText().toString();
         passObj = signinpasswordText.getText().toString();
         waitingDialog.setMessage("Logging in...");
@@ -196,7 +196,7 @@ public class SigninGdActivity extends AppCompatActivity {
 
     private void rememberMethod(String passedString){
         try {
-            FileOutputStream fileOutputStream = openFileOutput("Personal_Info.txt", Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput("Guardian_Info.txt", Context.MODE_PRIVATE);
             fileOutputStream.write(passedString.getBytes());
             fileOutputStream.close();
             Snackbar.make(parentLayout, "Data saved successfully", Snackbar.LENGTH_SHORT).show();
@@ -211,7 +211,7 @@ public class SigninGdActivity extends AppCompatActivity {
 
     private void setNullDataMethod(String passedString){
         try {
-            FileOutputStream fileOutputStream = openFileOutput("Personal_Info.txt", Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput("Guardian_Info.txt", Context.MODE_PRIVATE);
             fileOutputStream.write(passedString.getBytes());
             fileOutputStream.close();
         }

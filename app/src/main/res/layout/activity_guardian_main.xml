@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".AppAction.GuardianMainActivity"
     android:orientation="vertical"
     android:background="#EAEAEA">
@@ -60,59 +61,75 @@
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <LinearLayout
-                        android:id="@+id/homePageGdId"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/cardview_background"
-                        android:orientation="vertical"
-                        android:paddingBottom="10dp"
-                        android:layout_marginRight="10dp">
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true"
+                        app:cardCornerRadius="5dp">
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:src="@drawable/school"
-                            android:padding="30dp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:id="@+id/homePageGdId"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Home"
-                            android:textSize="18sp"
-                            android:gravity="center"
-                            android:textColor="#FF58A0"
-                            android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
 
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/school"
+                                android:padding="30dp" />
 
-                    <LinearLayout
-                        android:id="@+id/classesPageGdId"
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Home"
+                                android:textSize="18sp"
+                                android:gravity="center"
+                                android:textColor="#FF58A0"
+                                android:fontFamily="sans-serif"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/cardview_background"
-                        android:orientation="vertical"
-                        android:paddingBottom="10dp"
-                        android:layout_marginLeft="10dp">
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true"
+                        app:cardCornerRadius="5dp">
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:src="@drawable/classes"
-                            android:padding="30dp"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:id="@+id/classesPageGdId"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Classes"
-                            android:textSize="18sp"
-                            android:gravity="center"
-                            android:textColor="#FF58A0"
-                            android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>/>
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
 
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/classes"
+                                android:padding="30dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Classes"
+                                android:textSize="18sp"
+                                android:gravity="center"
+                                android:textColor="#FF58A0"
+                                android:fontFamily="sans-serif"
+                                android:textStyle="bold"/>/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
@@ -121,62 +138,77 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
                     android:gravity="center">
 
-                    <LinearLayout
-                        android:id="@+id/noticePageGdId"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/cardview_background"
-                        android:orientation="vertical"
-                        android:paddingBottom="10dp"
-                        android:layout_marginRight="10dp">
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true"
+                        app:cardCornerRadius="5dp">
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:src="@drawable/notice_board"
-                            android:padding="30dp"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:id="@+id/noticePageGdId"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Notice"
-                            android:textSize="18sp"
-                            android:gravity="center"
-                            android:textColor="#FF58A0"
-                            android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>/>
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
 
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/notice_board"
+                                android:padding="30dp"/>
 
-                    <LinearLayout
-                        android:id="@+id/helpLinePageGdId"
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Notice"
+                                android:textSize="18sp"
+                                android:gravity="center"
+                                android:textColor="#FF58A0"
+                                android:fontFamily="sans-serif"
+                                android:textStyle="bold"/>/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/cardview_background"
-                        android:orientation="vertical"
-                        android:paddingBottom="10dp"
-                        android:layout_marginLeft="10dp">
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true"
+                        app:cardCornerRadius="5dp">
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:src="@drawable/help"
-                            android:padding="30dp"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:id="@+id/helpLinePageGdId"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Help/Support"
-                            android:textSize="18sp"
-                            android:gravity="center"
-                            android:textColor="#FF58A0"
-                            android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
 
-                    </LinearLayout>
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/help"
+                                android:padding="30dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Help/Support"
+                                android:textSize="18sp"
+                                android:gravity="center"
+                                android:textColor="#FF58A0"
+                                android:fontFamily="sans-serif"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 

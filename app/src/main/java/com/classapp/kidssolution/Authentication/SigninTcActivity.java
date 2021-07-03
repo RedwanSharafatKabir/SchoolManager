@@ -45,7 +45,7 @@ public class SigninTcActivity extends AppCompatActivity {
     ProgressDialog waitingDialog;
     EditText signinPhoneText, signinpasswordText;
     CheckBox checkBox;
-    String emailObj, passObj, passedString = "Remember me", phoneObj, phonenumber;
+    String emailObj, passObj, passedString = "I am teacher", phoneObj, phonenumber;
     boolean connection = false;
     DatabaseReference databaseReference;
 
@@ -199,7 +199,7 @@ public class SigninTcActivity extends AppCompatActivity {
 
     private void rememberMethod(String passedString){
         try {
-            FileOutputStream fileOutputStream = openFileOutput("Personal_Info.txt", Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput("Teacher_Info.txt", Context.MODE_PRIVATE);
             fileOutputStream.write(passedString.getBytes());
             fileOutputStream.close();
             Snackbar.make(parentLayout, "Data saved successfully", Snackbar.LENGTH_SHORT).show();
@@ -214,7 +214,7 @@ public class SigninTcActivity extends AppCompatActivity {
 
     private void setNullDataMethod(String passedString){
         try {
-            FileOutputStream fileOutputStream = openFileOutput("Personal_Info.txt", Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput("Teacher_Info.txt", Context.MODE_PRIVATE);
             fileOutputStream.write(passedString.getBytes());
             fileOutputStream.close();
         }
