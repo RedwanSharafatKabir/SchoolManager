@@ -8,6 +8,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,11 +71,24 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
         netInfo = cm.getActiveNetworkInfo();
         databaseReference = FirebaseDatabase.getInstance().getReference("Classes Information");
 
+        loadClassList();
         return views;
     }
 
-    @Override
-    public void onStart() {
+    private void refresh(int milliSecond){
+        final Handler handler = new Handler(Looper.getMainLooper());
+
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                loadClassList();
+            }
+        };
+
+        handler.postDelayed(runnable, milliSecond);
+    }
+
+    private void loadClassList() {
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             // Retrieve unknown key
 //            Query query = databaseReference.orderByKey();
@@ -106,7 +121,7 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
             Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_LONG).show();
         }
 
-        super.onStart();
+        refresh(1000);
     }
 
     @Override

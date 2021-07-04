@@ -9,6 +9,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,11 +76,25 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
         netInfo = cm.getActiveNetworkInfo();
         databaseReference = FirebaseDatabase.getInstance().getReference("Classes Information Guardian");
 
+        loadClassList();
+
         return views;
     }
 
-    @Override
-    public void onStart() {
+    private void refresh(int milliSecond){
+        final Handler handler = new Handler(Looper.getMainLooper());
+
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                loadClassList();
+            }
+        };
+
+        handler.postDelayed(runnable, milliSecond);
+    }
+
+    public void loadClassList() {
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             // Retrieve unknown key
 //            Query query = databaseReference.orderByKey();
@@ -98,7 +114,6 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
                         classesCustomAdapterGd.notifyDataSetChanged();
 
                         progressBar.setVisibility(View.GONE);
-                        noClass.setVisibility(View.GONE);
                     }
                 }
 
@@ -113,7 +128,7 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
             Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_LONG).show();
         }
 
-        super.onStart();
+       refresh(1000);
     }
 
     @Override

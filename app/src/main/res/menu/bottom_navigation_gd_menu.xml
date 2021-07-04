@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/classesGdID"
-        android:title="Classes"
+        android:title="Home"
         android:icon="@drawable/ic_baseline_class_24"/>
     <item
         android:id="@+id/noticeGdID"

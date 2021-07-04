@@ -1,9 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClassDetails.ParticularClassGdActivity">
+    tools:context=".ClassDetails.ParticularClassGdActivity"
+    android:orientation="vertical"
+    android:background="#EAEAEA">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@android:color/transparent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/green_background"
+                android:scaleType="fitXY"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/classNameTextViewGdId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject: "
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:fontFamily="serif-monospace"
+                    android:textSize="22sp"/>
+
+                <TextView
+                    android:id="@+id/teacherNameTextViewGdId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Moderator: "
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:fontFamily="serif-monospace"
+                    android:textSize="22sp"/>
+
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/backFromParticularClassPageGdId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_gravity="center|start"
+                android:layout_margin="15dp"
+                android:background="@drawable/customize_login_signup_background"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:padding="10dp"/>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:id="@+id/firstlinearlayoutId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/seeNotebookId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
+
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/notes"
+                                android:padding="35dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Notebook"
+                                android:textSize="18sp"
+                                android:gravity="center"
+                                android:textColor="#079A2C"
+                                android:fontFamily="sans-serif"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/giveAttendanceId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
+
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:src="@drawable/attendance"
+                                android:padding="30dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Attendance"
+                                android:textSize="18sp"
+                                android:gravity="center"
+                                android:textColor="#079A2C"
+                                android:fontFamily="sans-serif"
+                                android:textStyle="bold"/>/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/secondlinearlayoutId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        card_view:cardBackgroundColor="@android:color/white"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/chatWithTeacherId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp">
+
+                            <ImageView
+                                android:layout_width="310dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/live_chat"
+                                android:padding="10dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Communicate With Teacher"
+                                android:textSize="18sp"
+                                android:gravity="center"
+                                android:textColor="#079A2C"
+                                android:fontFamily="sans-serif"
+                                android:textStyle="bold"/>/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

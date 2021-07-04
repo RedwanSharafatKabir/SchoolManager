@@ -2,14 +2,19 @@ package com.classapp.kidssolution.RecyclerViewAdapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.classapp.kidssolution.ClassDetails.ParticularClassGdActivity;
 import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
 import com.classapp.kidssolution.ModelClasses.StoreClassesData;
 import com.classapp.kidssolution.ModelClasses.StoreGdClassesData;
@@ -19,6 +24,8 @@ import java.util.ArrayList;
 
 public class ClassesCustomAdapterGd extends RecyclerView.Adapter<ClassesCustomAdapterGd.MyViewHolder> {
 
+    Fragment fragment;
+    FragmentTransaction feedbackTransaction;
     Context context;
     ArrayList<StoreGdClassesData> storeGdClassesData;
 
@@ -36,21 +43,28 @@ public class ClassesCustomAdapterGd extends RecyclerView.Adapter<ClassesCustomAd
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView1.setText("Class Id: " + storeGdClassesData.get(position).getClassIdStringGd());
-        holder.textView2.setText("Class Name: " + storeGdClassesData.get(position).getClassNameStringGd());
+        holder.textView2.setText("Subject: " + storeGdClassesData.get(position).getClassNameStringGd());
         holder.textView3.setText("Teacher: " + storeGdClassesData.get(position).getClassTeacherNameGd());
-
-        final String ClassIdTitle = storeGdClassesData.get(position).getClassIdStringGd();
-        final String ClassNameTitle = storeGdClassesData.get(position).getClassNameStringGd();
-        final String ClassTeacherTitle = storeGdClassesData.get(position).getClassTeacherNameGd();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(context, ParticularClassTcActivity.class);
-                it.putExtra("routine_title_key", ClassIdTitle);
-                it.putExtra("routine_desc_key", ClassNameTitle);
-                it.putExtra("routine_date_key", ClassTeacherTitle);
-                context.startActivity(it);
+                String ClassIdTitle = storeGdClassesData.get(position).getClassIdStringGd();
+                String ClassNameTitle = storeGdClassesData.get(position).getClassNameStringGd();
+                String ClassTeacherTitle = storeGdClassesData.get(position).getClassTeacherNameGd();
+
+                Bundle bundle=new Bundle();
+                bundle.putString("IdKeyGd", ClassIdTitle);
+                bundle.putString("NameKeyGd", ClassNameTitle);
+                bundle.putString("TeacherKeyGd", ClassTeacherTitle);
+
+                fragment = new ParticularClassGdActivity();
+                fragment.setArguments(bundle);
+
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                feedbackTransaction = activity.getSupportFragmentManager().beginTransaction();
+                feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                feedbackTransaction.replace(R.id.fragmentGdID, fragment).addToBackStack(null).commit();
             }
         });
     }

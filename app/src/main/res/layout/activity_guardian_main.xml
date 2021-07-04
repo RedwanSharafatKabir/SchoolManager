@@ -85,7 +85,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Home"
+                                android:text="Institute"
                                 android:textSize="18sp"
                                 android:gravity="center"
                                 android:textColor="#FF58A0"
