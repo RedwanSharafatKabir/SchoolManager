@@ -44,7 +44,7 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
     TextView noClass;
     DatabaseReference databaseReference;
     Fragment fragment;
-    FragmentTransaction feedbackTransaction;
+    FragmentTransaction fragmentTransaction;
     ConnectivityManager cm;
     NetworkInfo netInfo;
 
@@ -133,10 +133,10 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
 
         if(v.getId()==R.id.backFromClassesPageId){
             fragment = new TeacherMainActivity();
-            feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-            feedbackTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-            feedbackTransaction.replace(R.id.fragmentID, fragment);
-            feedbackTransaction.commit();
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+            fragmentTransaction.replace(R.id.fragmentID, fragment);
+            fragmentTransaction.commit();
         }
     }
 }

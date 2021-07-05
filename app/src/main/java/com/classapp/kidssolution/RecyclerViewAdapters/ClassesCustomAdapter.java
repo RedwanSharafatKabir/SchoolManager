@@ -1,7 +1,6 @@
 package com.classapp.kidssolution.RecyclerViewAdapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.classapp.kidssolution.About_and_Profile.AboutInstitute;
 import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
 import com.classapp.kidssolution.ModelClasses.StoreClassesData;
 import com.classapp.kidssolution.R;
@@ -24,7 +22,7 @@ import java.util.ArrayList;
 public class ClassesCustomAdapter extends RecyclerView.Adapter<ClassesCustomAdapter.MyViewHolder> {
 
     Fragment fragment;
-    FragmentTransaction feedbackTransaction;
+    FragmentTransaction fragmentTransaction;
     Context context;
     ArrayList<StoreClassesData> storeClassesData;
 
@@ -61,9 +59,9 @@ public class ClassesCustomAdapter extends RecyclerView.Adapter<ClassesCustomAdap
                 fragment.setArguments(bundle);
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                feedbackTransaction = activity.getSupportFragmentManager().beginTransaction();
-                feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentID, fragment).addToBackStack(null).commit();
+                fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                fragmentTransaction.replace(R.id.fragmentID, fragment).addToBackStack(null).commit();
             }
         });
     }

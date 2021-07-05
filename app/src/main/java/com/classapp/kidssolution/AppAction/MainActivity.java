@@ -14,7 +14,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.classapp.kidssolution.NoticeBoard.NoticeTcActivity;
 import com.classapp.kidssolution.About_and_Profile.ProfileTcActivity;
@@ -23,7 +22,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
         NavigationView.OnNavigationItemSelectedListener{
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     NetworkInfo netInfo;
     Fragment fragment;
     Snackbar snackbar;
-    FragmentTransaction feedbackTransaction;
+    FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +52,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         netInfo = cm.getActiveNetworkInfo();
 
         switch (id){
-            case R.id.classesID:
+            case R.id.homeGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new TeacherMainActivity();
-                    feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentID, fragment);
-                    feedbackTransaction.commit();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                    fragmentTransaction.replace(R.id.fragmentID, fragment);
+                    fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
@@ -73,10 +71,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.noticeID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new NoticeTcActivity();
-                    feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentID, fragment);
-                    feedbackTransaction.commit();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                    fragmentTransaction.replace(R.id.fragmentID, fragment);
+                    fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
@@ -88,11 +86,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.helpID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    fragment = new HelpLine();
-                    feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentID, fragment);
-                    feedbackTransaction.commit();
+                    fragment = new HelpLineTc();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                    fragmentTransaction.replace(R.id.fragmentID, fragment);
+                    fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
@@ -105,9 +103,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.profileID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new ProfileTcActivity();
-                    feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.replace(R.id.fragmentID, fragment);
-                    feedbackTransaction.commit();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                    fragmentTransaction.replace(R.id.fragmentID, fragment);
+                    fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();

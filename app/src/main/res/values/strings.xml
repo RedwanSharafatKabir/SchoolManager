@@ -7,6 +7,7 @@
     <string name="email_alert">Email is already used\nYou can use one email address only once</string>
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
-    <string name="about_app">Wheeler is an E-Commerce app which is available for android platform.\nYou can buy any car brand from this app.</string>
+    <string name="about_app">Kids-Solution is an android app for children educaion.\nGuardian can enroll classes and make live chat with subject teachers.</string>
+    <string name="logoutText"><u>Log Out</u></string>
 
 </resources>

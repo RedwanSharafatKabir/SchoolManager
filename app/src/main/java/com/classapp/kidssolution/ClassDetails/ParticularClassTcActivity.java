@@ -19,7 +19,7 @@ public class ParticularClassTcActivity extends Fragment implements View.OnClickL
 
     View views;
     Fragment fragment;
-    FragmentTransaction feedbackTransaction;
+    FragmentTransaction fragmentTransaction;
     CircleImageView circleImageView;
     TextView classNameTextView, teacherNameTextView;
 
@@ -47,10 +47,10 @@ public class ParticularClassTcActivity extends Fragment implements View.OnClickL
     public void onClick(View v) {
         if(v.getId()==R.id.backFromParticularClassPageTcId){
             fragment = new ClassListActivityTc();
-            feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-            feedbackTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-            feedbackTransaction.replace(R.id.fragmentID, fragment);
-            feedbackTransaction.commit();
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+            fragmentTransaction.replace(R.id.fragmentID, fragment);
+            fragmentTransaction.commit();
         }
     }
 }

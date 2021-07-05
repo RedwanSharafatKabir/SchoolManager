@@ -48,7 +48,7 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
     TextView noClass;
     DatabaseReference databaseReference;
     Fragment fragment;
-    FragmentTransaction feedbackTransaction;
+    FragmentTransaction fragmentTransaction;
     ConnectivityManager cm;
     NetworkInfo netInfo;
     LinearLayout joinNewClassBtn;
@@ -135,10 +135,10 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         if(v.getId()==R.id.backFromClassesPageGdId){
             fragment = new GuardianMainActivity();
-            feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-            feedbackTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-            feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-            feedbackTransaction.commit();
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+            fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+            fragmentTransaction.commit();
         }
 
         if(v.getId()==R.id.joinNewClassBtnId){

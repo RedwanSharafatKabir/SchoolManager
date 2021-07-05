@@ -10,20 +10,14 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.classapp.kidssolution.About_and_Profile.AboutInstitute;
+import com.classapp.kidssolution.About_and_Profile.AboutInstituteGd;
+import com.classapp.kidssolution.About_and_Profile.AboutInstituteTc;
 import com.classapp.kidssolution.ClassDetails.ClassListActivityGd;
-import com.classapp.kidssolution.ClassDetails.ClassListActivityTc;
 import com.classapp.kidssolution.NoticeBoard.NoticeGdActivity;
-import com.classapp.kidssolution.NoticeBoard.NoticeTcActivity;
 import com.classapp.kidssolution.R;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class GuardianMainActivity extends Fragment implements View.OnClickListener{
 
@@ -31,7 +25,7 @@ public class GuardianMainActivity extends Fragment implements View.OnClickListen
     ConnectivityManager cm;
     NetworkInfo netInfo;
     Fragment fragment;
-    FragmentTransaction feedbackTransaction;
+    FragmentTransaction fragmentTransaction;
     LinearLayout homePage, classesPage, noticePage, helpPage;
 
     @Override
@@ -57,11 +51,11 @@ public class GuardianMainActivity extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         if(v.getId()==R.id.homePageGdId){
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                fragment = new AboutInstitute();
-                feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-                feedbackTransaction.commit();
+                fragment = new AboutInstituteGd();
+                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                fragmentTransaction.commit();
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }
@@ -70,10 +64,10 @@ public class GuardianMainActivity extends Fragment implements View.OnClickListen
         if(v.getId()==R.id.classesPageGdId){
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                 fragment = new ClassListActivityGd();
-                feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-                feedbackTransaction.commit();
+                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                fragmentTransaction.commit();
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }
@@ -82,10 +76,10 @@ public class GuardianMainActivity extends Fragment implements View.OnClickListen
         if(v.getId()==R.id.noticePageGdId){
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                 fragment = new NoticeGdActivity();
-                feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-                feedbackTransaction.commit();
+                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                fragmentTransaction.commit();
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }
@@ -93,11 +87,11 @@ public class GuardianMainActivity extends Fragment implements View.OnClickListen
 
         if(v.getId()==R.id.helpLinePageGdId){
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                fragment = new HelpLine();
-                feedbackTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-                feedbackTransaction.commit();
+                fragment = new HelpLineGd();
+                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                fragmentTransaction.commit();
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }

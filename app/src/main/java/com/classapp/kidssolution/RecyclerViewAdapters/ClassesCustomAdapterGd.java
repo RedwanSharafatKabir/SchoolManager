@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class ClassesCustomAdapterGd extends RecyclerView.Adapter<ClassesCustomAdapterGd.MyViewHolder> {
 
     Fragment fragment;
-    FragmentTransaction feedbackTransaction;
+    FragmentTransaction fragmentTransaction;
     Context context;
     ArrayList<StoreGdClassesData> storeGdClassesData;
 
@@ -62,9 +62,9 @@ public class ClassesCustomAdapterGd extends RecyclerView.Adapter<ClassesCustomAd
                 fragment.setArguments(bundle);
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                feedbackTransaction = activity.getSupportFragmentManager().beginTransaction();
-                feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                feedbackTransaction.replace(R.id.fragmentGdID, fragment).addToBackStack(null).commit();
+                fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                fragmentTransaction.replace(R.id.fragmentGdID, fragment).addToBackStack(null).commit();
             }
         });
     }

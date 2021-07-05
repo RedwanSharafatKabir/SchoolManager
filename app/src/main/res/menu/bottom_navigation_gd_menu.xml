@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/classesGdID"
+        android:id="@+id/homeGdID"
         android:title="Home"
         android:icon="@drawable/ic_baseline_class_24"/>
     <item

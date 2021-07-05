@@ -14,8 +14,9 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.classapp.kidssolution.About_and_Profile.ProfileGdActivity;
+import com.classapp.kidssolution.NoticeBoard.NoticeGdActivity;
 import com.classapp.kidssolution.NoticeBoard.NoticeTcActivity;
 import com.classapp.kidssolution.About_and_Profile.ProfileTcActivity;
 import com.classapp.kidssolution.R;
@@ -33,7 +34,7 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
     NetworkInfo netInfo;
     Fragment fragment;
     Snackbar snackbar;
-    FragmentTransaction feedbackTransaction;
+    FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +54,13 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
         netInfo = cm.getActiveNetworkInfo();
 
         switch (id){
-            case R.id.classesGdID:
+            case R.id.homeGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    fragment = new TeacherMainActivity();
-                    feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-                    feedbackTransaction.commit();
+                    fragment = new GuardianMainActivity();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                    fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                    fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
@@ -71,11 +72,11 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
 
             case R.id.noticeGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    fragment = new NoticeTcActivity();
-                    feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-                    feedbackTransaction.commit();
+                    fragment = new NoticeGdActivity();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                    fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                    fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
@@ -87,11 +88,11 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
 
             case R.id.helpGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    fragment = new HelpLine();
-                    feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                    feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-                    feedbackTransaction.commit();
+                    fragment = new HelpLineGd();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                    fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                    fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
@@ -103,10 +104,11 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
 
             case R.id.profileGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    fragment = new ProfileTcActivity();
-                    feedbackTransaction = getSupportFragmentManager().beginTransaction();
-                    feedbackTransaction.replace(R.id.fragmentGdID, fragment);
-                    feedbackTransaction.commit();
+                    fragment = new ProfileGdActivity();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                    fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                    fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
                     View sbView = snackbar.getView();
