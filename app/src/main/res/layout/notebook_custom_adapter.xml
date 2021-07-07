@@ -32,8 +32,8 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/classes"
-                    android:padding="10dp"/>
+                    android:src="@drawable/notes"
+                    android:padding="15dp"/>
 
             </LinearLayout>
 
@@ -46,28 +46,19 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/classIdTitleID"
+                    android:id="@+id/notebookTitleID"
                     android:textSize="16sp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:text="Class Id: 3kPt"
+                    android:text="Title: Hand Writing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"/>
 
                 <TextView
-                    android:id="@+id/classNameTitleID"
+                    android:id="@+id/notebookDescriptionID"
                     android:textSize="16sp"
                     android:textColor="#5E5B5B"
-                    android:text="Subject: Bengali"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"/>
-
-                <TextView
-                    android:id="@+id/classTeacherTitleID"
-                    android:textSize="16sp"
-                    android:textColor="#5E5B5B"
-                    android:text="Teacher: Abdullah"
+                    android:text="Description: Write down english alphabets, both vowel and consonant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"/>

@@ -31,6 +31,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileGdActivity extends Fragment implements View.OnClickListener{
@@ -76,7 +81,7 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
         netInfo = cm.getActiveNetworkInfo();
 
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            getTeacherData();
+            getGuardianData();
         } else {
             snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
             View sbView = snackbar.getView();
@@ -88,7 +93,7 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
         return views;
     }
 
-    private void getTeacherData(){
+    private void getGuardianData(){
         userPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
         databaseReference.child(userPhone).child("username").addValueEventListener(new ValueEventListener() {
@@ -137,6 +142,9 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                String nullValue = "";
+                setNullDataMethod(nullValue);
+
                 mAuth.getInstance().signOut();
                 getActivity().finish();
                 Intent it = new Intent(getActivity(), SplashScreen.class);
@@ -154,5 +162,19 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+
+    private void setNullDataMethod(String nullValue){
+        try {
+            FileOutputStream fileOutputStream = getActivity().openFileOutput("Guardian_Info.txt", Context.MODE_PRIVATE);
+            fileOutputStream.write(nullValue.getBytes());
+            fileOutputStream.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

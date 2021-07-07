@@ -1,16 +1,13 @@
 package com.classapp.kidssolution.Attendance;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
 import com.classapp.kidssolution.R;
 
-public class AttendanceGdActivity extends AppCompatActivity {
+public class AttendanceGdActivity extends Fragment {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attendance_gd);
-    }
+
 }

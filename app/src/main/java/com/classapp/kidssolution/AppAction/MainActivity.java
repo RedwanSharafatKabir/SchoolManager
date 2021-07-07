@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         netInfo = cm.getActiveNetworkInfo();
 
         switch (id){
-            case R.id.homeGdID:
+            case R.id.homeID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new TeacherMainActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();

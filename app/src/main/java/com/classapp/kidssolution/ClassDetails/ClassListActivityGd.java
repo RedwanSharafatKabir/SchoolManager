@@ -78,6 +78,11 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
 
         loadClassList();
 
+        if(progressBar.getVisibility()==View.VISIBLE){
+            noClass.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
+        }
+
         return views;
     }
 
@@ -113,6 +118,7 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
                         recyclerView.setAdapter(classesCustomAdapterGd);
                         classesCustomAdapterGd.notifyDataSetChanged();
 
+                        noClass.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
                     }
                 }

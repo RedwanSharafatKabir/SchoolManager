@@ -56,7 +56,6 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
         progressBar.setVisibility(View.VISIBLE);
 
         noClass = views.findViewById(R.id.noClassId);
-        noClass.setVisibility(View.GONE);
 
         circleImageView = views.findViewById(R.id.backFromClassesPageId);
         circleImageView.setOnClickListener(this);
@@ -72,6 +71,12 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
         databaseReference = FirebaseDatabase.getInstance().getReference("Classes Information");
 
         loadClassList();
+
+        if(progressBar.getVisibility()==View.VISIBLE){
+            noClass.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
+        }
+
         return views;
     }
 
@@ -107,6 +112,7 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
                         recyclerView.setAdapter(classesCustomAdapter);
                         classesCustomAdapter.notifyDataSetChanged();
 
+                        noClass.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
                     }
                 }
