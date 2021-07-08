@@ -45,20 +45,23 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="70dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginTop="15dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center">
 
                 <LinearLayout
                     android:id="@+id/firstlinearlayoutId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_gravity="center"
                     android:gravity="center">
 
                     <androidx.cardview.widget.CardView
@@ -138,6 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_gravity="center"
                     android:gravity="center">
 
                     <androidx.cardview.widget.CardView
