@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoticeBoard.NoticeTcActivity">
+    tools:context=".NoticeBoard.NoticeTcActivity"
+    android:orientation="vertical"
+    android:background="#F4F4F4">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:src="@drawable/notice_wallpaper"
+                android:scaleType="fitXY"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/backFromNoticeTcId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_gravity="center|start"
+                android:layout_margin="15dp"
+                android:background="@drawable/customize_login_signup_background"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:padding="10dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relativeLayout1"
+            android:layout_marginTop="-100dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/noticeRecyclerViewId"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/noNoticeId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No notice for today"
+                android:fontFamily="serif-monospace"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:textColor="#000"
+                android:layout_marginTop="120dp"
+                android:gravity="center" />
+
+            <ProgressBar
+                android:id="@+id/noticeListProgressbarId"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createNewNoticeBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginRight="20dp"
+        app:fabSize="normal"
+        app:elevation="6dp"
+        android:src="@drawable/ic_baseline_add_24"/>
+
+</FrameLayout>

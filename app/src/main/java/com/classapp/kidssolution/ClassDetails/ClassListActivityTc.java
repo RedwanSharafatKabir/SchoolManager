@@ -72,11 +72,6 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
 
         loadClassList();
 
-        if(progressBar.getVisibility()==View.VISIBLE){
-            noClass.setVisibility(View.VISIBLE);
-            progressBar.setVisibility(View.GONE);
-        }
-
         return views;
     }
 

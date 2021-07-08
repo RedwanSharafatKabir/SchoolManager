@@ -1,6 +1,5 @@
 package com.classapp.kidssolution.NoteBookHW;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -85,11 +84,6 @@ public class NoteBookTcActivity extends Fragment implements View.OnClickListener
         databaseReference = FirebaseDatabase.getInstance().getReference("Notebook Information");
 
         loadNotebookList();
-
-        if(progressBar.getVisibility()==View.VISIBLE){
-            noHw.setVisibility(View.VISIBLE);
-            progressBar.setVisibility(View.GONE);
-        }
 
         return views;
     }

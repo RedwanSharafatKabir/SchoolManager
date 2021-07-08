@@ -74,11 +74,6 @@ public class NoteBookGdActivity extends Fragment implements View.OnClickListener
 
         loadNotebookList();
 
-        if(progressBar.getVisibility()==View.VISIBLE){
-            noHw.setVisibility(View.VISIBLE);
-            progressBar.setVisibility(View.GONE);
-        }
-
         return views;
     }
 
