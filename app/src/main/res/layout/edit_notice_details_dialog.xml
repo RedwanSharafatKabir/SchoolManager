@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#fff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/noticeTitleEditID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Notice title"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <EditText
+                    android:id="@+id/noticeDescriptionEditID"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint=" Notice description"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:fontFamily="sans-serif"
+                    android:inputType="text"
+                    android:layout_gravity="center"
+                    android:gravity="center|left"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/updateNoticeCompleteID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_background"
+                    android:text="Update"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textAllCaps="false"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginRight="10dp"/>
+
+                <Button
+                    android:id="@+id/deleteNoticeCompleteID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/create_class_design"
+                    android:text="Delete"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textAllCaps="false"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

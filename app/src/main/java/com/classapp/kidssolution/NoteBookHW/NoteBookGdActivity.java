@@ -22,6 +22,7 @@ import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
 import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
 import com.classapp.kidssolution.R;
 import com.classapp.kidssolution.RecyclerViewAdapters.NotebookCustomAdapter;
+import com.classapp.kidssolution.RecyclerViewAdapters.NotebookCustomAdapterGd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,7 +39,7 @@ public class NoteBookGdActivity extends Fragment implements View.OnClickListener
     CircleImageView circleImageView;
     RecyclerView recyclerView;
     ArrayList<StoreNotebookData> storeNotebookDataArrayList;
-    NotebookCustomAdapter notebookCustomAdapter;
+    NotebookCustomAdapterGd notebookCustomAdapterGd;
     ProgressBar progressBar;
     TextView noHw;
     DatabaseReference databaseReference;
@@ -105,9 +106,9 @@ public class NoteBookGdActivity extends Fragment implements View.OnClickListener
                         storeNotebookDataArrayList.add(storeNotebookData);
 
                         Collections.reverse(storeNotebookDataArrayList);
-                        notebookCustomAdapter = new NotebookCustomAdapter(getActivity(), storeNotebookDataArrayList);
-                        recyclerView.setAdapter(notebookCustomAdapter);
-                        notebookCustomAdapter.notifyDataSetChanged();
+                        notebookCustomAdapterGd = new NotebookCustomAdapterGd(getActivity(), storeNotebookDataArrayList);
+                        recyclerView.setAdapter(notebookCustomAdapterGd);
+                        notebookCustomAdapterGd.notifyDataSetChanged();
 
                         noHw.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);

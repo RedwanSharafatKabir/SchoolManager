@@ -18,27 +18,28 @@ import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
 import com.classapp.kidssolution.ModelClasses.StoreNoticeData;
 import com.classapp.kidssolution.NoteBookHW.NoteBookTcActivity;
 import com.classapp.kidssolution.NoticeBoard.EditNoticeDetails;
+import com.classapp.kidssolution.NoticeBoard.ParticularNoticeDetails;
 import com.classapp.kidssolution.R;
 import java.util.ArrayList;
 
-public class NoticeCustomAdapter extends RecyclerView.Adapter<NoticeCustomAdapter.MyViewHolder> {
+public class NoticeCustomAdapterGd extends RecyclerView.Adapter<NoticeCustomAdapterGd.MyViewHolder> {
 
     Context context;
     ArrayList<StoreNoticeData> storeNoticeData;
 
-    public NoticeCustomAdapter(Context c, ArrayList<StoreNoticeData> p) {
+    public NoticeCustomAdapterGd(Context c, ArrayList<StoreNoticeData> p) {
         context = c;
         storeNoticeData = p;
     }
 
     @NonNull
     @Override
-    public NoticeCustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NoticeCustomAdapter.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.notice_custom_adapter, parent, false));
+    public NoticeCustomAdapterGd.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new NoticeCustomAdapterGd.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.notice_custom_adapter_gd, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoticeCustomAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NoticeCustomAdapterGd.MyViewHolder holder, int position) {
         holder.textView1.setText(storeNoticeData.get(position).getNoticeTitle());
         holder.textView2.setText(storeNoticeData.get(position).getNoticeDescription());
         holder.textView3.setText("Date: " + storeNoticeData.get(position).getNoticeDate());
@@ -55,11 +56,11 @@ public class NoticeCustomAdapter extends RecyclerView.Adapter<NoticeCustomAdapte
                 bundle.putString("noticeDescriptionKey", noticeDescription);
                 bundle.putString("noticeDateKey", noticeDate);
 
-                EditNoticeDetails editNoticeDetails = new EditNoticeDetails();
-                editNoticeDetails.setArguments(bundle);
+                ParticularNoticeDetails particularNoticeDetails = new ParticularNoticeDetails();
+                particularNoticeDetails.setArguments(bundle);
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                editNoticeDetails.show(activity.getSupportFragmentManager(), "Sample dialog");
+                particularNoticeDetails.show(activity.getSupportFragmentManager(), "Sample dialog");
             }
         });
     }
@@ -74,9 +75,9 @@ public class NoticeCustomAdapter extends RecyclerView.Adapter<NoticeCustomAdapte
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-            textView1 = itemView.findViewById(R.id.noticeTitleID);
-            textView2 = itemView.findViewById(R.id.noticeDescriptionID);
-            textView3 = itemView.findViewById(R.id.noticeDateID);
+            textView1 = itemView.findViewById(R.id.noticeTitleGdID);
+            textView2 = itemView.findViewById(R.id.noticeDescriptionGdID);
+            textView3 = itemView.findViewById(R.id.noticeDateGdID);
         }
     }
 }

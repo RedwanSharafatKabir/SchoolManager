@@ -30,6 +30,7 @@ import com.classapp.kidssolution.R;
 import com.classapp.kidssolution.RecyclerViewAdapters.ClassesCustomAdapter;
 import com.classapp.kidssolution.RecyclerViewAdapters.NotebookCustomAdapter;
 import com.classapp.kidssolution.RecyclerViewAdapters.NoticeCustomAdapter;
+import com.classapp.kidssolution.RecyclerViewAdapters.NoticeCustomAdapterGd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,7 +49,7 @@ public class NoticeGdActivity extends Fragment implements View.OnClickListener {
     CircleImageView circleImageView;
     RecyclerView recyclerView;
     ArrayList<StoreNoticeData> storeNoticeDataArrayList;
-    NoticeCustomAdapter noticeCustomAdapter;
+    NoticeCustomAdapterGd noticeCustomAdapterGd;
     ProgressBar progressBar;
     TextView noHw;
     DatabaseReference databaseReference;
@@ -110,9 +111,9 @@ public class NoticeGdActivity extends Fragment implements View.OnClickListener {
                         storeNoticeDataArrayList.add(StoreNoticeData);
 
                         Collections.reverse(storeNoticeDataArrayList);
-                        noticeCustomAdapter = new NoticeCustomAdapter(getActivity(), storeNoticeDataArrayList);
-                        recyclerView.setAdapter(noticeCustomAdapter);
-                        noticeCustomAdapter.notifyDataSetChanged();
+                        noticeCustomAdapterGd = new NoticeCustomAdapterGd(getActivity(), storeNoticeDataArrayList);
+                        recyclerView.setAdapter(noticeCustomAdapterGd);
+                        noticeCustomAdapterGd.notifyDataSetChanged();
 
                         noHw.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);

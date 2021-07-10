@@ -28,6 +28,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class CreateNotebookDialog extends AppCompatDialogFragment implements View.OnClickListener{
 
     EditText notebookTitle, notebookDescription;
@@ -81,7 +86,11 @@ public class CreateNotebookDialog extends AppCompatDialogFragment implements Vie
 
             else {
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    storeNotebookDataMethod(notebookTitleString, notebookDescriptionString);
+                    Date cal = Calendar.getInstance().getTime();
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+                    String formattedDate = simpleDateFormat.format(cal);
+
+                    storeNotebookDataMethod(notebookTitleString, notebookDescriptionString, formattedDate);
 
                     notebookTitle.setText("");
                     notebookDescription.setText("");
@@ -96,9 +105,9 @@ public class CreateNotebookDialog extends AppCompatDialogFragment implements Vie
         }
     }
 
-    private void storeNotebookDataMethod(String notebookTitleString, String notebookDescriptionString) {
+    private void storeNotebookDataMethod(String notebookTitleString, String notebookDescriptionString, String notebookDate) {
         String Key_User_Info = notebookTitleString;
-        StoreNotebookData storeNotebookData = new StoreNotebookData(notebookTitleString, notebookDescriptionString);
+        StoreNotebookData storeNotebookData = new StoreNotebookData(notebookTitleString, notebookDescriptionString, notebookDate);
         databaseReference.child(classIdText).child(Key_User_Info).setValue(storeNotebookData);
     }
 }

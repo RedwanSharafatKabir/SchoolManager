@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#fff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/noticeTitleDetailsID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Notice title"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:gravity="left"/>
+
+            <TextView
+                android:id="@+id/noticeDescriptionDetailsID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Description"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="left"/>
+
+            <TextView
+                android:id="@+id/noticeDateDetailsID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Date"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="#FF58A0"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="left"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

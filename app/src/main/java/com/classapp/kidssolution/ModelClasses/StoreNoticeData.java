@@ -4,10 +4,12 @@ public class StoreNoticeData {
 
     String noticeTitle;
     String noticeDescription;
+    String noticeDate;
 
-    public StoreNoticeData(String noticeTitle, String noticeDescription) {
+    public StoreNoticeData(String noticeTitle, String noticeDescription, String noticeDate) {
         this.noticeTitle = noticeTitle;
         this.noticeDescription = noticeDescription;
+        this.noticeDate = noticeDate;
     }
 
     public StoreNoticeData() {
@@ -27,5 +29,13 @@ public class StoreNoticeData {
 
     public void setNoticeDescription(String noticeDescription) {
         this.noticeDescription = noticeDescription;
+    }
+
+    public String getNoticeDate() {
+        return noticeDate;
+    }
+
+    public void setNoticeDate(String noticeDate) {
+        this.noticeDate = noticeDate;
     }
 }

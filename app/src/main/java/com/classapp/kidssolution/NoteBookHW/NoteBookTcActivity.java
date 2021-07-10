@@ -117,6 +117,7 @@ public class NoteBookTcActivity extends Fragment implements View.OnClickListener
 
                         Collections.reverse(storeNotebookDataArrayList);
                         notebookCustomAdapter = new NotebookCustomAdapter(getActivity(), storeNotebookDataArrayList);
+                        notebookCustomAdapter.setId(classIdText) ;
                         recyclerView.setAdapter(notebookCustomAdapter);
                         notebookCustomAdapter.notifyDataSetChanged();
 
