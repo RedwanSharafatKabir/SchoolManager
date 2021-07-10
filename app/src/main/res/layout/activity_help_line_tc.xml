@@ -75,17 +75,25 @@
 
         </ScrollView>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/backFromHelpLineTcPage"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            android:layout_gravity="center|start"
-            android:layout_margin="15dp"
-            android:background="@drawable/customize_login_signup_background"
-            android:gravity="center"
-            android:scaleType="centerCrop"
-            android:padding="10dp"/>
+            app:cardElevation="5dp"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="15dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/backFromHelpLineTcPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_gravity="center|start"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:padding="10dp"/>
+
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 

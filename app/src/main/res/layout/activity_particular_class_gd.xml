@@ -2,7 +2,6 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -55,24 +54,32 @@
 
             </LinearLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/backFromParticularClassPageGdId"
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                android:layout_gravity="center|start"
-                android:layout_margin="15dp"
-                android:background="@drawable/customize_login_signup_background"
-                android:gravity="center"
-                android:scaleType="centerCrop"
-                android:padding="10dp"/>
+                app:cardElevation="5dp"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="15dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/backFromParticularClassPageGdId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:layout_gravity="center|start"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:scaleType="centerCrop"
+                    android:padding="10dp"/>
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="70dp">
+            android:layout_marginBottom="70dp"
+            android:layout_marginTop="-10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -93,10 +100,9 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        card_view:cardBackgroundColor="@android:color/white"
-                        card_view:cardElevation="5dp"
-                        card_view:cardUseCompatPadding="true"
-                        app:cardCornerRadius="5dp">
+                        app:cardElevation="8dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_margin="5dp">
 
                         <LinearLayout
                             android:id="@+id/seeNotebookId"
@@ -128,10 +134,9 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        card_view:cardBackgroundColor="@android:color/white"
-                        card_view:cardElevation="5dp"
-                        card_view:cardUseCompatPadding="true"
-                        app:cardCornerRadius="5dp">
+                        app:cardElevation="8dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_margin="5dp">
 
                         <LinearLayout
                             android:id="@+id/giveAttendanceId"
@@ -173,10 +178,9 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        card_view:cardBackgroundColor="@android:color/white"
-                        card_view:cardElevation="5dp"
-                        card_view:cardUseCompatPadding="true"
-                        app:cardCornerRadius="5dp">
+                        app:cardElevation="8dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_margin="15dp">
 
                         <LinearLayout
                             android:id="@+id/chatWithTeacherId"

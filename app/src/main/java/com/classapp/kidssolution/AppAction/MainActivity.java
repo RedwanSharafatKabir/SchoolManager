@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new TeacherMainActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentID, fragment);
                     fragmentTransaction.commit();
                 } else {

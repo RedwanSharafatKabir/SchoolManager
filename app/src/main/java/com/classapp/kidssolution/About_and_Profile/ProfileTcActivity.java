@@ -47,8 +47,7 @@ public class ProfileTcActivity extends Fragment implements View.OnClickListener{
     Snackbar snackbar;
     Button logoutBtn;
     DatabaseReference databaseReference;
-    CircleImageView circleImageView, backBtn;
-    ImageView editProfilePic;
+    CircleImageView circleImageView, backBtn, editProfilePic;
     TextView nameText, emailText, phoneText;
     String userPhone;
     ProgressBar progressBar;

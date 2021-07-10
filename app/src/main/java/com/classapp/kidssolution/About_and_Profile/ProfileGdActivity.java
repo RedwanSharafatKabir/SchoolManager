@@ -45,8 +45,7 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
     NetworkInfo netInfo;
     Snackbar snackbar;
     DatabaseReference databaseReference;
-    CircleImageView circleImageView, backBtn;
-    ImageView editProfilePic;
+    CircleImageView circleImageView, backBtn, editProfilePic;
     TextView nameText, emailText, phoneText;
     String userPhone;
     ProgressBar progressBar;

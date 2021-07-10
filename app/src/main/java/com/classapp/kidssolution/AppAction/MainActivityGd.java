@@ -58,7 +58,6 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new GuardianMainActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentGdID, fragment);
                     fragmentTransaction.commit();
                 } else {

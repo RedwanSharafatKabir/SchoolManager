@@ -37,7 +37,7 @@ public class AboutInstituteTc extends Fragment implements View.OnClickListener{
             fragment = new TeacherMainActivity();
             fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-            fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+            fragmentTransaction.replace(R.id.fragmentID, fragment);
             fragmentTransaction.commit();
         }
     }

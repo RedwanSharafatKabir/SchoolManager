@@ -10,28 +10,23 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-
+import android.widget.TextView;
 import com.classapp.kidssolution.Authentication.RegisterActivity;
 import com.classapp.kidssolution.Authentication.SigninGdActivity;
 import com.classapp.kidssolution.Authentication.SigninTcActivity;
 import com.classapp.kidssolution.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity implements View.OnClickListener{
 
-    int SPLASH_TIME_OUT = 3000;
-    ImageView imageView;
-    Button signInTcButton, signInGdButton;
+    TextView signInTcButton, signInGdButton, signUpPageButton;
     FirebaseUser firebaseUser = null;
     String passedStringTc = "", passedStringGd = "";
 
@@ -41,20 +36,17 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         signInTcButton = findViewById(R.id.signInTcPageID);
+        signInTcButton.setOnClickListener(this);
         signInGdButton = findViewById(R.id.signInGdPageID);
-        imageView = findViewById(R.id.splashImageID);
-        imageView.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_in_fade_in));
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            signInGdButton.isClickable();
-            signInTcButton.isClickable();
-        }, SPLASH_TIME_OUT);
+        signInGdButton.setOnClickListener(this);
+        signUpPageButton = findViewById(R.id.signUpPageID);
+        signUpPageButton.setOnClickListener(this);
     }
 
     @Override
     protected void onStart() {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        rememberMeMethod();
+        rememberMeTcMethod();
         rememberMeGdMethod();
 
         if (firebaseUser != null && !passedStringTc.isEmpty()) {
@@ -71,28 +63,31 @@ public class SplashScreen extends AppCompatActivity {
         super.onStart();
     }
 
-    public void signInAsTcMethod(View v){
-        finish();
-        Intent it = new Intent(SplashScreen.this, SigninTcActivity.class);
-        startActivity(it);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.signInTcPageID){
+            finish();
+            Intent it = new Intent(SplashScreen.this, SigninTcActivity.class);
+            startActivity(it);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
+
+        if(v.getId()==R.id.signInGdPageID){
+            finish();
+            Intent it = new Intent(SplashScreen.this, SigninGdActivity.class);
+            startActivity(it);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
+
+        if(v.getId()==R.id.signUpPageID){
+            finish();
+            Intent it = new Intent(SplashScreen.this, RegisterActivity.class);
+            startActivity(it);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
     }
 
-    public void signInAsGdMethod(View v){
-        finish();
-        Intent it = new Intent(SplashScreen.this, SigninGdActivity.class);
-        startActivity(it);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
-
-    public void registerPageMethod(View v){
-        finish();
-        Intent it = new Intent(SplashScreen.this, RegisterActivity.class);
-        startActivity(it);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-    }
-
-    private void rememberMeMethod(){
+    private void rememberMeTcMethod(){
         try {
             String recievedMessageTc;
             FileInputStream fileInputStreamTc = openFileInput("Teacher_Info.txt");

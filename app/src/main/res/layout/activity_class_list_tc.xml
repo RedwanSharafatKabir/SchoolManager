@@ -21,56 +21,75 @@
             android:src="@drawable/classroom"
             android:scaleType="fitXY"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/backFromClassesPageId"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            android:layout_gravity="center|start"
-            android:layout_margin="15dp"
-            android:background="@drawable/customize_login_signup_background"
-            android:gravity="center"
-            android:scaleType="centerCrop"
-            android:padding="10dp"/>
+            app:cardElevation="5dp"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="15dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/backFromClassesPageId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_gravity="center|start"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:padding="10dp"/>
+
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/createNewClassBtnId"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/create_class_design"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:padding="10dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="-50dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/createNewClassBtnId"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create new class"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            android:layout_gravity="center" />
+            android:background="#FF58A0"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:padding="10dp">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create new class"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/classesRecyclerViewId"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+        </androidx.recyclerview.widget.RecyclerView>
 
         <TextView
             android:id="@+id/noClassId"
