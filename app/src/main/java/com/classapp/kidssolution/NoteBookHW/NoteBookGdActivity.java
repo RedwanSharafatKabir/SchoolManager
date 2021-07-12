@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NoteBookGdActivity extends Fragment implements View.OnClickListener {
 
+    Parcelable recyclerViewState;
     View views;
     CircleImageView circleImageView;
     RecyclerView recyclerView;
@@ -67,6 +69,14 @@ public class NoteBookGdActivity extends Fragment implements View.OnClickListener
 
         recyclerView = views.findViewById(R.id.notebooksRecyclerViewGdId);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
+            }
+        });
+
         storeNotebookDataArrayList = new ArrayList<StoreNotebookData>();
 
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -104,15 +114,15 @@ public class NoteBookGdActivity extends Fragment implements View.OnClickListener
                     for (DataSnapshot item : dataSnapshot.getChildren()) {
                         StoreNotebookData storeNotebookData = item.getValue(StoreNotebookData.class);
                         storeNotebookDataArrayList.add(storeNotebookData);
-
-                        Collections.reverse(storeNotebookDataArrayList);
-                        notebookCustomAdapterGd = new NotebookCustomAdapterGd(getActivity(), storeNotebookDataArrayList);
-                        recyclerView.setAdapter(notebookCustomAdapterGd);
-                        notebookCustomAdapterGd.notifyDataSetChanged();
-
-                        noHw.setVisibility(View.GONE);
-                        progressBar.setVisibility(View.GONE);
                     }
+
+                    notebookCustomAdapterGd = new NotebookCustomAdapterGd(getActivity(), storeNotebookDataArrayList);
+                    recyclerView.setAdapter(notebookCustomAdapterGd);
+                    notebookCustomAdapterGd.notifyDataSetChanged();
+                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                    noHw.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override

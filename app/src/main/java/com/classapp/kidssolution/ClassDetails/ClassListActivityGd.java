@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ClassListActivityGd extends Fragment implements View.OnClickListener{
 
+    Parcelable recyclerViewState;
     View views;
     CircleImageView circleImageView;
     RecyclerView recyclerView;
@@ -70,6 +72,14 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
 
         recyclerView = views.findViewById(R.id.classesRecyclerViewGdId);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
+            }
+        });
+
         storeGdClassesDataArrayList = new ArrayList<StoreGdClassesData>();
 
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -107,15 +117,15 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
                     for (DataSnapshot item : dataSnapshot.getChildren()) {
                         StoreGdClassesData storeGdClassesData = item.getValue(StoreGdClassesData.class);
                         storeGdClassesDataArrayList.add(storeGdClassesData);
-
-                        Collections.reverse(storeGdClassesDataArrayList);
-                        classesCustomAdapterGd = new ClassesCustomAdapterGd(getActivity(), storeGdClassesDataArrayList);
-                        recyclerView.setAdapter(classesCustomAdapterGd);
-                        classesCustomAdapterGd.notifyDataSetChanged();
-
-                        noClass.setVisibility(View.GONE);
-                        progressBar.setVisibility(View.GONE);
                     }
+
+                    classesCustomAdapterGd = new ClassesCustomAdapterGd(getActivity(), storeGdClassesDataArrayList);
+                    recyclerView.setAdapter(classesCustomAdapterGd);
+                    classesCustomAdapterGd.notifyDataSetChanged();
+                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                    noClass.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override

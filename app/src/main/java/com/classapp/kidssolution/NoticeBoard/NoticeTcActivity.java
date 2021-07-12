@@ -2,6 +2,7 @@ package com.classapp.kidssolution.NoticeBoard;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,9 +12,12 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcelable;
+import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -43,6 +47,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NoticeTcActivity extends Fragment implements View.OnClickListener {
 
+    Parcelable recyclerViewState;
     View views;
     CircleImageView circleImageView;
     RecyclerView recyclerView;
@@ -73,6 +78,14 @@ public class NoticeTcActivity extends Fragment implements View.OnClickListener {
 
         recyclerView = views.findViewById(R.id.noticeRecyclerViewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
+            }
+        });
+
         storeNoticeDataArrayList = new ArrayList<StoreNoticeData>();
 
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -110,15 +123,15 @@ public class NoticeTcActivity extends Fragment implements View.OnClickListener {
                     for (DataSnapshot item : dataSnapshot.getChildren()) {
                         StoreNoticeData StoreNoticeData = item.getValue(StoreNoticeData.class);
                         storeNoticeDataArrayList.add(StoreNoticeData);
-
-                        Collections.reverse(storeNoticeDataArrayList);
-                        noticeCustomAdapter = new NoticeCustomAdapter(getActivity(), storeNoticeDataArrayList);
-                        recyclerView.setAdapter(noticeCustomAdapter);
-                        noticeCustomAdapter.notifyDataSetChanged();
-
-                        noHw.setVisibility(View.GONE);
-                        progressBar.setVisibility(View.GONE);
                     }
+
+                    noticeCustomAdapter = new NoticeCustomAdapter(getActivity(), storeNoticeDataArrayList);
+                    recyclerView.setAdapter(noticeCustomAdapter);
+                    noticeCustomAdapter.notifyDataSetChanged();
+                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                    noHw.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override

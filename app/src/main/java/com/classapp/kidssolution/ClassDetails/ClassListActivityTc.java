@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ClassListActivityTc extends Fragment implements View.OnClickListener{
 
+    Parcelable recyclerViewState;
     View views;
     CircleImageView circleImageView;
     RecyclerView recyclerView;
@@ -64,6 +66,14 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
 
         recyclerView = views.findViewById(R.id.classesRecyclerViewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
+            }
+        });
+
         storeClassesDataArrayList = new ArrayList<StoreClassesData>();
 
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -101,15 +111,15 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
                     for (DataSnapshot item : dataSnapshot.getChildren()) {
                         StoreClassesData storeClassesData = item.getValue(StoreClassesData.class);
                         storeClassesDataArrayList.add(storeClassesData);
-
-                        Collections.reverse(storeClassesDataArrayList);
-                        classesCustomAdapter = new ClassesCustomAdapter(getActivity(), storeClassesDataArrayList);
-                        recyclerView.setAdapter(classesCustomAdapter);
-                        classesCustomAdapter.notifyDataSetChanged();
-
-                        noClass.setVisibility(View.GONE);
-                        progressBar.setVisibility(View.GONE);
                     }
+
+                    classesCustomAdapter = new ClassesCustomAdapter(getActivity(), storeClassesDataArrayList);
+                    recyclerView.setAdapter(classesCustomAdapter);
+                    classesCustomAdapter.notifyDataSetChanged();
+                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                    noClass.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override

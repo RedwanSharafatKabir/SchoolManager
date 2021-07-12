@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NoticeGdActivity extends Fragment implements View.OnClickListener {
 
+    Parcelable recyclerViewState;
     View views;
     CircleImageView circleImageView;
     RecyclerView recyclerView;
@@ -72,6 +74,14 @@ public class NoticeGdActivity extends Fragment implements View.OnClickListener {
 
         recyclerView = views.findViewById(R.id.noticeRecyclerViewGdId);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
+            }
+        });
+
         storeNoticeDataArrayList = new ArrayList<StoreNoticeData>();
 
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -109,15 +119,15 @@ public class NoticeGdActivity extends Fragment implements View.OnClickListener {
                     for (DataSnapshot item : dataSnapshot.getChildren()) {
                         StoreNoticeData StoreNoticeData = item.getValue(StoreNoticeData.class);
                         storeNoticeDataArrayList.add(StoreNoticeData);
-
-                        Collections.reverse(storeNoticeDataArrayList);
-                        noticeCustomAdapterGd = new NoticeCustomAdapterGd(getActivity(), storeNoticeDataArrayList);
-                        recyclerView.setAdapter(noticeCustomAdapterGd);
-                        noticeCustomAdapterGd.notifyDataSetChanged();
-
-                        noHw.setVisibility(View.GONE);
-                        progressBar.setVisibility(View.GONE);
                     }
+
+                    noticeCustomAdapterGd = new NoticeCustomAdapterGd(getActivity(), storeNoticeDataArrayList);
+                    recyclerView.setAdapter(noticeCustomAdapterGd);
+                    noticeCustomAdapterGd.notifyDataSetChanged();
+                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                    noHw.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override

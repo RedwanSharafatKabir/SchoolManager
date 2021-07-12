@@ -75,8 +75,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:layout_marginTop="10dp"
@@ -87,7 +85,9 @@
                             android:layout_height="wrap_content"
                             app:cardElevation="5dp"
                             app:cardCornerRadius="5dp"
-                            android:layout_marginTop="20dp">
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp">
 
                             <TextView
                                 android:id="@+id/profileNameTcID"
@@ -108,7 +108,9 @@
                             android:layout_height="wrap_content"
                             app:cardElevation="5dp"
                             app:cardCornerRadius="5dp"
-                            android:layout_marginTop="20dp">
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp">
 
                             <TextView
                                 android:id="@+id/profileEmailTcID"
@@ -130,7 +132,9 @@
                             app:cardElevation="5dp"
                             app:cardCornerRadius="5dp"
                             android:layout_marginTop="20dp"
-                            android:layout_marginBottom="10dp">
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp">
 
                             <TextView
                                 android:id="@+id/profilePhoneTcID"
