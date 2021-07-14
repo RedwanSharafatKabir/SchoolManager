@@ -24,7 +24,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="220dp"
                 android:src="@drawable/homework"
                 android:scaleType="fitXY"/>
 
@@ -53,7 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/relativeLayout2"
-            android:layout_marginTop="-100dp"
             android:paddingBottom="50dp">
 
             <androidx.recyclerview.widget.RecyclerView

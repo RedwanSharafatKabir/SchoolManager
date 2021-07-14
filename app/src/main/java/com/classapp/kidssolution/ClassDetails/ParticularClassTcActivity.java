@@ -65,11 +65,17 @@ public class ParticularClassTcActivity extends Fragment implements View.OnClickL
         }
 
         if(v.getId()==R.id.takeAttendanceId){
-//            fragment = new AttendanceTcActivity();
-//            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-//            fragmentTransaction.replace(R.id.fragmentID, fragment);
-//            fragmentTransaction.commit();
+            Bundle bundle = new Bundle();
+            bundle.putString("IdKey", classIdText);
+            bundle.putString("NameKey", classNameText);
+            bundle.putString("TeacherKey", classTeacherText);
+
+            fragment = new AttendanceTcActivity();
+            fragment.setArguments(bundle);
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+            fragmentTransaction.replace(R.id.fragmentID, fragment);
+            fragmentTransaction.commit();
         }
 
         if(v.getId()==R.id.giveNotebookId){

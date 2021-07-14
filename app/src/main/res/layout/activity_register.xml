@@ -158,6 +158,7 @@
                 app:cardElevation="5dp"
                 app:cardCornerRadius="5dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center|bottom">
 
                 <ImageButton

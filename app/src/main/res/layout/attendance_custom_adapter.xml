@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@android:color/transparent"
     android:gravity="center">
@@ -10,8 +10,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@android:color/white"
-        card_view:cardElevation="5dp"
+        app:cardElevation="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp">
@@ -23,55 +22,59 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|center"
-                android:id="@+id/leftLinearLayout">
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="end|center"
+                android:layout_toRightOf="@+id/rightLinearLayout"
+                android:layout_marginLeft="-100dp"
+                android:gravity="center">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/classes"
-                    android:padding="20dp"/>
+                    android:id="@+id/setAttendanceImageId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/absent"
+                    android:padding="35dp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="100dp"
+                android:layout_gravity="center|left"
                 android:orientation="vertical"
-                android:layout_toRightOf="@+id/leftLinearLayout"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:id="@+id/rightLinearLayout"
+                android:gravity="center|left">
 
                 <TextView
-                    android:id="@+id/classGdIdTitleID"
+                    android:id="@+id/studentNameID"
                     android:textSize="16sp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:text="Class Id: 3kPt"
-                    android:layout_width="match_parent"
+                    android:text="Student name"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"/>
 
                 <TextView
-                    android:id="@+id/classGdNameTitleID"
+                    android:id="@+id/studentDateID"
                     android:textSize="16sp"
-                    android:textColor="#5E5B5B"
-                    android:text="Subject: Bengali"
-                    android:layout_width="match_parent"
+                    android:textColor="#FF58A0"
+                    android:text="Date: "
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="10dp"/>
 
                 <TextView
-                    android:id="@+id/classGdTeacherTitleID"
+                    android:id="@+id/attendanceStatusID"
                     android:textSize="16sp"
                     android:textColor="#5E5B5B"
-                    android:text="Teacher: Abdullah"
-                    android:layout_width="match_parent"
+                    android:text="Status: Absent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="10dp"/>
 
             </LinearLayout>
 

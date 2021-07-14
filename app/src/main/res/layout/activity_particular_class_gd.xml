@@ -16,7 +16,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:background="@android:color/transparent"
             android:orientation="vertical">
 
@@ -85,9 +85,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="5dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingBottom="5dp"
                 android:layout_gravity="center"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_marginTop="10dp">
 
                 <LinearLayout
                     android:id="@+id/firstlinearlayoutId"
@@ -101,8 +104,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="8dp"
-                        app:cardCornerRadius="5dp"
-                        android:layout_margin="5dp">
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp">
 
                         <LinearLayout
                             android:id="@+id/seeNotebookId"
@@ -135,8 +140,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="8dp"
-                        app:cardCornerRadius="5dp"
-                        android:layout_margin="5dp">
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp">
 
                         <LinearLayout
                             android:id="@+id/giveAttendanceId"
@@ -179,8 +186,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="8dp"
-                        app:cardCornerRadius="5dp"
-                        android:layout_margin="15dp">
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp">
 
                         <LinearLayout
                             android:id="@+id/chatWithTeacherId"

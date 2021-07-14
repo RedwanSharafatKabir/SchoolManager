@@ -23,9 +23,10 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/noticeWallId"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:src="@drawable/notice_wallpaper"
+                android:layout_height="220dp"
+                android:src="@drawable/notice_background"
                 android:scaleType="fitXY"/>
 
             <androidx.cardview.widget.CardView
@@ -53,7 +54,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/relativeLayout1"
-            android:layout_marginTop="-100dp"
             android:paddingBottom="50dp">
 
             <androidx.recyclerview.widget.RecyclerView

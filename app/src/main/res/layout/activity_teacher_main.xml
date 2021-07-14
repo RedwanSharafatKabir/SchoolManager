@@ -68,8 +68,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="8dp"
-                        app:cardCornerRadius="5dp"
-                        android:layout_margin="15dp">
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp">
 
                         <LinearLayout
                             android:id="@+id/homePageId"
@@ -102,8 +104,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="8dp"
-                        app:cardCornerRadius="5dp"
-                        android:layout_margin="15dp">
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp">
 
                         <LinearLayout
                             android:id="@+id/classesPageId"
@@ -146,8 +150,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="8dp"
-                        app:cardCornerRadius="5dp"
-                        android:layout_margin="15dp">
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp">
 
                         <LinearLayout
                             android:id="@+id/noticePageId"
@@ -180,8 +186,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardElevation="8dp"
-                        app:cardCornerRadius="5dp"
-                        android:layout_margin="15dp">
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp">
 
                         <LinearLayout
                             android:id="@+id/helpLinePageId"

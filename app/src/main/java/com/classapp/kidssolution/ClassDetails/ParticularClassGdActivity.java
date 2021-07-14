@@ -66,11 +66,17 @@ public class ParticularClassGdActivity extends Fragment implements View.OnClickL
         }
 
         if(v.getId()==R.id.giveAttendanceId){
-//            fragment = new AttendanceGdActivity();
-//            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-//            fragmentTransaction.replace(R.id.fragmentGdID, fragment);
-//            fragmentTransaction.commit();
+            Bundle bundle = new Bundle();
+            bundle.putString("IdKeyGd", classIdText);
+            bundle.putString("NameKeyGd", classNameText);
+            bundle.putString("TeacherKeyGd", classTeacherText);
+
+            fragment = new AttendanceGdActivity();
+            fragment.setArguments(bundle);
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+            fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+            fragmentTransaction.commit();
         }
 
         if(v.getId()==R.id.seeNotebookId){
