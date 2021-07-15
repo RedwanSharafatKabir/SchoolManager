@@ -82,12 +82,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:layout_gravity="end|center"
-                            android:layout_toRightOf="@+id/rightLinearLayout1"
+                            android:layout_toRightOf="@+id/rightLinearLayout7"
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
                             <CheckBox
-                                android:id="@+id/attendanceCheckId1"
+                                android:id="@+id/attendanceCheckId7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"/>
@@ -101,11 +101,11 @@
                             android:orientation="vertical"
                             android:paddingRight="10dp"
                             android:paddingLeft="10dp"
-                            android:id="@+id/rightLinearLayout1"
+                            android:id="@+id/rightLinearLayout7"
                             android:gravity="center|left">
 
                             <TextView
-                                android:id="@+id/attendanceDateID1"
+                                android:id="@+id/attendanceDateID7"
                                 android:textSize="16sp"
                                 android:textColor="#FF58A0"
                                 android:text="Date"
@@ -114,259 +114,7 @@
                                 android:fontFamily="sans-serif"/>
 
                             <TextView
-                                android:id="@+id/attendanceDayID1"
-                                android:textSize="16sp"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:text="Day"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="5dp"
-                    android:layout_margin="5dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_gravity="end|center"
-                            android:layout_toRightOf="@+id/rightLinearLayout2"
-                            android:layout_marginLeft="-100dp"
-                            android:gravity="center">
-
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center|left"
-                            android:orientation="vertical"
-                            android:paddingRight="10dp"
-                            android:paddingLeft="10dp"
-                            android:id="@+id/rightLinearLayout2"
-                            android:gravity="center|left">
-
-                            <TextView
-                                android:id="@+id/attendanceDateID2"
-                                android:textSize="16sp"
-                                android:textColor="#FF58A0"
-                                android:text="Date"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"/>
-
-                            <TextView
-                                android:id="@+id/attendanceDayID2"
-                                android:textSize="16sp"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:text="Day"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="5dp"
-                    android:layout_margin="5dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_gravity="end|center"
-                            android:layout_toRightOf="@+id/rightLinearLayout3"
-                            android:layout_marginLeft="-100dp"
-                            android:gravity="center">
-
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center|left"
-                            android:orientation="vertical"
-                            android:paddingRight="10dp"
-                            android:paddingLeft="10dp"
-                            android:id="@+id/rightLinearLayout3"
-                            android:gravity="center|left">
-
-                            <TextView
-                                android:id="@+id/attendanceDateID3"
-                                android:textSize="16sp"
-                                android:textColor="#FF58A0"
-                                android:text="Date"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"/>
-
-                            <TextView
-                                android:id="@+id/attendanceDayID3"
-                                android:textSize="16sp"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:text="Day"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="5dp"
-                    android:layout_margin="5dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_gravity="end|center"
-                            android:layout_toRightOf="@+id/rightLinearLayout4"
-                            android:layout_marginLeft="-100dp"
-                            android:gravity="center">
-
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center|left"
-                            android:orientation="vertical"
-                            android:paddingRight="10dp"
-                            android:paddingLeft="10dp"
-                            android:id="@+id/rightLinearLayout4"
-                            android:gravity="center|left">
-
-                            <TextView
-                                android:id="@+id/attendanceDateID4"
-                                android:textSize="16sp"
-                                android:textColor="#FF58A0"
-                                android:text="Date"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"/>
-
-                            <TextView
-                                android:id="@+id/attendanceDayID4"
-                                android:textSize="16sp"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:text="Day"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="5dp"
-                    android:layout_margin="5dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="10dp">
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_gravity="end|center"
-                            android:layout_toRightOf="@+id/rightLinearLayout5"
-                            android:layout_marginLeft="-100dp"
-                            android:gravity="center">
-
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center|left"
-                            android:orientation="vertical"
-                            android:paddingRight="10dp"
-                            android:paddingLeft="10dp"
-                            android:id="@+id/rightLinearLayout5"
-                            android:gravity="center|left">
-
-                            <TextView
-                                android:id="@+id/attendanceDateID5"
-                                android:textSize="16sp"
-                                android:textColor="#FF58A0"
-                                android:text="Date"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"/>
-
-                            <TextView
-                                android:id="@+id/attendanceDayID5"
+                                android:id="@+id/attendanceDayID7"
                                 android:textSize="16sp"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:text="Day"
@@ -460,12 +208,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:layout_gravity="end|center"
-                            android:layout_toRightOf="@+id/rightLinearLayout7"
+                            android:layout_toRightOf="@+id/rightLinearLayout5"
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
                             <CheckBox
-                                android:id="@+id/attendanceCheckId7"
+                                android:id="@+id/attendanceCheckId5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"/>
@@ -479,11 +227,11 @@
                             android:orientation="vertical"
                             android:paddingRight="10dp"
                             android:paddingLeft="10dp"
-                            android:id="@+id/rightLinearLayout7"
+                            android:id="@+id/rightLinearLayout5"
                             android:gravity="center|left">
 
                             <TextView
-                                android:id="@+id/attendanceDateID7"
+                                android:id="@+id/attendanceDateID5"
                                 android:textSize="16sp"
                                 android:textColor="#FF58A0"
                                 android:text="Date"
@@ -492,7 +240,259 @@
                                 android:fontFamily="sans-serif"/>
 
                             <TextView
-                                android:id="@+id/attendanceDayID7"
+                                android:id="@+id/attendanceDayID5"
+                                android:textSize="16sp"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:text="Day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="5dp"
+                    android:layout_margin="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="end|center"
+                            android:layout_toRightOf="@+id/rightLinearLayout4"
+                            android:layout_marginLeft="-100dp"
+                            android:gravity="center">
+
+                            <CheckBox
+                                android:id="@+id/attendanceCheckId4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center|left"
+                            android:orientation="vertical"
+                            android:paddingRight="10dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/rightLinearLayout4"
+                            android:gravity="center|left">
+
+                            <TextView
+                                android:id="@+id/attendanceDateID4"
+                                android:textSize="16sp"
+                                android:textColor="#FF58A0"
+                                android:text="Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"/>
+
+                            <TextView
+                                android:id="@+id/attendanceDayID4"
+                                android:textSize="16sp"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:text="Day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="5dp"
+                    android:layout_margin="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="end|center"
+                            android:layout_toRightOf="@+id/rightLinearLayout3"
+                            android:layout_marginLeft="-100dp"
+                            android:gravity="center">
+
+                            <CheckBox
+                                android:id="@+id/attendanceCheckId3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center|left"
+                            android:orientation="vertical"
+                            android:paddingRight="10dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/rightLinearLayout3"
+                            android:gravity="center|left">
+
+                            <TextView
+                                android:id="@+id/attendanceDateID3"
+                                android:textSize="16sp"
+                                android:textColor="#FF58A0"
+                                android:text="Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"/>
+
+                            <TextView
+                                android:id="@+id/attendanceDayID3"
+                                android:textSize="16sp"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:text="Day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="5dp"
+                    android:layout_margin="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="end|center"
+                            android:layout_toRightOf="@+id/rightLinearLayout2"
+                            android:layout_marginLeft="-100dp"
+                            android:gravity="center">
+
+                            <CheckBox
+                                android:id="@+id/attendanceCheckId2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center|left"
+                            android:orientation="vertical"
+                            android:paddingRight="10dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/rightLinearLayout2"
+                            android:gravity="center|left">
+
+                            <TextView
+                                android:id="@+id/attendanceDateID2"
+                                android:textSize="16sp"
+                                android:textColor="#FF58A0"
+                                android:text="Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"/>
+
+                            <TextView
+                                android:id="@+id/attendanceDayID2"
+                                android:textSize="16sp"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:text="Day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="5dp"
+                    android:layout_margin="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="end|center"
+                            android:layout_toRightOf="@+id/rightLinearLayout1"
+                            android:layout_marginLeft="-100dp"
+                            android:gravity="center">
+
+                            <CheckBox
+                                android:id="@+id/attendanceCheckId1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center|left"
+                            android:orientation="vertical"
+                            android:paddingRight="10dp"
+                            android:paddingLeft="10dp"
+                            android:id="@+id/rightLinearLayout1"
+                            android:gravity="center|left">
+
+                            <TextView
+                                android:id="@+id/attendanceDateID1"
+                                android:textSize="16sp"
+                                android:textColor="#FF58A0"
+                                android:text="Date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"/>
+
+                            <TextView
+                                android:id="@+id/attendanceDayID1"
                                 android:textSize="16sp"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:text="Day"

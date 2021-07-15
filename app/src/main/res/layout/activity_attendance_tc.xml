@@ -73,7 +73,7 @@
                 android:id="@+id/noStudentId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No student enrolled"
+                android:text="No student is present"
                 android:fontFamily="serif-monospace"
                 android:textStyle="bold"
                 android:textSize="18sp"
