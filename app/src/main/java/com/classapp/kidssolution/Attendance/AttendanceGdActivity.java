@@ -1,5 +1,6 @@
 package com.classapp.kidssolution.Attendance;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -49,7 +50,7 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
     Fragment fragment;
     CircleImageView circleImageView;
     FragmentTransaction fragmentTransaction;
-    String present1, present2, present3, present4, present5, present6, present7;
+    String present1, present2, present3, present4, present5, present6, present7, userName;
     TextView attendanceDate1, attendanceDate2, attendanceDate3, attendanceDate4, attendanceDate5, attendanceDate6, attendanceDate7;
     TextView attendanceDay1, attendanceDay2, attendanceDay3, attendanceDay4, attendanceDay5, attendanceDay6, attendanceDay7;
     CheckBox attendanceCheck1, attendanceCheck2, attendanceCheck3, attendanceCheck4, attendanceCheck5, attendanceCheck6, attendanceCheck7;
@@ -117,6 +118,7 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             calendar.add(Calendar.DATE, i);
@@ -322,33 +324,44 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.submitAttendanceID){
+            FirebaseDatabase.getInstance().getReference("Guardian Information").child(userPhoneNumber).child("username")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            userName = snapshot.getValue(String.class);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {}
+                    });
+
             if(attendanceCheck1.isChecked()){
                 present1 = "1";
-                storeAttendanceDataMethod(present1, date1);
+                storeAttendanceDataMethod(present1, date1, userName);
             }
             if(attendanceCheck2.isChecked()){
                 present2 = "1";
-                storeAttendanceDataMethod(present2, date2);
+                storeAttendanceDataMethod(present2, date2, userName);
             }
             if(attendanceCheck3.isChecked()){
                 present3 = "1";
-                storeAttendanceDataMethod(present3, date3);
+                storeAttendanceDataMethod(present3, date3, userName);
             }
             if(attendanceCheck4.isChecked()){
                 present4 = "1";
-                storeAttendanceDataMethod(present4, date4);
+                storeAttendanceDataMethod(present4, date4, userName);
             }
             if(attendanceCheck5.isChecked()){
                 present5 = "1";
-                storeAttendanceDataMethod(present5, date5);
+                storeAttendanceDataMethod(present5, date5, userName);
             }
             if(attendanceCheck6.isChecked()){
                 present6 = "1";
-                storeAttendanceDataMethod(present6, date6);
+                storeAttendanceDataMethod(present6, date6, userName);
             }
             if(attendanceCheck7.isChecked()){
                 present7 = "1";
-                storeAttendanceDataMethod(present7, date7);
+                storeAttendanceDataMethod(present7, date7, userName);
             }
         }
 
@@ -367,8 +380,8 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
         }
     }
 
-    private void storeAttendanceDataMethod(String present, String fixedDate) {
-        StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present);
+    private void storeAttendanceDataMethod(String present, String fixedDate, String username) {
+        StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username);
         databaseReference.child(classIdText).child(fixedDate).child(userPhoneNumber).setValue(storeAttendanceData);
     }
 }

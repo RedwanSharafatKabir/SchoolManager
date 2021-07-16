@@ -1,55 +1,165 @@
 package com.classapp.kidssolution.Attendance;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.classapp.kidssolution.ModelClasses.StoreClassesData;
-import com.classapp.kidssolution.R;
-import com.google.firebase.database.FirebaseDatabase;
-import java.util.ArrayList;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class AttendanceTcActivity extends Fragment {
+import com.classapp.kidssolution.ClassDetails.ParticularClassGdActivity;
+import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
+import com.classapp.kidssolution.ModelClasses.StoreAttendanceData;
+import com.classapp.kidssolution.ModelClasses.StoreClassesData;
+import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
+import com.classapp.kidssolution.R;
+import com.classapp.kidssolution.RecyclerViewAdapters.AttendanceCustomAdapter;
+import com.classapp.kidssolution.RecyclerViewAdapters.NotebookCustomAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class AttendanceTcActivity extends Fragment implements View.OnClickListener{
 
     View views;
+    Parcelable recyclerViewState;
+    CircleImageView circleImageView;
+    RecyclerView recyclerView;
+    DatabaseReference databaseReference;
+    ArrayList<StoreAttendanceData> storeAttendanceDataArrayList;
+    AttendanceCustomAdapter attendanceCustomAdapter;
+    ProgressBar progressBar;
+    TextView noStdnt;
+    Fragment fragment;
+    FragmentTransaction fragmentTransaction;
+    SimpleDateFormat simpleDateFormat;
+    ConnectivityManager cm;
+    NetworkInfo netInfo;
+    String classIdText, classNameText, classTeacherText, currentDate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         views = inflater.inflate(R.layout.activity_attendance_tc, container, false);
 
-//        progressBar = views.findViewById(R.id.classesListProgressbarId);
-//        progressBar.setVisibility(View.VISIBLE);
-//
-//        noClass = views.findViewById(R.id.noClassId);
-//
-//        circleImageView = views.findViewById(R.id.backFromClassesPageId);
-//        circleImageView.setOnClickListener(this);
-//        createNewClassBtn = views.findViewById(R.id.createNewClassBtnId);
-//        createNewClassBtn.setOnClickListener(this);
-//
-//        recyclerView = views.findViewById(R.id.classesRecyclerViewId);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//                recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
-//            }
-//        });
-//
-//        storeClassesDataArrayList = new ArrayList<StoreClassesData>();
-//
-//        cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-//        netInfo = cm.getActiveNetworkInfo();
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Classes Information");
-//
-//        loadClassList();
+        classIdText = getArguments().getString("IdKey");
+        classNameText = getArguments().getString("NameKey");
+        classTeacherText = getArguments().getString("TeacherKey");
+
+        Date cal = Calendar.getInstance().getTime();
+        simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        currentDate = simpleDateFormat.format(cal);
+
+        progressBar = views.findViewById(R.id.atdncProgressbarTcId);
+        progressBar.setVisibility(View.VISIBLE);
+
+        noStdnt = views.findViewById(R.id.noStudentId);
+
+        circleImageView = views.findViewById(R.id.backFromAtdncTcId);
+        circleImageView.setOnClickListener(this);
+
+        recyclerView = views.findViewById(R.id.attendanceRecyclerViewTcId);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
+            }
+        });
+
+        storeAttendanceDataArrayList = new ArrayList<StoreAttendanceData>();
+
+        cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        netInfo = cm.getActiveNetworkInfo();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Attendance Information");
+
+        loadPresentStudentList();
 
         return views;
+    }
+
+    private void refresh(int milliSecond){
+        final Handler handler = new Handler(Looper.getMainLooper());
+
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                loadPresentStudentList();
+            }
+        };
+
+        handler.postDelayed(runnable, milliSecond);
+    }
+
+    private void loadPresentStudentList(){
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            databaseReference.child(classIdText).child(currentDate).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    storeAttendanceDataArrayList.clear();
+                    for (DataSnapshot item : dataSnapshot.getChildren()) {
+                        StoreAttendanceData storeAttendanceData = item.getValue(StoreAttendanceData.class);
+                        storeAttendanceDataArrayList.add(storeAttendanceData);
+                    }
+
+                    attendanceCustomAdapter = new AttendanceCustomAdapter(getActivity(), storeAttendanceDataArrayList);
+                    recyclerView.setAdapter(attendanceCustomAdapter);
+                    attendanceCustomAdapter.notifyDataSetChanged();
+                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                    noStdnt.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    noStdnt.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
+        }
+        else {
+            Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_LONG).show();
+        }
+
+        refresh(1000);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.backFromAtdncTcId){
+            Bundle bundle = new Bundle();
+            bundle.putString("IdKey", classIdText);
+            bundle.putString("NameKey", classNameText);
+            bundle.putString("TeacherKey", classTeacherText);
+
+            fragment = new ParticularClassTcActivity();
+            fragment.setArguments(bundle);
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+            fragmentTransaction.replace(R.id.fragmentID, fragment);
+            fragmentTransaction.commit();
+        }
     }
 }
