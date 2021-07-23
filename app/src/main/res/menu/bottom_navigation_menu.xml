@@ -6,9 +6,9 @@
         android:title="Home"
         android:icon="@drawable/ic_baseline_class_24"/>
     <item
-        android:id="@+id/noticeID"
-        android:title="Notice"
-        android:icon="@drawable/ic_baseline_notice"/>
+        android:id="@+id/chatID"
+        android:title="Chat"
+        android:icon="@drawable/ic_baseline_mark_chat_unread_24"/>
     <item
         android:id="@+id/helpID"
         android:title="Help"

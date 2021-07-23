@@ -15,11 +15,17 @@
         android:background="@android:color/transparent"
         android:orientation="vertical">
 
-        <ImageView
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:src="@drawable/classroom"
-            android:scaleType="fitXY"/>
+            android:layout_height="120dp"
+            android:text="Classes"
+            android:fontFamily="monospace"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="#C50357"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -50,7 +56,7 @@
         app:cardCornerRadius="5dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="-50dp">
+        android:layout_marginTop="-15dp">
 
         <LinearLayout
             android:id="@+id/createNewClassBtnId"
@@ -77,39 +83,45 @@
 
     </androidx.cardview.widget.CardView>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="50dp">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/classesRecyclerViewId"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp">
 
-        <TextView
-            android:id="@+id/noClassId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="No class is created"
-            android:fontFamily="serif-monospace"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textAllCaps="false"
-            android:textColor="#000"
-            android:layout_margin="20dp"
-            android:gravity="center" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/classesRecyclerViewId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+            </androidx.recyclerview.widget.RecyclerView>
 
-        <ProgressBar
-            android:id="@+id/classesListProgressbarId"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/noClassId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No class is created"
+                android:fontFamily="serif-monospace"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:textColor="#000"
+                android:layout_margin="20dp"
+                android:gravity="center" />
 
-    </RelativeLayout>
+            <ProgressBar
+                android:id="@+id/classesListProgressbarId"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </LinearLayout>

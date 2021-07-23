@@ -22,11 +22,17 @@
             android:background="@android:color/transparent"
             android:orientation="vertical">
 
-            <ImageView
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:src="@drawable/homework"
-                android:scaleType="fitXY"/>
+                android:layout_height="120dp"
+                android:text="Homework"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:background="#5E5E5E"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -49,41 +55,48 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/relativeLayout2"
-            android:paddingBottom="50dp">
+            android:layout_below="@+id/relativeLayout2">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/notebooksRecyclerViewGdId"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent"
+                android:paddingBottom="50dp">
 
-            <TextView
-                android:id="@+id/noHwGdId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="No home work for today"
-                android:fontFamily="serif-monospace"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textAllCaps="false"
-                android:textColor="#000"
-                android:layout_marginTop="120dp"
-                android:gravity="center" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/notebooksRecyclerViewGdId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp">
+                </androidx.recyclerview.widget.RecyclerView>
 
-            <ProgressBar
-                android:id="@+id/notebookListProgressbarGdId"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerInParent="true"/>
+                <TextView
+                    android:id="@+id/noHwGdId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No home work for today"
+                    android:fontFamily="serif-monospace"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textAllCaps="false"
+                    android:textColor="#000"
+                    android:layout_marginTop="120dp"
+                    android:gravity="center" />
 
-        </RelativeLayout>
+                <ProgressBar
+                    android:id="@+id/notebookListProgressbarGdId"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@+id/noHwGdId"/>
+
+            </RelativeLayout>
+
+        </ScrollView>
 
     </RelativeLayout>
 

@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.classapp.kidssolution.About_and_Profile.ProfileGdActivity;
+import com.classapp.kidssolution.LiveChat.ChatGdActivity;
 import com.classapp.kidssolution.NoticeBoard.NoticeGdActivity;
 import com.classapp.kidssolution.NoticeBoard.NoticeTcActivity;
 import com.classapp.kidssolution.About_and_Profile.ProfileTcActivity;
@@ -42,7 +43,7 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
         setContentView(R.layout.activity_main_gd);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationGdID);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnItemSelectedListener(this);
 
         parentLayout = findViewById(android.R.id.content);
     }
@@ -69,9 +70,9 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
                 }
                 break;
 
-            case R.id.noticeGdID:
+            case R.id.chatGdID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    fragment = new NoticeGdActivity();
+                    fragment = new ChatGdActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentGdID, fragment);

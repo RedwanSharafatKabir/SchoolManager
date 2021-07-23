@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.classapp.kidssolution.LiveChat.ChatTcActivity;
 import com.classapp.kidssolution.NoticeBoard.NoticeTcActivity;
 import com.classapp.kidssolution.About_and_Profile.ProfileTcActivity;
 import com.classapp.kidssolution.R;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationID);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnItemSelectedListener(this);
 
         parentLayout = findViewById(android.R.id.content);
     }
@@ -67,9 +68,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 }
                 break;
 
-            case R.id.noticeID:
+            case R.id.chatID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    fragment = new NoticeTcActivity();
+                    fragment = new ChatTcActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentID, fragment);
