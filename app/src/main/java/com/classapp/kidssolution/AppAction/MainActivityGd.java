@@ -12,11 +12,13 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.classapp.kidssolution.About_and_Profile.ProfileGdActivity;
 import com.classapp.kidssolution.LiveChat.ChatGdActivity;
+import com.classapp.kidssolution.LiveChat.ChatTcActivity;
 import com.classapp.kidssolution.NoticeBoard.NoticeGdActivity;
 import com.classapp.kidssolution.NoticeBoard.NoticeTcActivity;
 import com.classapp.kidssolution.About_and_Profile.ProfileTcActivity;
@@ -26,8 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivityGd extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
-        NavigationView.OnNavigationItemSelectedListener{
+public class MainActivityGd extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener{
 
     BottomNavigationView bottomNavigationView;
     View parentLayout;
@@ -46,6 +47,19 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
         bottomNavigationView.setOnItemSelectedListener(this);
 
         parentLayout = findViewById(android.R.id.content);
+
+        try {
+            switch (getIntent().getStringExtra("EXTRA")) {
+                case "openChatFragment":
+                    fragment = new ChatGdActivity();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                    fragmentTransaction.commit();
+                    break;
+            }
+        } catch (Exception e){
+            Log.i("Error ", e.getMessage());
+        }
     }
 
     @Override
@@ -74,7 +88,6 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new ChatGdActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentGdID, fragment);
                     fragmentTransaction.commit();
                 } else {
@@ -90,7 +103,6 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new HelpLineGd();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentGdID, fragment);
                     fragmentTransaction.commit();
                 } else {
@@ -106,7 +118,6 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new ProfileGdActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentGdID, fragment);
                     fragmentTransaction.commit();
                 } else {

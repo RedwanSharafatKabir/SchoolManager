@@ -106,7 +106,7 @@
                             <TextView
                                 android:id="@+id/attendanceDateID7"
                                 android:textSize="16sp"
-                                android:textColor="#FF58A0"
+                                android:textColor="#106506"
                                 android:text="Date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
                             <TextView
                                 android:id="@+id/attendanceDateID6"
                                 android:textSize="16sp"
-                                android:textColor="#FF58A0"
+                                android:textColor="#106506"
                                 android:text="Date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -232,7 +232,7 @@
                             <TextView
                                 android:id="@+id/attendanceDateID5"
                                 android:textSize="16sp"
-                                android:textColor="#FF58A0"
+                                android:textColor="#106506"
                                 android:text="Date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -295,7 +295,7 @@
                             <TextView
                                 android:id="@+id/attendanceDateID4"
                                 android:textSize="16sp"
-                                android:textColor="#FF58A0"
+                                android:textColor="#106506"
                                 android:text="Date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -358,7 +358,7 @@
                             <TextView
                                 android:id="@+id/attendanceDateID3"
                                 android:textSize="16sp"
-                                android:textColor="#FF58A0"
+                                android:textColor="#106506"
                                 android:text="Date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -421,7 +421,7 @@
                             <TextView
                                 android:id="@+id/attendanceDateID2"
                                 android:textSize="16sp"
-                                android:textColor="#FF58A0"
+                                android:textColor="#106506"
                                 android:text="Date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -484,7 +484,7 @@
                             <TextView
                                 android:id="@+id/attendanceDateID1"
                                 android:textSize="16sp"
-                                android:textColor="#FF58A0"
+                                android:textColor="#106506"
                                 android:text="Date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

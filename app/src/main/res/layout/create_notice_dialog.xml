@@ -71,7 +71,7 @@
                     android:id="@+id/createNoticeCompleteID"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:background="#FF58A0"
+                    android:background="@color/colorPrimaryDark"
                     android:text="Create"
                     android:textSize="18sp"
                     android:fontFamily="sans-serif"

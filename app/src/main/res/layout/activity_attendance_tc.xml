@@ -58,12 +58,12 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/relativeLayout2">
+            android:layout_below="@+id/relativeLayout2"
+            android:paddingBottom="55dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="50dp">
+                android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/attendanceRecyclerViewTcId"
@@ -72,25 +72,12 @@
                     android:layout_marginTop="5dp">
                 </androidx.recyclerview.widget.RecyclerView>
 
-                <TextView
-                    android:id="@+id/noStudentId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="No student is present"
-                    android:fontFamily="serif-monospace"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:layout_marginTop="120dp"
-                    android:gravity="center" />
-
                 <ProgressBar
                     android:id="@+id/atdncProgressbarTcId"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerInParent="true"
-                    android:layout_below="@+id/noStudentId"/>
+                    android:layout_marginTop="100dp"/>
 
             </RelativeLayout>
 

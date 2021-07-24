@@ -55,7 +55,6 @@ public class NoticeTcActivity extends Fragment implements View.OnClickListener {
     NoticeCustomAdapter noticeCustomAdapter;
     ProgressBar progressBar;
     FloatingActionButton createNewNotebookBtn;
-    TextView noHw;
     DatabaseReference databaseReference;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
@@ -68,8 +67,6 @@ public class NoticeTcActivity extends Fragment implements View.OnClickListener {
 
         progressBar = views.findViewById(R.id.noticeListProgressbarId);
         progressBar.setVisibility(View.VISIBLE);
-
-        noHw = views.findViewById(R.id.noNoticeId);
 
         circleImageView = views.findViewById(R.id.backFromNoticeTcId);
         circleImageView.setOnClickListener(this);
@@ -130,13 +127,11 @@ public class NoticeTcActivity extends Fragment implements View.OnClickListener {
                     noticeCustomAdapter.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
-                    noHw.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    noHw.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
             });

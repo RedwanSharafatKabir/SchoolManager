@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.Attendance.AttendanceTcActivity;
+import com.classapp.kidssolution.LiveChat.ChatTcActivity;
 import com.classapp.kidssolution.NoteBookHW.NoteBookTcActivity;
 import com.classapp.kidssolution.R;
 
@@ -93,11 +94,10 @@ public class ParticularClassTcActivity extends Fragment implements View.OnClickL
         }
 
         if(v.getId()==R.id.chatWithGuardianId){
-//            fragment = new ChatWithGuardian();
-//            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-//            fragmentTransaction.replace(R.id.fragmentID, fragment);
-//            fragmentTransaction.commit();
+            fragment = new ChatTcActivity();
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentID, fragment);
+            fragmentTransaction.commit();
         }
     }
 }

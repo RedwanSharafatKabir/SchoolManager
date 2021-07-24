@@ -51,7 +51,6 @@ public class NoteBookTcActivity extends Fragment implements View.OnClickListener
     NotebookCustomAdapter notebookCustomAdapter;
     ProgressBar progressBar;
     FloatingActionButton createNewNotebookBtn;
-    TextView noHw;
     DatabaseReference databaseReference;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
@@ -69,8 +68,6 @@ public class NoteBookTcActivity extends Fragment implements View.OnClickListener
 
         progressBar = views.findViewById(R.id.notebookListProgressbarId);
         progressBar.setVisibility(View.VISIBLE);
-
-        noHw = views.findViewById(R.id.noHwId);
 
         circleImageView = views.findViewById(R.id.backFromNotebookTcId);
         circleImageView.setOnClickListener(this);
@@ -132,13 +129,11 @@ public class NoteBookTcActivity extends Fragment implements View.OnClickListener
                     notebookCustomAdapter.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
-                    noHw.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    noHw.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
             });

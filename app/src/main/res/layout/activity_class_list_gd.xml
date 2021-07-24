@@ -85,12 +85,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="55dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="50dp">
+            android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/classesRecyclerViewGdId"
@@ -101,24 +101,12 @@
                 android:layout_marginLeft="10dp">
             </androidx.recyclerview.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/noClassIdGd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="No classes to join"
-                android:fontFamily="serif-monospace"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textAllCaps="false"
-                android:textColor="#000"
-                android:layout_margin="20dp"
-                android:gravity="center" />
-
             <ProgressBar
                 android:id="@+id/classesListProgressbarGdId"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_centerInParent="true"/>
+                android:layout_centerInParent="true"
+                android:layout_marginTop="100dp"/>
 
         </RelativeLayout>
 

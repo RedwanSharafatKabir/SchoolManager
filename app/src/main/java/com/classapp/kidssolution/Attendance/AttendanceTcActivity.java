@@ -50,7 +50,6 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
     ArrayList<StoreAttendanceData> storeAttendanceDataArrayList;
     AttendanceCustomAdapter attendanceCustomAdapter;
     ProgressBar progressBar;
-    TextView noStdnt;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
     SimpleDateFormat simpleDateFormat;
@@ -72,8 +71,6 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
 
         progressBar = views.findViewById(R.id.atdncProgressbarTcId);
         progressBar.setVisibility(View.VISIBLE);
-
-        noStdnt = views.findViewById(R.id.noStudentId);
 
         circleImageView = views.findViewById(R.id.backFromAtdncTcId);
         circleImageView.setOnClickListener(this);
@@ -128,13 +125,11 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
                     attendanceCustomAdapter.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
-                    noStdnt.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    noStdnt.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
             });

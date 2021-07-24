@@ -47,7 +47,6 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
     ArrayList<StoreGdClassesData> storeGdClassesDataArrayList;
     ClassesCustomAdapterGd classesCustomAdapterGd;
     ProgressBar progressBar;
-    TextView noClass;
     DatabaseReference databaseReference;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
@@ -63,9 +62,6 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
         joinNewClassBtn.setOnClickListener(this);
         progressBar = views.findViewById(R.id.classesListProgressbarGdId);
         progressBar.setVisibility(View.VISIBLE);
-
-        noClass = views.findViewById(R.id.noClassIdGd);
-        noClass.setVisibility(View.GONE);
 
         circleImageView = views.findViewById(R.id.backFromClassesPageGdId);
         circleImageView.setOnClickListener(this);
@@ -124,13 +120,11 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
                     classesCustomAdapterGd.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
-                    noClass.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    noClass.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
             });

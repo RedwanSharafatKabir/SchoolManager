@@ -15,6 +15,12 @@
         android:usesCleartextTraffic="true">
 
         <activity
+            android:name=".LiveChat.ParticularChatPageTc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LiveChat.ParticularChatPageGd"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Authentication.SigninGdActivity"
             android:screenOrientation="portrait" />
         <activity

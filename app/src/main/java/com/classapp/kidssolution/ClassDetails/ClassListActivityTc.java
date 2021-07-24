@@ -43,7 +43,6 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
     ClassesCustomAdapter classesCustomAdapter;
     LinearLayout createNewClassBtn;
     ProgressBar progressBar;
-    TextView noClass;
     DatabaseReference databaseReference;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
@@ -56,8 +55,6 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
 
         progressBar = views.findViewById(R.id.classesListProgressbarId);
         progressBar.setVisibility(View.VISIBLE);
-
-        noClass = views.findViewById(R.id.noClassId);
 
         circleImageView = views.findViewById(R.id.backFromClassesPageId);
         circleImageView.setOnClickListener(this);
@@ -118,13 +115,11 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
                     classesCustomAdapter.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
-                    noClass.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    noClass.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
             });

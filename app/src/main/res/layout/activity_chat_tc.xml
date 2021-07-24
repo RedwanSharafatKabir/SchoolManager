@@ -1,7 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".LiveChat.ChatTcActivity"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/TextView2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:text="Talk With Guardians"
+            android:fontFamily="monospace"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="@color/colorPrimaryDark"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/TextView2"
+            android:paddingBottom="55dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/chatRecyclerViewTcId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <ProgressBar
+                    android:id="@+id/chatListProgressbarTcId"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="100dp"/>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="70dp"
+        android:layout_gravity="center|bottom|right">
+
+        <TextView
+            android:id="@+id/backFromChatTcId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:text=" Back To Home"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/ic_baseline_back_direction"/>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

@@ -53,7 +53,6 @@ public class NoticeGdActivity extends Fragment implements View.OnClickListener {
     ArrayList<StoreNoticeData> storeNoticeDataArrayList;
     NoticeCustomAdapterGd noticeCustomAdapterGd;
     ProgressBar progressBar;
-    TextView noHw;
     DatabaseReference databaseReference;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
@@ -66,8 +65,6 @@ public class NoticeGdActivity extends Fragment implements View.OnClickListener {
 
         progressBar = views.findViewById(R.id.noticeListProgressbarGdId);
         progressBar.setVisibility(View.VISIBLE);
-
-        noHw = views.findViewById(R.id.noNoticeGdId);
 
         circleImageView = views.findViewById(R.id.backFromNoticeGdId);
         circleImageView.setOnClickListener(this);
@@ -125,14 +122,11 @@ public class NoticeGdActivity extends Fragment implements View.OnClickListener {
                     recyclerView.setAdapter(noticeCustomAdapterGd);
                     noticeCustomAdapterGd.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
-
-                    noHw.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    noHw.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
             });

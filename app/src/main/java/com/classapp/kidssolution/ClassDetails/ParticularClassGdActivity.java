@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.Attendance.AttendanceGdActivity;
+import com.classapp.kidssolution.LiveChat.ChatGdActivity;
 import com.classapp.kidssolution.NoteBookHW.NoteBookGdActivity;
 import com.classapp.kidssolution.NoteBookHW.NoteBookTcActivity;
 import com.classapp.kidssolution.R;
@@ -94,11 +95,10 @@ public class ParticularClassGdActivity extends Fragment implements View.OnClickL
         }
 
         if(v.getId()==R.id.chatWithTeacherId){
-//            fragment = new ChatWithTeacher();
-//            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-//            fragmentTransaction.replace(R.id.fragmentGdID, fragment);
-//            fragmentTransaction.commit();
+            fragment = new ChatGdActivity();
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+            fragmentTransaction.commit();
         }
     }
 }

@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -24,8 +25,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
-        NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener{
 
     BottomNavigationView bottomNavigationView;
     View parentLayout;
@@ -44,6 +44,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnItemSelectedListener(this);
 
         parentLayout = findViewById(android.R.id.content);
+
+        try {
+            switch (getIntent().getStringExtra("EXTRA")) {
+                case "openChatFragment":
+                    fragment = new ChatTcActivity();
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentID, fragment);
+                    fragmentTransaction.commit();
+                    break;
+            }
+        } catch (Exception e){
+            Log.i("Error ", e.getMessage());
+        }
     }
 
     @Override
@@ -72,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new ChatTcActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentID, fragment);
                     fragmentTransaction.commit();
                 } else {
@@ -88,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new HelpLineTc();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentID, fragment);
                     fragmentTransaction.commit();
                 } else {
@@ -104,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new ProfileTcActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
                     fragmentTransaction.replace(R.id.fragmentID, fragment);
                     fragmentTransaction.commit();
                 } else {

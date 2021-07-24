@@ -47,7 +47,7 @@
                 <TextView
                     android:id="@+id/classGdIdTitleID"
                     android:textSize="16sp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="#FF58A0"
                     android:text="Class Id: 3kPt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                 <TextView
                     android:id="@+id/classGdTeacherTitleID"
                     android:textSize="16sp"
-                    android:textColor="#5E5B5B"
+                    android:textColor="@color/colorPrimaryDark"
                     android:text="Teacher: Abdullah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

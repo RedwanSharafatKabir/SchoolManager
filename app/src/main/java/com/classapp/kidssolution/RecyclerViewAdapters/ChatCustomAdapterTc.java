@@ -1,0 +1,88 @@
+package com.classapp.kidssolution.RecyclerViewAdapters;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.classapp.kidssolution.AppAction.SplashScreen;
+import com.classapp.kidssolution.Authentication.SigninGdActivity;
+import com.classapp.kidssolution.ClassDetails.ParticularClassGdActivity;
+import com.classapp.kidssolution.LiveChat.ParticularChatPageGd;
+import com.classapp.kidssolution.LiveChat.ParticularChatPageTc;
+import com.classapp.kidssolution.ModelClasses.StoreGuardianData;
+import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
+import com.classapp.kidssolution.NoteBookHW.EditNotebookDetails;
+import com.classapp.kidssolution.R;
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class ChatCustomAdapterTc extends RecyclerView.Adapter<ChatCustomAdapterTc.MyViewHolder> {
+
+    Context context;
+    ArrayList<StoreGuardianData> storeGuardianData;
+    Fragment fragment;
+    FragmentTransaction fragmentTransaction;
+
+    public ChatCustomAdapterTc(Context c, ArrayList<StoreGuardianData> p) {
+        context = c;
+        storeGuardianData = p;
+    }
+
+    @NonNull
+    @Override
+    public ChatCustomAdapterTc.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ChatCustomAdapterTc.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.chat_custom_adapter_tc, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ChatCustomAdapterTc.MyViewHolder holder, int position) {
+        holder.textView1.setText(storeGuardianData.get(position).getUsername());
+        holder.textView2.setText(storeGuardianData.get(position).getPhone());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String guardianName = storeGuardianData.get(position).getUsername();
+                String guardianPhone = storeGuardianData.get(position).getPhone();
+//                String guardianImage = storeGuardianData.get(position).getImage();
+
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Intent intent = new Intent(activity, ParticularChatPageTc.class);
+                intent.putExtra("guardianNameKey", guardianName);
+                intent.putExtra("guardianPhoneKey", guardianPhone);
+                activity.startActivity(intent);
+                activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return storeGuardianData.size();
+    }
+
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView textView1, textView2;
+        CircleImageView circleImageView;
+
+        public MyViewHolder(@NonNull View itemView){
+            super(itemView);
+            circleImageView = itemView.findViewById(R.id.guardianImageId);
+            textView1 = itemView.findViewById(R.id.guardianNameId);
+            textView2 = itemView.findViewById(R.id.guardianPhoneId);
+        }
+    }
+}

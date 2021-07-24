@@ -43,7 +43,6 @@ public class NoteBookGdActivity extends Fragment implements View.OnClickListener
     ArrayList<StoreNotebookData> storeNotebookDataArrayList;
     NotebookCustomAdapterGd notebookCustomAdapterGd;
     ProgressBar progressBar;
-    TextView noHw;
     DatabaseReference databaseReference;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
@@ -61,8 +60,6 @@ public class NoteBookGdActivity extends Fragment implements View.OnClickListener
 
         progressBar = views.findViewById(R.id.notebookListProgressbarGdId);
         progressBar.setVisibility(View.VISIBLE);
-
-        noHw = views.findViewById(R.id.noHwGdId);
 
         circleImageView = views.findViewById(R.id.backFromNotebookGdId);
         circleImageView.setOnClickListener(this);
@@ -121,13 +118,11 @@ public class NoteBookGdActivity extends Fragment implements View.OnClickListener
                     notebookCustomAdapterGd.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
-                    noHw.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    noHw.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
             });
