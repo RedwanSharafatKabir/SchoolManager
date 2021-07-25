@@ -95,7 +95,7 @@
                                 android:fontFamily="serif"
                                 android:layout_height="wrap_content"
                                 android:textColor="#000000"
-                                android:drawableLeft="@drawable/ic_baseline_profile"
+                                android:drawableLeft="@drawable/ic_black_single_person"
                                 android:layout_gravity="left"
                                 android:background="#fff"
                                 android:padding="10dp"/>

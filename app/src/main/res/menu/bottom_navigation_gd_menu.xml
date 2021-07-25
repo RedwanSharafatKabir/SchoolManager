@@ -16,6 +16,6 @@
     <item
         android:id="@+id/profileGdID"
         android:title="Profile"
-        android:icon="@drawable/ic_baseline_profile"/>
+        android:icon="@drawable/ic_black_single_person"/>
 
 </menu>

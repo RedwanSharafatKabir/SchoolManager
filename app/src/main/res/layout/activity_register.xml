@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:textColor="#000000"
-                        android:drawableLeft="@drawable/ic_baseline_profile"/>
+                        android:drawableLeft="@drawable/ic_black_single_person"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
