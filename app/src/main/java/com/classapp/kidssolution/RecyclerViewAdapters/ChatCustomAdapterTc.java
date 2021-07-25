@@ -25,6 +25,13 @@ import com.classapp.kidssolution.ModelClasses.StoreGuardianData;
 import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
 import com.classapp.kidssolution.NoteBookHW.EditNotebookDetails;
 import com.classapp.kidssolution.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -33,8 +40,8 @@ public class ChatCustomAdapterTc extends RecyclerView.Adapter<ChatCustomAdapterT
 
     Context context;
     ArrayList<StoreGuardianData> storeGuardianData;
-    Fragment fragment;
-    FragmentTransaction fragmentTransaction;
+    DatabaseReference databaseReference;
+    String guardianImageUrl;
 
     public ChatCustomAdapterTc(Context c, ArrayList<StoreGuardianData> p) {
         context = c;
@@ -49,16 +56,28 @@ public class ChatCustomAdapterTc extends RecyclerView.Adapter<ChatCustomAdapterT
 
     @Override
     public void onBindViewHolder(@NonNull ChatCustomAdapterTc.MyViewHolder holder, int position) {
-        holder.textView1.setText(storeGuardianData.get(position).getUsername());
-        holder.textView2.setText(storeGuardianData.get(position).getPhone());
+        String guardianName = storeGuardianData.get(position).getUsername();
+        String guardianPhone = storeGuardianData.get(position).getPhone();
+
+        holder.textView1.setText(guardianName);
+        holder.textView2.setText(guardianPhone);
+
+        databaseReference.child(guardianPhone).child("avatar").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                guardianImageUrl = dataSnapshot.getValue(String.class);
+                if(guardianImageUrl != null){
+                    Picasso.get().load(guardianImageUrl).into(holder.circleImageView);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String guardianName = storeGuardianData.get(position).getUsername();
-                String guardianPhone = storeGuardianData.get(position).getPhone();
-//                String guardianImage = storeGuardianData.get(position).getImage();
-
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Intent intent = new Intent(activity, ParticularChatPageTc.class);
                 intent.putExtra("guardianNameKey", guardianName);
@@ -80,6 +99,7 @@ public class ChatCustomAdapterTc extends RecyclerView.Adapter<ChatCustomAdapterT
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
+            databaseReference = FirebaseDatabase.getInstance().getReference("Guardian Images");
             circleImageView = itemView.findViewById(R.id.guardianImageId);
             textView1 = itemView.findViewById(R.id.guardianNameId);
             textView2 = itemView.findViewById(R.id.guardianPhoneId);

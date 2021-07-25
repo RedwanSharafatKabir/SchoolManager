@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,6 +18,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.classapp.kidssolution.AppAction.MainActivity;
 import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
 import com.classapp.kidssolution.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -27,7 +34,8 @@ public class ParticularChatPageTc extends AppCompatActivity implements View.OnCl
     NetworkInfo netInfo;
     ImageView backBtn, callBtn;
     TextView nameText, phoneText;
-    String imageUrl, nameString, phoneString;
+    String nameString, phoneString, imageUrl;
+    DatabaseReference databaseReference;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
 
@@ -39,7 +47,6 @@ public class ParticularChatPageTc extends AppCompatActivity implements View.OnCl
         Intent intent = getIntent();
         nameString = intent.getStringExtra("guardianNameKey");
         phoneString = intent.getStringExtra("guardianPhoneKey");
-//        imageUrl = getArguments().getString("guardianImage");
 
         nameText = findViewById(R.id.guardianParticularNameId);
         phoneText = findViewById(R.id.guardianParticularPhoneId);
@@ -51,6 +58,20 @@ public class ParticularChatPageTc extends AppCompatActivity implements View.OnCl
         backBtn.setOnClickListener(this);
         callBtn = findViewById(R.id.callGuardianId);
         callBtn.setOnClickListener(this);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Guardian Images");
+        databaseReference.child(phoneString).child("avatar").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                imageUrl = dataSnapshot.getValue(String.class);
+                if(imageUrl != null){
+                    Picasso.get().load(imageUrl).into(guardianImage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
     }
 
     @Override

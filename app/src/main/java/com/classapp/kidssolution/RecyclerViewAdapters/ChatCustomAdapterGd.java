@@ -19,6 +19,13 @@ import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
 import com.classapp.kidssolution.ModelClasses.StoreTeacherData;
 import com.classapp.kidssolution.NoteBookHW.EditNotebookDetails;
 import com.classapp.kidssolution.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -27,6 +34,8 @@ public class ChatCustomAdapterGd extends RecyclerView.Adapter<ChatCustomAdapterG
 
     Context context;
     ArrayList<StoreTeacherData> storeTeacherData;
+    DatabaseReference databaseReference;
+    String teacherImageUrl;
 
     public ChatCustomAdapterGd(Context c, ArrayList<StoreTeacherData> p) {
         context = c;
@@ -41,16 +50,28 @@ public class ChatCustomAdapterGd extends RecyclerView.Adapter<ChatCustomAdapterG
 
     @Override
     public void onBindViewHolder(@NonNull ChatCustomAdapterGd.MyViewHolder holder, int position) {
-        holder.textView1.setText(storeTeacherData.get(position).getUsername());
-        holder.textView2.setText(storeTeacherData.get(position).getPhone());
+        String teacherName = storeTeacherData.get(position).getUsername();
+        String teacherPhone = storeTeacherData.get(position).getPhone();
+
+        holder.textView1.setText(teacherName);
+        holder.textView2.setText(teacherPhone);
+
+        databaseReference.child(teacherPhone).child("avatar").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                teacherImageUrl = dataSnapshot.getValue(String.class);
+                if(teacherImageUrl != null){
+                    Picasso.get().load(teacherImageUrl).into(holder.circleImageView);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String teacherName = storeTeacherData.get(position).getUsername();
-                String teacherPhone = storeTeacherData.get(position).getPhone();
-//                String teacherImage = storeGuardianData.get(position).getImage();
-
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Intent intent = new Intent(activity, ParticularChatPageGd.class);
                 intent.putExtra("teacherNameKey", teacherName);
@@ -72,6 +93,7 @@ public class ChatCustomAdapterGd extends RecyclerView.Adapter<ChatCustomAdapterG
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
+            databaseReference = FirebaseDatabase.getInstance().getReference("Teacher Images");
             circleImageView = itemView.findViewById(R.id.teacherImageId);
             textView1 = itemView.findViewById(R.id.teacherNameId);
             textView2 = itemView.findViewById(R.id.teacherPhoneId);
