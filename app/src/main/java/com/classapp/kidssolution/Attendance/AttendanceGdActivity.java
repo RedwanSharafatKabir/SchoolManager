@@ -8,10 +8,13 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,16 +49,14 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
     DatabaseReference databaseReference;
     ConnectivityManager cm;
     NetworkInfo netInfo;
-    TextView submitAttendance;
     Fragment fragment;
     CircleImageView circleImageView;
     FragmentTransaction fragmentTransaction;
-    String present1, present2, present3, present4, present5, present6, present7, userName;
     TextView attendanceDate1, attendanceDate2, attendanceDate3, attendanceDate4, attendanceDate5, attendanceDate6, attendanceDate7;
     TextView attendanceDay1, attendanceDay2, attendanceDay3, attendanceDay4, attendanceDay5, attendanceDay6, attendanceDay7;
-    CheckBox attendanceCheck1, attendanceCheck2, attendanceCheck3, attendanceCheck4, attendanceCheck5, attendanceCheck6, attendanceCheck7;
+    ImageView attendanceCheck1, attendanceCheck2, attendanceCheck3, attendanceCheck4, attendanceCheck5, attendanceCheck6, attendanceCheck7;
     String prevDate, currentDate, classIdText, classNameText, classTeacherText, userPhoneNumber;
-    String date1, date2, date3, date4, date5, date6, date7;
+    String date1, date2, date3, date4, date5, date6, date7, present;
     SimpleDateFormat simpleDateFormat1, simpleDateFormat2;
 
     @Override
@@ -66,8 +67,6 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
         classNameText = getArguments().getString("NameKeyGd");
         classTeacherText = getArguments().getString("TeacherKeyGd");
 
-        submitAttendance = views.findViewById(R.id.submitAttendanceID);
-        submitAttendance.setOnClickListener(this);
         circleImageView = views.findViewById(R.id.backFromAttendanceGdId);
         circleImageView.setOnClickListener(this);
 
@@ -87,13 +86,20 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
         attendanceDay6 = views.findViewById(R.id.attendanceDayID6);
         attendanceDay7 = views.findViewById(R.id.attendanceDayID7);
 
-        attendanceCheck1 = views.findViewById(R.id.attendanceCheckId1);
-        attendanceCheck2 = views.findViewById(R.id.attendanceCheckId2);
-        attendanceCheck3 = views.findViewById(R.id.attendanceCheckId3);
-        attendanceCheck4 = views.findViewById(R.id.attendanceCheckId4);
-        attendanceCheck5 = views.findViewById(R.id.attendanceCheckId5);
-        attendanceCheck6 = views.findViewById(R.id.attendanceCheckId6);
-        attendanceCheck7 = views.findViewById(R.id.attendanceCheckId7);
+        attendanceCheck1 = views.findViewById(R.id.presentOrAbsentId1);
+        attendanceCheck1.setImageResource(R.drawable.absent);
+        attendanceCheck2 = views.findViewById(R.id.presentOrAbsentId2);
+        attendanceCheck2.setImageResource(R.drawable.absent);
+        attendanceCheck3 = views.findViewById(R.id.presentOrAbsentId3);
+        attendanceCheck3.setImageResource(R.drawable.absent);
+        attendanceCheck4 = views.findViewById(R.id.presentOrAbsentId4);
+        attendanceCheck4.setImageResource(R.drawable.absent);
+        attendanceCheck5 = views.findViewById(R.id.presentOrAbsentId5);
+        attendanceCheck5.setImageResource(R.drawable.absent);
+        attendanceCheck6 = views.findViewById(R.id.presentOrAbsentId6);
+        attendanceCheck6.setImageResource(R.drawable.absent);
+        attendanceCheck7 = views.findViewById(R.id.presentOrAbsentId7);
+        attendanceCheck7.setImageResource(R.drawable.absent);
 
         Date cal = Calendar.getInstance().getTime();
         simpleDateFormat1 = new SimpleDateFormat("dd-MMM-yyyy");
@@ -109,6 +115,19 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
         setDateDays();
 
         return views;
+    }
+
+    private void refresh(int milliSecond){
+        final Handler handler = new Handler(Looper.getMainLooper());
+
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                checkAtdnc();
+            }
+        };
+
+        handler.postDelayed(runnable, milliSecond);
     }
 
     private void setDateDays(){
@@ -202,7 +221,9 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                                 if(userPhone.equals(userPhoneNumber)){
                                     String userPresent = childSnapShot.child("present").getValue(String.class);
                                     if(userPresent.equals("1")){
-                                        attendanceCheck7.setChecked(true);
+                                        attendanceCheck7.setImageResource(R.drawable.present);
+                                    } else {
+                                        attendanceCheck7.setImageResource(R.drawable.absent);
                                     }
                                 }
                             }
@@ -219,7 +240,9 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                                 if(userPhone.equals(userPhoneNumber)){
                                     String userPresent = childSnapShot.child("present").getValue(String.class);
                                     if(userPresent.equals("1")){
-                                        attendanceCheck6.setChecked(true);
+                                        attendanceCheck6.setImageResource(R.drawable.present);
+                                    } else {
+                                        attendanceCheck6.setImageResource(R.drawable.absent);
                                     }
                                 }
                             }
@@ -236,7 +259,9 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                                 if(userPhone.equals(userPhoneNumber)){
                                     String userPresent = childSnapShot.child("present").getValue(String.class);
                                     if(userPresent.equals("1")){
-                                        attendanceCheck5.setChecked(true);
+                                        attendanceCheck5.setImageResource(R.drawable.present);
+                                    } else {
+                                        attendanceCheck5.setImageResource(R.drawable.absent);
                                     }
                                 }
                             }
@@ -253,7 +278,9 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                                 if(userPhone.equals(userPhoneNumber)){
                                     String userPresent = childSnapShot.child("present").getValue(String.class);
                                     if(userPresent.equals("1")){
-                                        attendanceCheck4.setChecked(true);
+                                        attendanceCheck4.setImageResource(R.drawable.present);
+                                    } else {
+                                        attendanceCheck4.setImageResource(R.drawable.absent);
                                     }
                                 }
                             }
@@ -270,7 +297,9 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                                 if(userPhone.equals(userPhoneNumber)){
                                     String userPresent = childSnapShot.child("present").getValue(String.class);
                                     if(userPresent.equals("1")){
-                                        attendanceCheck3.setChecked(true);
+                                        attendanceCheck3.setImageResource(R.drawable.present);
+                                    } else {
+                                        attendanceCheck3.setImageResource(R.drawable.absent);
                                     }
                                 }
                             }
@@ -287,7 +316,9 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                                 if(userPhone.equals(userPhoneNumber)){
                                     String userPresent = childSnapShot.child("present").getValue(String.class);
                                     if(userPresent.equals("1")){
-                                        attendanceCheck2.setChecked(true);
+                                        attendanceCheck2.setImageResource(R.drawable.present);
+                                    } else {
+                                        attendanceCheck2.setImageResource(R.drawable.absent);
                                     }
                                 }
                             }
@@ -304,7 +335,9 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                                 if(userPhone.equals(userPhoneNumber)){
                                     String userPresent = childSnapShot.child("present").getValue(String.class);
                                     if(userPresent.equals("1")){
-                                        attendanceCheck1.setChecked(true);
+                                        attendanceCheck1.setImageResource(R.drawable.present);
+                                    } else {
+                                        attendanceCheck1.setImageResource(R.drawable.absent);
                                     }
                                 }
                             }
@@ -316,6 +349,7 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                 public void onCancelled(DatabaseError databaseError) {}
             });
 
+            refresh(1000);
         } else {
             Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_LONG).show();
         }
@@ -323,48 +357,6 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.submitAttendanceID){
-            FirebaseDatabase.getInstance().getReference("Guardian Information").child(userPhoneNumber).child("username")
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            userName = snapshot.getValue(String.class);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {}
-                    });
-
-            if(attendanceCheck1.isChecked()){
-                present1 = "1";
-                storeAttendanceDataMethod(present1, date1, userName);
-            }
-            if(attendanceCheck2.isChecked()){
-                present2 = "1";
-                storeAttendanceDataMethod(present2, date2, userName);
-            }
-            if(attendanceCheck3.isChecked()){
-                present3 = "1";
-                storeAttendanceDataMethod(present3, date3, userName);
-            }
-            if(attendanceCheck4.isChecked()){
-                present4 = "1";
-                storeAttendanceDataMethod(present4, date4, userName);
-            }
-            if(attendanceCheck5.isChecked()){
-                present5 = "1";
-                storeAttendanceDataMethod(present5, date5, userName);
-            }
-            if(attendanceCheck6.isChecked()){
-                present6 = "1";
-                storeAttendanceDataMethod(present6, date6, userName);
-            }
-            if(attendanceCheck7.isChecked()){
-                present7 = "1";
-                storeAttendanceDataMethod(present7, date7, userName);
-            }
-        }
-
         if(v.getId()==R.id.backFromAttendanceGdId){
             Bundle bundle = new Bundle();
             bundle.putString("IdKeyGd", classIdText);
@@ -378,10 +370,5 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
             fragmentTransaction.replace(R.id.fragmentGdID, fragment);
             fragmentTransaction.commit();
         }
-    }
-
-    private void storeAttendanceDataMethod(String present, String fixedDate, String username) {
-        StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username);
-        databaseReference.child(classIdText).child(fixedDate).child(userPhoneNumber).setValue(storeAttendanceData);
     }
 }

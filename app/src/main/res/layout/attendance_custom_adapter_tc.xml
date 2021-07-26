@@ -18,53 +18,62 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
                 android:layout_gravity="end|center"
-                android:layout_toRightOf="@+id/rightLinearLayout"
+                android:layout_toRightOf="@+id/leftLinearLayout6"
                 android:layout_marginLeft="-100dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/setAttendanceImageId"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/present"
-                    android:padding="18dp" />
+                <CheckBox
+                    android:id="@+id/attendanceCheckId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center|left"
                 android:orientation="vertical"
                 android:padding="10dp"
-                android:id="@+id/rightLinearLayout"
+                android:id="@+id/leftLinearLayout6"
                 android:gravity="center|left">
 
                 <TextView
                     android:id="@+id/studentNameID"
                     android:textSize="16sp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="#606060"
                     android:text="Student name: "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"/>
 
                 <TextView
-                    android:id="@+id/presentStatusID"
+                    android:id="@+id/attendanceDateID"
                     android:textSize="16sp"
                     android:textColor="#106506"
-                    android:text="Status: "
+                    android:text="Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/attendanceDayID"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginTop="5dp"/>
 
             </LinearLayout>
 

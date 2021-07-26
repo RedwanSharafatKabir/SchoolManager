@@ -27,6 +27,7 @@ import com.classapp.kidssolution.ModelClasses.StoreGdClassesData;
 import com.classapp.kidssolution.R;
 import com.classapp.kidssolution.RecyclerViewAdapters.ClassesCustomAdapter;
 import com.classapp.kidssolution.RecyclerViewAdapters.ClassesCustomAdapterGd;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ClassListActivityGd extends Fragment implements View.OnClickListener{
 
+    String userPhone;
     Parcelable recyclerViewState;
     View views;
     CircleImageView circleImageView;
@@ -81,6 +83,7 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         netInfo = cm.getActiveNetworkInfo();
         databaseReference = FirebaseDatabase.getInstance().getReference("Classes Information Guardian");
+        userPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
         loadClassList();
 
@@ -111,8 +114,14 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     storeGdClassesDataArrayList.clear();
                     for (DataSnapshot item : dataSnapshot.getChildren()) {
-                        StoreGdClassesData storeGdClassesData = item.getValue(StoreGdClassesData.class);
-                        storeGdClassesDataArrayList.add(storeGdClassesData);
+                        String temp = item.getKey();
+
+                        if(temp.equals(userPhone)){
+                            for (DataSnapshot item1 : item.getChildren()) {
+                                StoreGdClassesData storeGdClassesData = item1.getValue(StoreGdClassesData.class);
+                                storeGdClassesDataArrayList.add(storeGdClassesData);
+                            }
+                        }
                     }
 
                     classesCustomAdapterGd = new ClassesCustomAdapterGd(getActivity(), storeGdClassesDataArrayList);

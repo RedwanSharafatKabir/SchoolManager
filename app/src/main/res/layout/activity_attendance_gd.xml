@@ -12,7 +12,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@android:color/transparent">
 
         <RelativeLayout
             android:id="@+id/relativeLayout3"
@@ -58,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/relativeLayout3"
-            android:layout_marginBottom="50dp">
+            android:layout_marginBottom="55dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,11 +86,13 @@
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId7"
+                            <ImageView
+                                android:id="@+id/presentOrAbsentId7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:src="@drawable/present"
+                                android:padding="20dp"/>
 
                         </LinearLayout>
 
@@ -148,11 +151,13 @@
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId6"
+                            <ImageView
+                                android:id="@+id/presentOrAbsentId6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:src="@drawable/present"
+                                android:padding="20dp"/>
 
                         </LinearLayout>
 
@@ -211,11 +216,13 @@
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId5"
+                            <ImageView
+                                android:id="@+id/presentOrAbsentId5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:src="@drawable/present"
+                                android:padding="20dp"/>
 
                         </LinearLayout>
 
@@ -274,11 +281,13 @@
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId4"
+                            <ImageView
+                                android:id="@+id/presentOrAbsentId4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:src="@drawable/present"
+                                android:padding="20dp"/>
 
                         </LinearLayout>
 
@@ -337,11 +346,13 @@
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId3"
+                            <ImageView
+                                android:id="@+id/presentOrAbsentId3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:src="@drawable/present"
+                                android:padding="20dp"/>
 
                         </LinearLayout>
 
@@ -400,11 +411,13 @@
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId2"
+                            <ImageView
+                                android:id="@+id/presentOrAbsentId2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:src="@drawable/present"
+                                android:padding="20dp"/>
 
                         </LinearLayout>
 
@@ -463,11 +476,13 @@
                             android:layout_marginLeft="-100dp"
                             android:gravity="center">
 
-                            <CheckBox
-                                android:id="@+id/attendanceCheckId1"
+                            <ImageView
+                                android:id="@+id/presentOrAbsentId1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:src="@drawable/present"
+                                android:padding="20dp"/>
 
                         </LinearLayout>
 
@@ -506,31 +521,10 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="5dp"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center">
-
-                    <TextView
-                        android:id="@+id/submitAttendanceID"
-                        android:textSize="16sp"
-                        android:textColor="#fff"
-                        android:text="Submit"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="sans-serif"
-                        android:padding="10dp"
-                        android:background="@color/colorPrimaryDark"
-                        android:textStyle="bold"/>
-
-                </androidx.cardview.widget.CardView>
-
             </LinearLayout>
 
         </ScrollView>
 
-</RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>

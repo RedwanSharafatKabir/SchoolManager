@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import com.classapp.kidssolution.ModelClasses.StoreAttendanceData;
 import com.classapp.kidssolution.ModelClasses.StoreClassesData;
 import com.classapp.kidssolution.ModelClasses.StoreGdClassesData;
 import com.classapp.kidssolution.R;
@@ -26,15 +28,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class JoinClassDialog extends AppCompatDialogFragment implements View.OnClickListener{
 
     EditText classId;
     Button join;
-    DatabaseReference databaseReferenceJoinClass, databaseReferenceClasses;
+    DatabaseReference databaseReferenceJoinClass, databaseReferenceClasses, attendanceReference, guardianReference;
     View view;
+    Date date = null;
     ConnectivityManager cm;
     NetworkInfo netInfo;
-    String classNameStringGd, alreadyExistedClassId, classTeacherNameGd;
+    String classNameStringGd, alreadyExistedClassId, classTeacherNameGd, present = "0", fixedDate, username, fixedDate2;
+    SimpleDateFormat simpleDateFormat1, simpleDateFormat2;
+    String userPhone, finalDay;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -50,6 +61,22 @@ public class JoinClassDialog extends AppCompatDialogFragment implements View.OnC
 
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         netInfo = cm.getActiveNetworkInfo();
+        userPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+
+        Date cal = Calendar.getInstance().getTime();
+        simpleDateFormat1 = new SimpleDateFormat("dd-MMM-yyyy");
+        simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+        fixedDate = simpleDateFormat1.format(cal);
+        fixedDate2 = simpleDateFormat2.format(cal);
+
+        try {
+            date = simpleDateFormat2.parse(fixedDate2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        DateFormat dayFormat = new SimpleDateFormat("EEEE");
+        finalDay = dayFormat.format(date);
 
         classId = view.findViewById(R.id.joinClassIdInputID);
 
@@ -58,6 +85,8 @@ public class JoinClassDialog extends AppCompatDialogFragment implements View.OnC
 
         databaseReferenceClasses = FirebaseDatabase.getInstance().getReference("Classes Information");
         databaseReferenceJoinClass = FirebaseDatabase.getInstance().getReference("Classes Information Guardian");
+        attendanceReference = FirebaseDatabase.getInstance().getReference("Attendance Information");
+        guardianReference = FirebaseDatabase.getInstance().getReference("Guardian Information");
 
         return builder.create();
     }
@@ -95,11 +124,23 @@ public class JoinClassDialog extends AppCompatDialogFragment implements View.OnC
                                                         @Override
                                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                                             classTeacherNameGd = dataSnapshot.getValue(String.class);
-                                                            storeJoinedClassesMethod(classNameStringGd, classIdStringGd, classTeacherNameGd);
 
-                                                            classId.setText("");
-                                                            Toast.makeText(getActivity(), "Joined successfully", Toast.LENGTH_SHORT).show();
-                                                            getDialog().dismiss();
+                                                            DatabaseReference ref = guardianReference.child(userPhone).child("username");
+                                                            ref.addValueEventListener(new ValueEventListener() {
+                                                                @Override
+                                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                    username = dataSnapshot.getValue(String.class);
+                                                                    storeJoinedClassesMethod(classNameStringGd, classIdStringGd, classTeacherNameGd,
+                                                                            present, fixedDate, username, finalDay);
+
+                                                                    classId.setText("");
+                                                                    Toast.makeText(getActivity(), "Joined successfully", Toast.LENGTH_SHORT).show();
+                                                                    getDialog().dismiss();
+                                                                }
+
+                                                                @Override
+                                                                public void onCancelled(@NonNull DatabaseError databaseError) {}
+                                                            });
                                                         }
 
                                                         @Override
@@ -130,9 +171,13 @@ public class JoinClassDialog extends AppCompatDialogFragment implements View.OnC
         }
     }
 
-    private void storeJoinedClassesMethod(String classNameStringGd, String classIdStringGd, String classTeacherNameGd) {
-        String Key_User_Info = classIdStringGd;
+    private void storeJoinedClassesMethod(String classNameStringGd, String classIdStringGd, String classTeacherNameGd,
+                                          String present, String fixedDate, String username, String finalDay) {
+
         StoreGdClassesData storeGdClassesData = new StoreGdClassesData(classNameStringGd, classIdStringGd, classTeacherNameGd);
-        databaseReferenceJoinClass.child(Key_User_Info).setValue(storeGdClassesData);
+        databaseReferenceJoinClass.child(userPhone).child(classIdStringGd).setValue(storeGdClassesData);
+
+        StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username, finalDay, fixedDate, false, userPhone);
+        attendanceReference.child(classIdStringGd).child(fixedDate).child(userPhone).setValue(storeAttendanceData);
     }
 }

@@ -15,18 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.classapp.kidssolution.ClassDetails.ParticularClassGdActivity;
 import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
 import com.classapp.kidssolution.ModelClasses.StoreAttendanceData;
-import com.classapp.kidssolution.ModelClasses.StoreClassesData;
-import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
 import com.classapp.kidssolution.R;
-import com.classapp.kidssolution.RecyclerViewAdapters.AttendanceCustomAdapter;
-import com.classapp.kidssolution.RecyclerViewAdapters.NotebookCustomAdapter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.classapp.kidssolution.RecyclerViewAdapters.AttendanceCustomAdapterTc;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +42,7 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     ArrayList<StoreAttendanceData> storeAttendanceDataArrayList;
-    AttendanceCustomAdapter attendanceCustomAdapter;
+    AttendanceCustomAdapterTc attendanceCustomAdapterTc;
     ProgressBar progressBar;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
@@ -120,9 +114,9 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
                         storeAttendanceDataArrayList.add(storeAttendanceData);
                     }
 
-                    attendanceCustomAdapter = new AttendanceCustomAdapter(getActivity(), storeAttendanceDataArrayList);
-                    recyclerView.setAdapter(attendanceCustomAdapter);
-                    attendanceCustomAdapter.notifyDataSetChanged();
+                    attendanceCustomAdapterTc = new AttendanceCustomAdapterTc(getActivity(), storeAttendanceDataArrayList, classIdText);
+                    recyclerView.setAdapter(attendanceCustomAdapterTc);
+                    attendanceCustomAdapterTc.notifyDataSetChanged();
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
                     progressBar.setVisibility(View.GONE);
