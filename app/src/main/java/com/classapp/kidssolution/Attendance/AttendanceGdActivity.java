@@ -357,8 +357,8 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
         if(v.getId()==R.id.submitAttendanceID){
             FirebaseDatabase.getInstance().getReference("Guardian Information").child(userPhoneNumber).child("username")
                     .addValueEventListener(new ValueEventListener() {
@@ -403,7 +403,7 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
             Toast.makeText(getActivity(), "Attendance Submitted", Toast.LENGTH_SHORT).show();
         }
 
->>>>>>> 58d923ef910df9b18a2bf095d7ee350e512908cc
+// >>>>>>> 58d923ef910df9b18a2bf095d7ee350e512908cc
         if(v.getId()==R.id.backFromAttendanceGdId){
             Bundle bundle = new Bundle();
             bundle.putString("IdKeyGd", classIdText);
