@@ -363,6 +363,8 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
                 present7 = "1";
                 storeAttendanceDataMethod(present7, date7, userName);
             }
+            
+            Toast.makeText(getActivity(), "Attendance Submitted", Toast.LENGTH_SHORT).show();
         }
 
         if(v.getId()==R.id.backFromAttendanceGdId){
