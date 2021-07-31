@@ -1,5 +1,6 @@
 package com.classapp.kidssolution.Attendance;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
 import com.classapp.kidssolution.ModelClasses.StoreAttendanceData;
+import com.classapp.kidssolution.ModelClasses.StoreGdClassesData;
 import com.classapp.kidssolution.R;
 import com.classapp.kidssolution.RecyclerViewAdapters.AttendanceCustomAdapterTc;
 import com.google.firebase.database.DataSnapshot;
@@ -105,29 +107,73 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
 
     private void loadPresentStudentList(){
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            databaseReference.child(classIdText).child(currentDate).addValueEventListener(new ValueEventListener() {
+            databaseReference.child(classIdText).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    storeAttendanceDataArrayList.clear();
-                    for (DataSnapshot item : dataSnapshot.getChildren()) {
-                        StoreAttendanceData storeAttendanceData = item.getValue(StoreAttendanceData.class);
-                        storeAttendanceDataArrayList.add(storeAttendanceData);
-                    }
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot item : snapshot.getChildren()) {
+                        if(currentDate.equals(item.getKey())) {
+                            databaseReference.child(classIdText).child(item.getKey()).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    storeAttendanceDataArrayList.clear();
+                                    for (DataSnapshot item : dataSnapshot.getChildren()) {
+                                        StoreAttendanceData storeAttendanceData = item.getValue(StoreAttendanceData.class);
+                                        storeAttendanceDataArrayList.add(storeAttendanceData);
+                                    }
 
-                    attendanceCustomAdapterTc = new AttendanceCustomAdapterTc(getActivity(), storeAttendanceDataArrayList, classIdText);
-                    recyclerView.setAdapter(attendanceCustomAdapterTc);
-                    attendanceCustomAdapterTc.notifyDataSetChanged();
-                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+                                    attendanceCustomAdapterTc = new AttendanceCustomAdapterTc(getActivity(), storeAttendanceDataArrayList, classIdText);
+                                    recyclerView.setAdapter(attendanceCustomAdapterTc);
+                                    attendanceCustomAdapterTc.notifyDataSetChanged();
+                                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                                    progressBar.setVisibility(View.GONE);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            });
+
+                            break;
+                        }
+
+                        if(!currentDate.equals(item.getKey())) {
+                            databaseReference.child(classIdText).child(item.getKey()).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    storeAttendanceDataArrayList.clear();
+                                    for (DataSnapshot item : dataSnapshot.getChildren()) {
+                                        StoreAttendanceData storeAttendanceData = item.getValue(StoreAttendanceData.class);
+                                        storeAttendanceDataArrayList.add(storeAttendanceData);
+                                    }
+
+                                    attendanceCustomAdapterTc = new AttendanceCustomAdapterTc(getActivity(), storeAttendanceDataArrayList, classIdText);
+                                    recyclerView.setAdapter(attendanceCustomAdapterTc);
+                                    attendanceCustomAdapterTc.notifyDataSetChanged();
+                                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                                    progressBar.setVisibility(View.GONE);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            });
+                        }
+                    }
 
                     progressBar.setVisibility(View.GONE);
                 }
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
+                public void onCancelled(@NonNull DatabaseError error) {
                     progressBar.setVisibility(View.GONE);
                 }
             });
         }
+
         else {
             Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_LONG).show();
         }

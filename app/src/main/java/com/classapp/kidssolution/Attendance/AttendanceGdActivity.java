@@ -357,50 +357,6 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.submitAttendanceID){
-            FirebaseDatabase.getInstance().getReference("Guardian Information").child(userPhoneNumber).child("username")
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            userName = snapshot.getValue(String.class);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {}
-                    });
-
-            if(attendanceCheck1.isChecked()){
-                present1 = "1";
-                storeAttendanceDataMethod(present1, date1, userName);
-            }
-            if(attendanceCheck2.isChecked()){
-                present2 = "1";
-                storeAttendanceDataMethod(present2, date2, userName);
-            }
-            if(attendanceCheck3.isChecked()){
-                present3 = "1";
-                storeAttendanceDataMethod(present3, date3, userName);
-            }
-            if(attendanceCheck4.isChecked()){
-                present4 = "1";
-                storeAttendanceDataMethod(present4, date4, userName);
-            }
-            if(attendanceCheck5.isChecked()){
-                present5 = "1";
-                storeAttendanceDataMethod(present5, date5, userName);
-            }
-            if(attendanceCheck6.isChecked()){
-                present6 = "1";
-                storeAttendanceDataMethod(present6, date6, userName);
-            }
-            if(attendanceCheck7.isChecked()){
-                present7 = "1";
-                storeAttendanceDataMethod(present7, date7, userName);
-            }
-            
-            Toast.makeText(getActivity(), "Attendance Submitted", Toast.LENGTH_SHORT).show();
-        }
-
         if(v.getId()==R.id.backFromAttendanceGdId){
             Bundle bundle = new Bundle();
             bundle.putString("IdKeyGd", classIdText);

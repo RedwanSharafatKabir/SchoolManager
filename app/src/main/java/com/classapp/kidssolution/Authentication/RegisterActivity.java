@@ -262,8 +262,7 @@ public class RegisterActivity extends AppCompatActivity{
         if (user != null) {
             UserProfileChangeRequest profile;
             profile = new UserProfileChangeRequest.Builder().setDisplayName(displayname).build();
-            user.updateProfile(profile).addOnCompleteListener(task -> {
-            });
+            user.updateProfile(profile).addOnCompleteListener(task -> {});
         }
 
         String Key_User_Info = phone;
