@@ -37,10 +37,10 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
 
     public Context context;
     public ArrayList<StoreAttendanceData> storeAttendanceData;
-    public String classIdText, currentDate, currentDay, username, userPhone, checkDate, checkDate2, checkDay;
+    public String classIdText;
+//    String currentDate, currentDay, username, userPhone, checkDate, checkDate2, checkDay;
     DatabaseReference databaseReference;
-    Boolean ifChecked;
-    SimpleDateFormat simpleDateFormat, simpleDateFormat2;
+//    Boolean ifChecked;
     int count = 0;
 
     public AttendanceCustomAdapterTc(Context c, ArrayList<StoreAttendanceData> p, String classIdText) {
@@ -61,10 +61,10 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
         Date date = null;
         Date cal = Calendar.getInstance().getTime();
 
-        simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
-        simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
-        checkDate = simpleDateFormat.format(cal);
-        checkDate2 = simpleDateFormat2.format(cal);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+        String checkDate = simpleDateFormat.format(cal);
+        String checkDate2 = simpleDateFormat2.format(cal);
 
         try {
             date = simpleDateFormat2.parse(checkDate2);
@@ -73,16 +73,16 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
         }
 
         DateFormat dayFormat = new SimpleDateFormat("EEEE");
-        checkDay = dayFormat.format(date);
+        String checkDay = dayFormat.format(date);
 
-        currentDate = storeAttendanceData.get(position).getFixedDate();
+        String currentDate = storeAttendanceData.get(position).getFixedDate();
 
         if(checkDate.equals(currentDate)){
             count = 1;
-            username = storeAttendanceData.get(position).getUsername();
-            currentDay = storeAttendanceData.get(position).getFinalDay();
-            ifChecked = storeAttendanceData.get(position).getIfChecked();
-            userPhone = storeAttendanceData.get(position).getUserPhone();
+            String username = storeAttendanceData.get(position).getUsername();
+            String currentDay = storeAttendanceData.get(position).getFinalDay();
+            Boolean ifChecked = storeAttendanceData.get(position).getIfChecked();
+            String userPhone = storeAttendanceData.get(position).getUserPhone();
 
             holder.textView1.setText("Student Name: " + username);
             holder.textView2.setText(currentDate);
@@ -93,11 +93,11 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(holder.aSwitch.isChecked()){
-                        Toast.makeText(context, "Checked", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Checked", Toast.LENGTH_SHORT).show();
                         storeAttendanceStatus(presentStatus, username, currentDay, currentDate, true, userPhone);
                     }
                     if(!holder.aSwitch.isChecked()){
-                        Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
                         storeAttendanceStatus(absentStatus, username, currentDay, currentDate, false, userPhone);
                     }
                 }
@@ -106,8 +106,8 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
             return;
         }
 
-        username = storeAttendanceData.get(position).getUsername();
-        userPhone = storeAttendanceData.get(position).getUserPhone();
+        String username = storeAttendanceData.get(position).getUsername();
+        String userPhone = storeAttendanceData.get(position).getUserPhone();
 
         holder.textView1.setText("Student Name: " + username);
         holder.textView2.setText(checkDate);

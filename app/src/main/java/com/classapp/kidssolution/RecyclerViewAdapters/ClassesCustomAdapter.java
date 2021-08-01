@@ -58,7 +58,6 @@ public class ClassesCustomAdapter extends RecyclerView.Adapter<ClassesCustomAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String teacherUserPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                 databaseReference.child(teacherUserPhone).child("username").addValueEventListener(new ValueEventListener() {
                     @Override
