@@ -48,7 +48,7 @@ public class ParticularChatPageTc extends AppCompatActivity implements View.OnCl
     CircleImageView guardianImage;
     ConnectivityManager cm;
     NetworkInfo netInfo;
-    ImageView backBtn, callBtn, sendMessage;
+    ImageView backBtn, sendMessage;
     TextView nameText, phoneText;
     String nameString, receiver, imageUrl, message, sender;
     DatabaseReference databaseReference, messageReference;
@@ -97,8 +97,6 @@ public class ParticularChatPageTc extends AppCompatActivity implements View.OnCl
         sendMessage.setOnClickListener(this);
         backBtn = findViewById(R.id.backFromParticularChatTcId);
         backBtn.setOnClickListener(this);
-        callBtn = findViewById(R.id.callGuardianId);
-        callBtn.setOnClickListener(this);
 
         messageReference = FirebaseDatabase.getInstance().getReference("Chat Information");
         databaseReference = FirebaseDatabase.getInstance().getReference("Guardian Images");

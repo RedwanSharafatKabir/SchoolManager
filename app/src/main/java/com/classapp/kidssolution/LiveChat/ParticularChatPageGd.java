@@ -45,7 +45,7 @@ public class ParticularChatPageGd extends AppCompatActivity implements View.OnCl
     CircleImageView teacherImage;
     ConnectivityManager cm;
     NetworkInfo netInfo;
-    ImageView backBtn, callBtn, sendMessage;
+    ImageView backBtn, sendMessage;
     TextView nameText, phoneText;
     String nameString, receiver, imageUrl, message, sender;
     DatabaseReference databaseReference, messageReference;
@@ -84,8 +84,6 @@ public class ParticularChatPageGd extends AppCompatActivity implements View.OnCl
         sendMessage.setOnClickListener(this);
         backBtn = findViewById(R.id.backFromParticularChatGdId);
         backBtn.setOnClickListener(this);
-        callBtn = findViewById(R.id.callTeacherId);
-        callBtn.setOnClickListener(this);
 
         messageReference = FirebaseDatabase.getInstance().getReference("Chat Information");
         databaseReference = FirebaseDatabase.getInstance().getReference("Teacher Images");

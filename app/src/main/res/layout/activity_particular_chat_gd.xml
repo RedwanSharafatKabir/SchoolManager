@@ -72,21 +72,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/linearLayoutId6"
-                    android:gravity="center|right"
-                    android:layout_marginLeft="10dp">
-
-                    <ImageView
-                        android:id="@+id/callTeacherId"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_phone_white_24dp"/>
-
-                </LinearLayout>
-
             </RelativeLayout>
 
         </LinearLayout>

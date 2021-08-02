@@ -93,11 +93,9 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(holder.aSwitch.isChecked()){
-//                        Toast.makeText(context, "Checked", Toast.LENGTH_SHORT).show();
                         storeAttendanceStatus(presentStatus, username, currentDay, currentDate, true, userPhone);
                     }
                     if(!holder.aSwitch.isChecked()){
-//                        Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
                         storeAttendanceStatus(absentStatus, username, currentDay, currentDate, false, userPhone);
                     }
                 }
@@ -108,35 +106,23 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
 
         String username = storeAttendanceData.get(position).getUsername();
         String userPhone = storeAttendanceData.get(position).getUserPhone();
-
-        holder.textView1.setText("Student Name: " + username);
-        holder.textView2.setText(checkDate);
-        holder.textView3.setText(checkDay);
-
-        refresh(1000, absentStatus, username, checkDay, checkDate, false, userPhone);
+        checkTodaysData(absentStatus, username, checkDay, checkDate, false, userPhone);
     }
 
     private void storeAttendanceStatus(String present, String username, String finalDay, String fixedDate, Boolean ifChecked, String userPhone){
-        StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username, finalDay, fixedDate, ifChecked, userPhone);
-        databaseReference.child(classIdText).child(fixedDate).child(userPhone).setValue(storeAttendanceData);
-
-        refresh(1000, present, username, finalDay, fixedDate, ifChecked, userPhone);
-    }
-
-    private void refresh(int milliSecond, String present, String username, String finalDay, String fixedDate, Boolean ifChecked, String userPhone){
-        if(count==0){
-            final Handler handler = new Handler(Looper.getMainLooper());
-            final Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    storeAttendanceStatus(present, username, finalDay, fixedDate, ifChecked, userPhone);
-                }
-            };
-
-            handler.postDelayed(runnable, milliSecond);
+        if(count==1){
+            StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username, finalDay, fixedDate, ifChecked, userPhone);
+            databaseReference.child(classIdText).child(fixedDate).child(userPhone).setValue(storeAttendanceData);
         }
     }
 
+    private void checkTodaysData(String present, String username, String finalDay, String fixedDate, Boolean ifChecked, String userPhone){
+        if(count==0) {
+            StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username, finalDay, fixedDate, ifChecked, userPhone);
+            databaseReference.child(classIdText).child(fixedDate).child(userPhone).setValue(storeAttendanceData);
+        }
+    }
+    
     @Override
     public int getItemCount() {
         return storeAttendanceData.size();
