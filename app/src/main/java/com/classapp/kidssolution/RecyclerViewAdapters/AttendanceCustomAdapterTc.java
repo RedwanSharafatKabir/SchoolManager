@@ -3,6 +3,7 @@ package com.classapp.kidssolution.RecyclerViewAdapters;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,9 +39,7 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
     public Context context;
     public ArrayList<StoreAttendanceData> storeAttendanceData;
     public String classIdText;
-//    String currentDate, currentDay, username, userPhone, checkDate, checkDate2, checkDay;
     DatabaseReference databaseReference;
-//    Boolean ifChecked;
     int count = 0;
 
     public AttendanceCustomAdapterTc(Context c, ArrayList<StoreAttendanceData> p, String classIdText) {
@@ -104,22 +103,34 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
             return;
         }
 
-        String username = storeAttendanceData.get(position).getUsername();
-        String userPhone = storeAttendanceData.get(position).getUserPhone();
-        checkTodaysData(absentStatus, username, checkDay, checkDate, false, userPhone);
+        if(count==0){
+            databaseReference.child(classIdText).child(checkDate).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    try {
+                        Log.i("User_phone ", snapshot.getValue().toString());
+
+                    } catch (Exception e){
+                        count = 1;
+                        String username = storeAttendanceData.get(position).getUsername();
+                        String userPhone = storeAttendanceData.get(position).getUserPhone();
+                        storeAttendanceStatus(absentStatus, username, checkDay, checkDate, false, userPhone);
+
+                        Log.i("Exception_On_PhoneKey ", e.getMessage());
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {}
+            });
+        }
     }
 
     private void storeAttendanceStatus(String present, String username, String finalDay, String fixedDate, Boolean ifChecked, String userPhone){
         if(count==1){
             StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username, finalDay, fixedDate, ifChecked, userPhone);
             databaseReference.child(classIdText).child(fixedDate).child(userPhone).setValue(storeAttendanceData);
-        }
-    }
-
-    private void checkTodaysData(String present, String username, String finalDay, String fixedDate, Boolean ifChecked, String userPhone){
-        if(count==0) {
-            StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username, finalDay, fixedDate, ifChecked, userPhone);
-            databaseReference.child(classIdText).child(fixedDate).child(userPhone).setValue(storeAttendanceData);
+            Log.i("Count ", String.valueOf(count));
         }
     }
     

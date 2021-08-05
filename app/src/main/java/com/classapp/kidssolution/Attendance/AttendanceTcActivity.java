@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,61 +108,38 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
 
     private void loadPresentStudentList(){
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            databaseReference.child(classIdText).addListenerForSingleValueEvent(new ValueEventListener() {
+            databaseReference.child(classIdText).child(currentDate).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot item : snapshot.getChildren()) {
-                        if(currentDate.equals(item.getKey())) {
-                            databaseReference.child(classIdText).child(item.getKey()).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    storeAttendanceDataArrayList.clear();
-                                    for (DataSnapshot item : dataSnapshot.getChildren()) {
-                                        StoreAttendanceData storeAttendanceData = item.getValue(StoreAttendanceData.class);
-                                        storeAttendanceDataArrayList.add(storeAttendanceData);
-                                    }
 
-                                    attendanceCustomAdapterTc = new AttendanceCustomAdapterTc(getActivity(), storeAttendanceDataArrayList, classIdText);
-                                    recyclerView.setAdapter(attendanceCustomAdapterTc);
-                                    attendanceCustomAdapterTc.notifyDataSetChanged();
-                                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
-
-                                    progressBar.setVisibility(View.GONE);
+                    try {
+                        Log.i("User_data ", snapshot.getValue().toString());
+                        databaseReference.child(classIdText).child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                storeAttendanceDataArrayList.clear();
+                                for (DataSnapshot item : dataSnapshot.getChildren()) {
+                                    StoreAttendanceData storeAttendanceData = item.getValue(StoreAttendanceData.class);
+                                    storeAttendanceDataArrayList.add(storeAttendanceData);
                                 }
 
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    progressBar.setVisibility(View.GONE);
-                                }
-                            });
+                                attendanceCustomAdapterTc = new AttendanceCustomAdapterTc(getActivity(), storeAttendanceDataArrayList, classIdText);
+                                recyclerView.setAdapter(attendanceCustomAdapterTc);
+                                attendanceCustomAdapterTc.notifyDataSetChanged();
+                                recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
-                            break;
-                        }
+                                progressBar.setVisibility(View.GONE);
+                            }
 
-                        if(!currentDate.equals(item.getKey())) {
-                            databaseReference.child(classIdText).child(item.getKey()).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    storeAttendanceDataArrayList.clear();
-                                    for (DataSnapshot item : dataSnapshot.getChildren()) {
-                                        StoreAttendanceData storeAttendanceData = item.getValue(StoreAttendanceData.class);
-                                        storeAttendanceDataArrayList.add(storeAttendanceData);
-                                    }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
 
-                                    attendanceCustomAdapterTc = new AttendanceCustomAdapterTc(getActivity(), storeAttendanceDataArrayList, classIdText);
-                                    recyclerView.setAdapter(attendanceCustomAdapterTc);
-                                    attendanceCustomAdapterTc.notifyDataSetChanged();
-                                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
-
-                                    progressBar.setVisibility(View.GONE);
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    progressBar.setVisibility(View.GONE);
-                                }
-                            });
-                        }
+                    } catch (Exception e){
+                        Log.i("Exception_CurrentDate ", e.getMessage());
+                        getOtherDatesData();
                     }
 
                     progressBar.setVisibility(View.GONE);
@@ -179,6 +157,46 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
         }
 
         refresh(1000);
+    }
+
+    private void getOtherDatesData(){
+        databaseReference.child(classIdText).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot item: snapshot.getChildren()) {
+                    databaseReference.child(classIdText).child(item.getKey()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            storeAttendanceDataArrayList.clear();
+                            for (DataSnapshot item : dataSnapshot.getChildren()) {
+                                StoreAttendanceData storeAttendanceData = item.getValue(StoreAttendanceData.class);
+                                storeAttendanceDataArrayList.add(storeAttendanceData);
+                            }
+
+                            attendanceCustomAdapterTc = new AttendanceCustomAdapterTc(getActivity(), storeAttendanceDataArrayList, classIdText);
+                            recyclerView.setAdapter(attendanceCustomAdapterTc);
+                            attendanceCustomAdapterTc.notifyDataSetChanged();
+                            recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                            progressBar.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
+                }
+
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override
