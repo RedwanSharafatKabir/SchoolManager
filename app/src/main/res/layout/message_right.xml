@@ -12,7 +12,8 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent">
 
         <TextView
             android:id="@+id/messageId"
@@ -23,6 +24,16 @@
             android:textSize="18sp"
             android:padding="8dp"
             android:fontFamily="sans-serif"
+            android:background="@drawable/right_message_shape"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+
+        <ImageView
+            android:id="@+id/imageId"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_image_24"
             android:background="@drawable/right_message_shape"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"/>

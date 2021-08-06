@@ -100,13 +100,24 @@
         android:layout_gravity="bottom"
         android:background="@android:color/transparent">
 
+        <ImageView
+            android:id="@+id/sendImageToGuardianId"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_attach_file_24"
+            android:background="@android:color/transparent"/>
+
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="9"
+            android:layout_weight="8"
             app:cardCornerRadius="20dp"
             android:layout_gravity="center"
-            android:layout_margin="10dp">
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
             <EditText
                 android:id="@+id/writeMessageTcId"

@@ -19,4 +19,12 @@
         android:fontFamily="sans-serif"
         android:background="@drawable/left_message_shape"/>
 
+    <ImageView
+        android:id="@+id/imageId"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_baseline_image_24"
+        android:background="@drawable/left_message_shape"/>
+
 </RelativeLayout>

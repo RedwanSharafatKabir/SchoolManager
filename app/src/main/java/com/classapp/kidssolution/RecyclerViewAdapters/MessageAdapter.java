@@ -70,7 +70,21 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.MyViewHolder holder, int position) {
         StoreChatData storeChatData1 = storeChatData.get(position);
-        holder.show_message.setText(storeChatData1.getMessage());
+        String messages = storeChatData.get(position).getMessage();
+        String images = storeChatData.get(position).getImageUrl();
+
+        if(messages.equals("No_Message")){
+            holder.show_message.setVisibility(View.GONE);
+            holder.show_image.setVisibility(View.VISIBLE);
+            Picasso.get().load(images).into(holder.show_image);
+        }
+
+        if(images.equals("No_Image")){
+            holder.show_image.setVisibility(View.GONE);
+            holder.show_message.setVisibility(View.VISIBLE);
+            holder.show_message.setText(messages);
+        }
+
     }
 
     @Override
@@ -80,10 +94,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView show_message;
+        ImageView show_image;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
             show_message = itemView.findViewById(R.id.messageId);
+            show_image = itemView.findViewById(R.id.imageId);
         }
     }
 

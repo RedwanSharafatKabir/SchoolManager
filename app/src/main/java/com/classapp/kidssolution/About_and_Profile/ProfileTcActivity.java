@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,10 +141,23 @@ public class ProfileTcActivity extends Fragment implements View.OnClickListener{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 emailText.setText(" " + dataSnapshot.getValue(String.class));
                 phoneText.setText(" " + userPhone);
-                if (user.getPhotoUrl() != null) {
-                    Picasso.get().load(user.getPhotoUrl().toString()).into(circleImageView);
-                }
-                progressBar.setVisibility(View.GONE);
+
+                imageDatabaseReference.child(userPhone).child("avatar").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        try {
+                            Picasso.get().load(snapshot.getValue().toString()).into(circleImageView);
+                            progressBar.setVisibility(View.GONE);
+
+                        } catch (Exception e){
+                            Log.i("Error", e.getMessage());
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {}
+                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -185,7 +199,7 @@ public class ProfileTcActivity extends Fragment implements View.OnClickListener{
         dialog.setMessage("Uploading.....");
         dialog.show();
 
-        image_name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + System.currentTimeMillis();
+        image_name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         storageReference = FirebaseStorage.getInstance()
                 .getReference("profile images/" + image_name + ".jpg");
 
@@ -203,7 +217,7 @@ public class ProfileTcActivity extends Fragment implements View.OnClickListener{
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             dialog.dismiss();
-                            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Could not upload", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -228,7 +242,7 @@ public class ProfileTcActivity extends Fragment implements View.OnClickListener{
 
             storeImageMethod(profileImageUrl);
             dialog.dismiss();
-            Toast.makeText(getActivity(), "Successfully uploaded", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Profile updated", Toast.LENGTH_SHORT).show();
         }
     }
 

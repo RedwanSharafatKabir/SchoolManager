@@ -4,11 +4,13 @@ public class StoreChatData {
     String message;
     String receiver;
     String sender;
+    String imageUrl;
 
-    public StoreChatData(String message, String receiver, String sender) {
+    public StoreChatData(String message, String receiver, String sender, String imageUrl) {
         this.message = message;
         this.receiver = receiver;
         this.sender = sender;
+        this.imageUrl = imageUrl;
     }
 
     public StoreChatData() {
@@ -36,5 +38,13 @@ public class StoreChatData {
 
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

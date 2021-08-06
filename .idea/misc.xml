@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_baseline_attach_file_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_chat_gd.xml" value="0.1953125" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_chat_tc.xml" value="0.1953125" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/message_left.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/message_right.xml" value="0.209375" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
