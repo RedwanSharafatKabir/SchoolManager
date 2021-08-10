@@ -4,15 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_baseline_attach_file_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.22552083333333334" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_phone_black_24dp.xml" value="0.22552083333333334" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_verified_password.xml" value="0.22552083333333334" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_chat_gd.xml" value="0.1953125" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_chat_tc.xml" value="0.1953125" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_profile_gd.xml" value="0.25" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_profile_tc.xml" value="0.25" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_register.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_signin_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/create_class_dialog.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/message_left.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/message_right.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/reset_password.xml" value="0.209375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

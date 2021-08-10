@@ -14,7 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.AppAction.SplashScreen;
 import com.classapp.kidssolution.AppAction.TeacherMainActivity;
+import com.classapp.kidssolution.Authentication.ResetPassword;
+import com.classapp.kidssolution.ClassDetails.CreateClassDialog;
 import com.classapp.kidssolution.ModelClasses.StoreGuardianImage;
 import com.classapp.kidssolution.ModelClasses.StoreTeacherImage;
 import com.classapp.kidssolution.R;
@@ -60,6 +64,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileGdActivity extends Fragment implements View.OnClickListener{
 
+    LinearLayout editPass;
     View views, parentLayout;
     ConnectivityManager cm;
     NetworkInfo netInfo;
@@ -68,7 +73,7 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
     StorageReference storageReference;
     CircleImageView circleImageView, backBtn, editProfilePic;
     TextView nameText, emailText, phoneText;
-    String userPhone, image_name, profileImageUrl;
+    String userPhone, image_name, profileImageUrl, userEmail;
     ProgressBar progressBar;
     Fragment fragment;
     Button logoutBtn;
@@ -82,15 +87,19 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
         views = inflater.inflate(R.layout.activity_profile_gd, container, false);
 
         dialog = new ProgressDialog(getActivity());
+        mAuth = FirebaseAuth.getInstance();
+
         circleImageView = views.findViewById(R.id.profilePicGdID);
         circleImageView.setOnClickListener(this);
         backBtn = views.findViewById(R.id.backFromProfileGdId);
         backBtn.setOnClickListener(this);
         logoutBtn = views.findViewById(R.id.logoutGdID);
         logoutBtn.setOnClickListener(this);
-
+        editPass = views.findViewById(R.id.changePasswordGdID);
+        editPass.setOnClickListener(this);
         editProfilePic = views.findViewById(R.id.uploadProfilePicGdID);
         editProfilePic.setOnClickListener(this);
+
         nameText = views.findViewById(R.id.profileNameGdID);
         emailText = views.findViewById(R.id.profileEmailGdID);
         phoneText = views.findViewById(R.id.profilePhoneGdID);
@@ -118,8 +127,7 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
     }
 
     private void getGuardianData(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        userPhone = user.getDisplayName();
+        userPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
         databaseReference.child(userPhone).child("username").addValueEventListener(new ValueEventListener() {
             @Override
@@ -133,7 +141,8 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
         databaseReference.child(userPhone).child("email").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                emailText.setText(" " + dataSnapshot.getValue(String.class));
+                userEmail = dataSnapshot.getValue(String.class);
+                emailText.setText(" " + userEmail);
                 phoneText.setText(" " + userPhone);
 
                 imageDatabaseReference.child(userPhone).child("avatar").addValueEventListener(new ValueEventListener() {
@@ -174,6 +183,15 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
 
         if(v.getId()==R.id.uploadProfilePicGdID){
             someActivityResultLauncher.launch("image/*");
+        }
+
+        if(v.getId()==R.id.changePasswordGdID){
+            Bundle armgs = new Bundle();
+            armgs.putString("email_key", userEmail);
+
+            ResetPassword resetPassword = new ResetPassword();
+            resetPassword.setArguments(armgs);
+            resetPassword.show(getActivity().getSupportFragmentManager(), "Sample dialog");
         }
     }
 
@@ -258,7 +276,7 @@ public class ProfileGdActivity extends Fragment implements View.OnClickListener{
                 String nullValue = "";
                 setNullDataMethod(nullValue);
 
-                mAuth.getInstance().signOut();
+                mAuth.signOut();
                 getActivity().finish();
                 Intent it = new Intent(getActivity(), SplashScreen.class);
                 startActivity(it);
