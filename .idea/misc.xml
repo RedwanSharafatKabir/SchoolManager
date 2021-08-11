@@ -3,14 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/back_design.xml" value="0.22552083333333334" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_baseline_attach_file_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.22552083333333334" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_phone_black_24dp.xml" value="0.22552083333333334" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/drawable/ic_verified_password.xml" value="0.22552083333333334" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_about_institute_gd.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_about_institute_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_attendance_gd.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_attendance_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_chat_gd.xml" value="0.22" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_chat_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_class_list_gd.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_class_list_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_guardian_main.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_help_line_gd.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_help_line_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_note_book_gd.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_note_book_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_notice_gd.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_notice_tc.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_chat_gd.xml" value="0.1953125" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_chat_tc.xml" value="0.1953125" />
-        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_profile_gd.xml" value="0.25" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_class_gd.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_class_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_profile_gd.xml" value="0.22" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_profile_tc.xml" value="0.25" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_register.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_signin_tc.xml" value="0.209375" />

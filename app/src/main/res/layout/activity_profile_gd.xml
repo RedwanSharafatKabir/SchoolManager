@@ -281,25 +281,17 @@
 
         </ScrollView>
 
-        <androidx.cardview.widget.CardView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/backFromProfileGdId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="10dp"
-            android:layout_margin="15dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/backFromProfileGdId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                android:layout_gravity="center|start"
-                android:background="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:scaleType="centerCrop"
-                android:padding="10dp"/>
-
-        </androidx.cardview.widget.CardView>
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:layout_gravity="center|start"
+            android:background="@drawable/back_design"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:scaleType="centerCrop"
+            android:padding="10dp"/>
 
     </RelativeLayout>
 

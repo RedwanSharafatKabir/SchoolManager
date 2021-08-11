@@ -60,32 +60,23 @@
 
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
+    <TextView
+        android:id="@+id/backFromChatGdId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardElevation="5dp"
-        app:cardCornerRadius="25dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="70dp"
-        android:layout_gravity="center|bottom|right">
-
-        <TextView
-            android:id="@+id/backFromChatGdId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|start"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
-            android:text=" Back To Home"
-            android:textColor="#fff"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:drawableLeft="@drawable/ic_baseline_back_direction"/>
-
-    </androidx.cardview.widget.CardView>
+        android:layout_gravity="center|bottom|right"
+        android:background="@drawable/back_design"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:text=" Back To Home"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_baseline_back_direction"/>
 
 </FrameLayout>
