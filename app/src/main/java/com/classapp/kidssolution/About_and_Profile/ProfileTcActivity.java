@@ -37,6 +37,7 @@ import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.AppAction.SplashScreen;
 import com.classapp.kidssolution.AppAction.TeacherMainActivity;
 import com.classapp.kidssolution.Authentication.ResetPassword;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ModelClasses.StoreTeacherImage;
 import com.classapp.kidssolution.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -66,8 +67,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ProfileTcActivity extends Fragment implements View.OnClickListener{
+public class ProfileTcActivity extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    public static BackListenerFragment backBtnListener;
     LinearLayout editPass;
     View views, parentLayout;
     ConnectivityManager cm;
@@ -169,6 +171,27 @@ public class ProfileTcActivity extends Fragment implements View.OnClickListener{
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        fragment = new TeacherMainActivity();
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.replace(R.id.fragmentID, fragment);
+        fragmentTransaction.commit();
     }
 
     @Override

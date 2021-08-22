@@ -12,15 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.classapp.kidssolution.AppAction.GuardianMainActivity;
+import com.classapp.kidssolution.AppAction.TeacherMainActivity;
 import com.classapp.kidssolution.Attendance.AttendanceTcActivity;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.LiveChat.ChatTcActivity;
 import com.classapp.kidssolution.NoteBookHW.NoteBookTcActivity;
 import com.classapp.kidssolution.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ParticularClassTcActivity extends Fragment implements View.OnClickListener{
+public class ParticularClassTcActivity extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    public static BackListenerFragment backBtnListener;
     String classIdText, classNameText, classTeacherText;
     View views;
     Fragment fragment;
@@ -53,6 +56,27 @@ public class ParticularClassTcActivity extends Fragment implements View.OnClickL
         teacherNameTextView.setText("Moderator:" + classTeacherText);
 
         return views;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        fragment = new ClassListActivityTc();
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.replace(R.id.fragmentID, fragment);
+        fragmentTransaction.commit();
     }
 
     @Override

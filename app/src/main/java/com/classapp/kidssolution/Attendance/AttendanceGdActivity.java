@@ -19,7 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.classapp.kidssolution.AppAction.GuardianMainActivity;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ClassDetails.ParticularClassGdActivity;
+import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
 import com.classapp.kidssolution.ModelClasses.StoreAttendanceData;
 import com.classapp.kidssolution.ModelClasses.StoreClassesData;
 import com.classapp.kidssolution.ModelClasses.StoreGdClassesData;
@@ -42,8 +44,9 @@ import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AttendanceGdActivity extends Fragment implements View.OnClickListener{
+public class AttendanceGdActivity extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    public static BackListenerFragment backBtnListener;
     View views;
     Date date = null;
     DatabaseReference databaseReference;
@@ -370,5 +373,32 @@ public class AttendanceGdActivity extends Fragment implements View.OnClickListen
             fragmentTransaction.replace(R.id.fragmentGdID, fragment);
             fragmentTransaction.commit();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Bundle bundle = new Bundle();
+        bundle.putString("IdKeyGd", classIdText);
+        bundle.putString("NameKeyGd", classNameText);
+        bundle.putString("TeacherKeyGd", classTeacherText);
+
+        fragment = new ParticularClassGdActivity();
+        fragment.setArguments(bundle);
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+        fragmentTransaction.commit();
     }
 }

@@ -97,6 +97,7 @@ public class SigninTcActivity extends AppCompatActivity {
             if (connection == true) {
                 rememberMethod(passedString);
                 phonenumber = "+88" + phoneObj;
+
                 databaseReference.child(phonenumber).child("email").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

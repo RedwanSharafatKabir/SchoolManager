@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.AppAction.TeacherMainActivity;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ModelClasses.StoreGuardianData;
 import com.classapp.kidssolution.ModelClasses.StoreTeacherData;
 import com.classapp.kidssolution.R;
@@ -32,8 +33,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ChatGdActivity extends Fragment implements View.OnClickListener{
+public class ChatGdActivity extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    public static BackListenerFragment backBtnListener;
     Parcelable recyclerViewState;
     View views;
     TextView circleImageView;
@@ -116,5 +118,26 @@ public class ChatGdActivity extends Fragment implements View.OnClickListener{
             fragmentTransaction.replace(R.id.fragmentGdID, fragment);
             fragmentTransaction.commit();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        fragment = new GuardianMainActivity();
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+        fragmentTransaction.commit();
     }
 }

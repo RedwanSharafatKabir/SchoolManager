@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.classapp.kidssolution.AppAction.GuardianMainActivity;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
 import com.classapp.kidssolution.ModelClasses.StoreAttendanceData;
 import com.classapp.kidssolution.ModelClasses.StoreGdClassesData;
@@ -37,8 +39,9 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AttendanceTcActivity extends Fragment implements View.OnClickListener{
+public class AttendanceTcActivity extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    public static BackListenerFragment backBtnListener;
     View views;
     Parcelable recyclerViewState;
     CircleImageView circleImageView;
@@ -214,5 +217,32 @@ public class AttendanceTcActivity extends Fragment implements View.OnClickListen
             fragmentTransaction.replace(R.id.fragmentID, fragment);
             fragmentTransaction.commit();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Bundle bundle = new Bundle();
+        bundle.putString("IdKey", classIdText);
+        bundle.putString("NameKey", classNameText);
+        bundle.putString("TeacherKey", classTeacherText);
+
+        fragment = new ParticularClassTcActivity();
+        fragment.setArguments(bundle);
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.replace(R.id.fragmentID, fragment);
+        fragmentTransaction.commit();
     }
 }

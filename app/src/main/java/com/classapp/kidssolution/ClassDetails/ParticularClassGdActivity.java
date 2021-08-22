@@ -12,7 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.classapp.kidssolution.AppAction.GuardianMainActivity;
+import com.classapp.kidssolution.AppAction.TeacherMainActivity;
 import com.classapp.kidssolution.Attendance.AttendanceGdActivity;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.LiveChat.ChatGdActivity;
 import com.classapp.kidssolution.NoteBookHW.NoteBookGdActivity;
 import com.classapp.kidssolution.NoteBookHW.NoteBookTcActivity;
@@ -20,8 +22,9 @@ import com.classapp.kidssolution.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ParticularClassGdActivity extends Fragment implements View.OnClickListener{
+public class ParticularClassGdActivity extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    public static BackListenerFragment backBtnListener;
     View views;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
@@ -54,6 +57,27 @@ public class ParticularClassGdActivity extends Fragment implements View.OnClickL
         teacherNameTextView.setText("Moderator:" + classTeacherText);
 
         return views;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        fragment = new ClassListActivityGd();
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+        fragmentTransaction.commit();
     }
 
     @Override

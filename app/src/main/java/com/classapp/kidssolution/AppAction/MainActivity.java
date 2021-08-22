@@ -16,7 +16,20 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.classapp.kidssolution.About_and_Profile.AboutInstituteGd;
+import com.classapp.kidssolution.About_and_Profile.AboutInstituteTc;
+import com.classapp.kidssolution.About_and_Profile.ProfileGdActivity;
+import com.classapp.kidssolution.Attendance.AttendanceGdActivity;
+import com.classapp.kidssolution.Attendance.AttendanceTcActivity;
+import com.classapp.kidssolution.ClassDetails.ClassListActivityGd;
+import com.classapp.kidssolution.ClassDetails.ClassListActivityTc;
+import com.classapp.kidssolution.ClassDetails.ParticularClassGdActivity;
+import com.classapp.kidssolution.ClassDetails.ParticularClassTcActivity;
+import com.classapp.kidssolution.LiveChat.ChatGdActivity;
 import com.classapp.kidssolution.LiveChat.ChatTcActivity;
+import com.classapp.kidssolution.NoteBookHW.NoteBookGdActivity;
+import com.classapp.kidssolution.NoteBookHW.NoteBookTcActivity;
+import com.classapp.kidssolution.NoticeBoard.NoticeGdActivity;
 import com.classapp.kidssolution.NoticeBoard.NoticeTcActivity;
 import com.classapp.kidssolution.About_and_Profile.ProfileTcActivity;
 import com.classapp.kidssolution.R;
@@ -132,29 +145,77 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alertDialogBuilder;
-        alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("EXIT !");
-        alertDialogBuilder.setMessage("Are you sure you want to close this app ?");
-        alertDialogBuilder.setIcon(R.drawable.exit);
-        alertDialogBuilder.setCancelable(false);
+        if(AboutInstituteGd.backBtnListener!=null){
+            AboutInstituteGd.backBtnListener.onBackPressed();
+        }
 
-        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-                System.exit(0);
-            }
-        });
+        if(AboutInstituteTc.backBtnListener!=null){
+            AboutInstituteTc.backBtnListener.onBackPressed();
+        }
 
-        alertDialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        if(ProfileTcActivity.backBtnListener!=null){
+            ProfileTcActivity.backBtnListener.onBackPressed();
+        }
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+        if(ProfileGdActivity.backBtnListener!=null){
+            ProfileGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(HelpLineGd.backBtnListener!=null){
+            HelpLineGd.backBtnListener.onBackPressed();
+        }
+
+        if(HelpLineTc.backBtnListener!=null){
+            HelpLineTc.backBtnListener.onBackPressed();
+        }
+
+        if(AttendanceGdActivity.backBtnListener!=null){
+            AttendanceGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(AttendanceTcActivity.backBtnListener!=null){
+            AttendanceTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(ClassListActivityGd.backBtnListener!=null){
+            ClassListActivityGd.backBtnListener.onBackPressed();
+        }
+
+        if(ClassListActivityTc.backBtnListener!=null){
+            ClassListActivityTc.backBtnListener.onBackPressed();
+        }
+
+        if(ParticularClassTcActivity.backBtnListener!=null){
+            ParticularClassTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(ParticularClassGdActivity.backBtnListener!=null){
+            ParticularClassGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(ChatTcActivity.backBtnListener!=null){
+            ChatTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(ChatGdActivity.backBtnListener!=null){
+            ChatGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(NoticeTcActivity.backBtnListener!=null){
+            NoticeTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(NoticeGdActivity.backBtnListener!=null){
+            NoticeGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(NoteBookGdActivity.backBtnListener!=null){
+            NoteBookGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(NoteBookTcActivity.backBtnListener!=null){
+            NoteBookTcActivity.backBtnListener.onBackPressed();
+        }
+
     }
 }

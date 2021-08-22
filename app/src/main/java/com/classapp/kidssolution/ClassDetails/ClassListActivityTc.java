@@ -18,7 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.AppAction.TeacherMainActivity;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ModelClasses.StoreClassesData;
 import com.classapp.kidssolution.R;
 import com.classapp.kidssolution.RecyclerViewAdapters.ClassesCustomAdapter;
@@ -33,8 +36,9 @@ import java.util.Collections;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ClassListActivityTc extends Fragment implements View.OnClickListener{
+public class ClassListActivityTc extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    public static BackListenerFragment backBtnListener;
     Parcelable recyclerViewState;
     View views;
     CircleImageView circleImageView;
@@ -144,5 +148,26 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
             fragmentTransaction.replace(R.id.fragmentID, fragment);
             fragmentTransaction.commit();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        fragment = new TeacherMainActivity();
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        fragmentTransaction.replace(R.id.fragmentID, fragment);
+        fragmentTransaction.commit();
     }
 }
