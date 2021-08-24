@@ -1,5 +1,6 @@
 package com.classapp.kidssolution.RecyclerViewAdapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class ClassesCustomAdapterGd extends RecyclerView.Adapter<ClassesCustomAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.textView1.setText("Class Id: " + storeGdClassesData.get(position).getClassIdStringGd());
         holder.textView2.setText("Subject: " + storeGdClassesData.get(position).getClassNameStringGd());
         holder.textView3.setText("Teacher: " + storeGdClassesData.get(position).getClassTeacherNameGd());

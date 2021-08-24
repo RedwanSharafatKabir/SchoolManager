@@ -145,10 +145,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onBackPressed() {
-        if(AboutInstituteGd.backBtnListener!=null){
-            AboutInstituteGd.backBtnListener.onBackPressed();
-        }
-
         if(AboutInstituteTc.backBtnListener!=null){
             AboutInstituteTc.backBtnListener.onBackPressed();
         }
@@ -157,28 +153,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             ProfileTcActivity.backBtnListener.onBackPressed();
         }
 
-        if(ProfileGdActivity.backBtnListener!=null){
-            ProfileGdActivity.backBtnListener.onBackPressed();
-        }
-
-        if(HelpLineGd.backBtnListener!=null){
-            HelpLineGd.backBtnListener.onBackPressed();
-        }
-
         if(HelpLineTc.backBtnListener!=null){
             HelpLineTc.backBtnListener.onBackPressed();
         }
 
-        if(AttendanceGdActivity.backBtnListener!=null){
-            AttendanceGdActivity.backBtnListener.onBackPressed();
-        }
-
         if(AttendanceTcActivity.backBtnListener!=null){
             AttendanceTcActivity.backBtnListener.onBackPressed();
-        }
-
-        if(ClassListActivityGd.backBtnListener!=null){
-            ClassListActivityGd.backBtnListener.onBackPressed();
         }
 
         if(ClassListActivityTc.backBtnListener!=null){
@@ -189,33 +169,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             ParticularClassTcActivity.backBtnListener.onBackPressed();
         }
 
-        if(ParticularClassGdActivity.backBtnListener!=null){
-            ParticularClassGdActivity.backBtnListener.onBackPressed();
-        }
-
         if(ChatTcActivity.backBtnListener!=null){
             ChatTcActivity.backBtnListener.onBackPressed();
-        }
-
-        if(ChatGdActivity.backBtnListener!=null){
-            ChatGdActivity.backBtnListener.onBackPressed();
         }
 
         if(NoticeTcActivity.backBtnListener!=null){
             NoticeTcActivity.backBtnListener.onBackPressed();
         }
 
-        if(NoticeGdActivity.backBtnListener!=null){
-            NoticeGdActivity.backBtnListener.onBackPressed();
-        }
-
-        if(NoteBookGdActivity.backBtnListener!=null){
-            NoteBookGdActivity.backBtnListener.onBackPressed();
-        }
-
         if(NoteBookTcActivity.backBtnListener!=null){
             NoteBookTcActivity.backBtnListener.onBackPressed();
         }
-
     }
 }

@@ -37,7 +37,37 @@
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/message_left.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/message_right.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/reset_password.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_about_institute_gd.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_attendance_gd.xml" value="0.33" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_attendance_tc.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_chat_gd.xml" value="0.33" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_chat_tc.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_class_list_gd.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_class_list_tc.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_help_line_tc.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_note_book_gd.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_note_book_tc.xml" value="0.20185185185185187" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_notice_gd.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_notice_tc.xml" value="0.209375" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_particular_chat_tc.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_particular_class_gd.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_particular_class_tc.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_profile_tc.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_signin_gd.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_signin_tc.xml" value="0.20185185185185187" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_splash_screen.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/activity_teacher_main.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/attendance_custom_adapter_tc.xml" value="0.25" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/chat_custom_adapter_tc.xml" value="0.33" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/create_class_dialog.xml" value="0.22" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/create_notebook_dialog.xml" value="0.33" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/create_notice_dialog.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/edit_notice_details_dialog.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/message_left.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/message_right.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/particular_notice_details_dialog.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/KidsSolution/app/src/main/res/layout/reset_password.xml" value="0.33" />
       </map>
     </option>
   </component>

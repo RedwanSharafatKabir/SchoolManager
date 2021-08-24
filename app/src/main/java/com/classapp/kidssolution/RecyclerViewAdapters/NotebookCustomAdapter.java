@@ -1,5 +1,6 @@
 package com.classapp.kidssolution.RecyclerViewAdapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class NotebookCustomAdapter extends RecyclerView.Adapter<NotebookCustomAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotebookCustomAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NotebookCustomAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.textView1.setText(storeNotebookData.get(position).getNotebookTitle());
         holder.textView2.setText(storeNotebookData.get(position).getNotebookDescription());
 

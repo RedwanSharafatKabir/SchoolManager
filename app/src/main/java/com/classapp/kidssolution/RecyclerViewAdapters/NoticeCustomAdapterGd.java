@@ -1,5 +1,6 @@
 package com.classapp.kidssolution.RecyclerViewAdapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,7 +40,7 @@ public class NoticeCustomAdapterGd extends RecyclerView.Adapter<NoticeCustomAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoticeCustomAdapterGd.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NoticeCustomAdapterGd.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.textView1.setText(storeNoticeData.get(position).getNoticeTitle());
         holder.textView2.setText(storeNoticeData.get(position).getNoticeDescription());
         holder.textView3.setText("Date: " + storeNoticeData.get(position).getNoticeDate());

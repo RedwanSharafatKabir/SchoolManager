@@ -1,5 +1,6 @@
 package com.classapp.kidssolution.RecyclerViewAdapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -55,7 +56,7 @@ public class AttendanceCustomAdapterTc extends RecyclerView.Adapter<AttendanceCu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String presentStatus = "1", absentStatus = "0";
         Date date = null;
         Date cal = Calendar.getInstance().getTime();
