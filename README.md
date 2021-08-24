@@ -1,5 +1,5 @@
 ### KidsSolution
-Kindergarten class management app for children school.
+Class management app for kindergarten school.
 - - - -
 #### Hardware & OS -
 •	Android version must be minimum Jelly Bean (API 16) and recommended Pie (API 28) and higher.<br><br>
