@@ -15,12 +15,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.classapp.kidssolution.About_and_Profile.AboutInstituteGd;
 import com.classapp.kidssolution.About_and_Profile.AboutInstituteTc;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ClassDetails.ClassListActivityGd;
 import com.classapp.kidssolution.NoticeBoard.NoticeGdActivity;
 import com.classapp.kidssolution.R;
 
-public class GuardianMainActivity extends Fragment implements View.OnClickListener{
+public class GuardianMainActivity extends Fragment implements View.OnClickListener, BackListenerFragment{
 
+    public static BackListenerFragment backBtnListener;
     View views;
     ConnectivityManager cm;
     NetworkInfo netInfo;
@@ -94,6 +96,27 @@ public class GuardianMainActivity extends Fragment implements View.OnClickListen
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        GuardianMainActivity myFragment = (GuardianMainActivity)getActivity().getSupportFragmentManager().findFragmentByTag("MY_FRAGMENT");
+        if (myFragment != null && myFragment.isVisible()) {
+            getActivity().finish();
+            System.exit(0);
         }
     }
 }

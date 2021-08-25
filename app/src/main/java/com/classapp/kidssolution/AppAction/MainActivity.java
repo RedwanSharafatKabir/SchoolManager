@@ -58,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         parentLayout = findViewById(android.R.id.content);
 
+        fragment = new TeacherMainActivity();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
+        fragmentTransaction.commit();
+
         try {
             switch (getIntent().getStringExtra("EXTRA")) {
                 case "openChatFragment":
@@ -83,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new TeacherMainActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentID, fragment);
+                    fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
                     fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
@@ -145,6 +150,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onBackPressed() {
+        if(TeacherMainActivity.backBtnListener!=null){
+            TeacherMainActivity.backBtnListener.onBackPressed();
+        }
+
         if(AboutInstituteTc.backBtnListener!=null){
             AboutInstituteTc.backBtnListener.onBackPressed();
         }
@@ -179,6 +188,48 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         if(NoteBookTcActivity.backBtnListener!=null){
             NoteBookTcActivity.backBtnListener.onBackPressed();
+        }
+
+        ///
+
+        if(GuardianMainActivity.backBtnListener!=null){
+            GuardianMainActivity.backBtnListener.onBackPressed();
+        }
+
+        if(AboutInstituteGd.backBtnListener!=null){
+            AboutInstituteGd.backBtnListener.onBackPressed();
+        }
+
+        if(ProfileGdActivity.backBtnListener!=null){
+            ProfileGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(HelpLineGd.backBtnListener!=null){
+            HelpLineGd.backBtnListener.onBackPressed();
+        }
+
+        if(AttendanceGdActivity.backBtnListener!=null){
+            AttendanceGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(ClassListActivityGd.backBtnListener!=null){
+            ClassListActivityGd.backBtnListener.onBackPressed();
+        }
+
+        if(ParticularClassGdActivity.backBtnListener!=null){
+            ParticularClassGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(ChatGdActivity.backBtnListener!=null){
+            ChatGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(NoticeGdActivity.backBtnListener!=null){
+            NoticeGdActivity.backBtnListener.onBackPressed();
+        }
+
+        if(NoteBookGdActivity.backBtnListener!=null){
+            NoteBookGdActivity.backBtnListener.onBackPressed();
         }
     }
 }

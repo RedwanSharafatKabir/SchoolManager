@@ -58,6 +58,11 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
 
         parentLayout = findViewById(android.R.id.content);
 
+        fragment = new GuardianMainActivity();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentGdID, fragment, "MY_FRAGMENT");
+        fragmentTransaction.commit();
+
         try {
             switch (getIntent().getStringExtra("EXTRA")) {
                 case "openChatFragment":
@@ -83,7 +88,7 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     fragment = new GuardianMainActivity();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+                    fragmentTransaction.replace(R.id.fragmentGdID, fragment, "MY_FRAGMENT");
                     fragmentTransaction.commit();
                 } else {
                     snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
@@ -145,6 +150,10 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
 
     @Override
     public void onBackPressed() {
+        if(GuardianMainActivity.backBtnListener!=null){
+            GuardianMainActivity.backBtnListener.onBackPressed();
+        }
+
         if(AboutInstituteGd.backBtnListener!=null){
             AboutInstituteGd.backBtnListener.onBackPressed();
         }
@@ -181,5 +190,46 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
             NoteBookGdActivity.backBtnListener.onBackPressed();
         }
 
+        ///
+
+        if(TeacherMainActivity.backBtnListener!=null){
+            TeacherMainActivity.backBtnListener.onBackPressed();
+        }
+
+        if(AboutInstituteTc.backBtnListener!=null){
+            AboutInstituteTc.backBtnListener.onBackPressed();
+        }
+
+        if(ProfileTcActivity.backBtnListener!=null){
+            ProfileTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(HelpLineTc.backBtnListener!=null){
+            HelpLineTc.backBtnListener.onBackPressed();
+        }
+
+        if(AttendanceTcActivity.backBtnListener!=null){
+            AttendanceTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(ClassListActivityTc.backBtnListener!=null){
+            ClassListActivityTc.backBtnListener.onBackPressed();
+        }
+
+        if(ParticularClassTcActivity.backBtnListener!=null){
+            ParticularClassTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(ChatTcActivity.backBtnListener!=null){
+            ChatTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(NoticeTcActivity.backBtnListener!=null){
+            NoticeTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(NoteBookTcActivity.backBtnListener!=null){
+            NoteBookTcActivity.backBtnListener.onBackPressed();
+        }
     }
 }

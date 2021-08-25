@@ -12,12 +12,14 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.classapp.kidssolution.About_and_Profile.AboutInstituteTc;
+import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ClassDetails.ClassListActivityTc;
 import com.classapp.kidssolution.NoticeBoard.NoticeTcActivity;
 import com.classapp.kidssolution.R;
 
-public class TeacherMainActivity extends Fragment implements View.OnClickListener{
+public class TeacherMainActivity extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    public static BackListenerFragment backBtnListener;
     View views;
     ConnectivityManager cm;
     NetworkInfo netInfo;
@@ -91,6 +93,27 @@ public class TeacherMainActivity extends Fragment implements View.OnClickListene
             } else {
                 Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backBtnListener = this;
+    }
+
+    @Override
+    public void onPause() {
+        backBtnListener = null;
+        super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        TeacherMainActivity myFragment = (TeacherMainActivity)getActivity().getSupportFragmentManager().findFragmentByTag("MY_FRAGMENT");
+        if (myFragment != null && myFragment.isVisible()) {
+            getActivity().finish();
+            System.exit(0);
         }
     }
 }

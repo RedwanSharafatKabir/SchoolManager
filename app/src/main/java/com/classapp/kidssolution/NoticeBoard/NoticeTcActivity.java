@@ -156,7 +156,7 @@ public class NoticeTcActivity extends Fragment implements View.OnClickListener, 
             fragment = new TeacherMainActivity();
             fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-            fragmentTransaction.replace(R.id.fragmentID, fragment);
+            fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
             fragmentTransaction.commit();
         }
     }
@@ -178,7 +178,7 @@ public class NoticeTcActivity extends Fragment implements View.OnClickListener, 
         fragment = new TeacherMainActivity();
         fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-        fragmentTransaction.replace(R.id.fragmentID, fragment);
+        fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
         fragmentTransaction.commit();
     }
 }

@@ -153,7 +153,7 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
             fragment = new GuardianMainActivity();
             fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-            fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+            fragmentTransaction.replace(R.id.fragmentGdID, fragment, "MY_FRAGMENT");
             fragmentTransaction.commit();
         }
 
@@ -180,7 +180,7 @@ public class ClassListActivityGd extends Fragment implements View.OnClickListene
         fragment = new GuardianMainActivity();
         fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-        fragmentTransaction.replace(R.id.fragmentGdID, fragment);
+        fragmentTransaction.replace(R.id.fragmentGdID, fragment, "MY_FRAGMENT");
         fragmentTransaction.commit();
     }
 }
