@@ -177,7 +177,7 @@ public class JoinClassDialog extends AppCompatDialogFragment implements View.OnC
     private void storeJoinedClassesMethod(String classNameStringGd, String classIdStringGd, String classTeacherNameGd,
                                           String present, String fixedDate, String username, String finalDay) {
 
-        StoreGdClassesData storeGdClassesData = new StoreGdClassesData(classNameStringGd, classIdStringGd, classTeacherNameGd);
+        StoreGdClassesData storeGdClassesData = new StoreGdClassesData(classNameStringGd, classIdStringGd, classTeacherNameGd, userPhone, username);
         databaseReferenceJoinClass.child(userPhone).child(classIdStringGd).setValue(storeGdClassesData);
 
         StoreAttendanceData storeAttendanceData = new StoreAttendanceData(present, username, finalDay, fixedDate, false, userPhone);

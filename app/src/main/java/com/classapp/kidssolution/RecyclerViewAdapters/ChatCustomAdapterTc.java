@@ -3,6 +3,7 @@ package com.classapp.kidssolution.RecyclerViewAdapters;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,12 @@ import com.classapp.kidssolution.Authentication.SigninGdActivity;
 import com.classapp.kidssolution.ClassDetails.ParticularClassGdActivity;
 import com.classapp.kidssolution.LiveChat.ParticularChatPageGd;
 import com.classapp.kidssolution.LiveChat.ParticularChatPageTc;
+import com.classapp.kidssolution.ModelClasses.StoreGdClassesData;
 import com.classapp.kidssolution.ModelClasses.StoreGuardianData;
 import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
 import com.classapp.kidssolution.NoteBookHW.EditNotebookDetails;
 import com.classapp.kidssolution.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,13 +42,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ChatCustomAdapterTc extends RecyclerView.Adapter<ChatCustomAdapterTc.MyViewHolder> {
 
     Context context;
-    ArrayList<StoreGuardianData> storeGuardianData;
+    ArrayList<StoreGdClassesData> storeGdClassesData;
     DatabaseReference databaseReference;
     String guardianImageUrl;
 
-    public ChatCustomAdapterTc(Context c, ArrayList<StoreGuardianData> p) {
+    public ChatCustomAdapterTc(Context c, ArrayList<StoreGdClassesData> p) {
         context = c;
-        storeGuardianData = p;
+        storeGdClassesData = p;
     }
 
     @NonNull
@@ -56,24 +59,28 @@ public class ChatCustomAdapterTc extends RecyclerView.Adapter<ChatCustomAdapterT
 
     @Override
     public void onBindViewHolder(@NonNull ChatCustomAdapterTc.MyViewHolder holder, int position) {
-        String guardianName = storeGuardianData.get(position).getUsername();
-        String guardianPhone = storeGuardianData.get(position).getPhone();
+        String guardianName = storeGdClassesData.get(position).getGuardianName();
+        String guardianPhone = storeGdClassesData.get(position).getGuardianPhone();
 
         holder.textView1.setText(guardianName);
         holder.textView2.setText(guardianPhone);
 
-        databaseReference.child(guardianPhone).child("avatar").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                guardianImageUrl = dataSnapshot.getValue(String.class);
-                if(guardianImageUrl != null){
-                    Picasso.get().load(guardianImageUrl).into(holder.circleImageView);
+        try {
+            databaseReference.child(guardianPhone).child("avatar").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    guardianImageUrl = dataSnapshot.getValue(String.class);
+                    if (guardianImageUrl != null) {
+                        Picasso.get().load(guardianImageUrl).into(holder.circleImageView);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {}
+            });
+        } catch (Exception e){
+            Log.i("Error ", e.getMessage());
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +97,7 @@ public class ChatCustomAdapterTc extends RecyclerView.Adapter<ChatCustomAdapterT
 
     @Override
     public int getItemCount() {
-        return storeGuardianData.size();
+        return storeGdClassesData.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

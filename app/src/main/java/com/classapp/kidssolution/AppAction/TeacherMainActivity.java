@@ -1,6 +1,7 @@
 package com.classapp.kidssolution.AppAction;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.classapp.kidssolution.About_and_Profile.AboutInstituteTc;
@@ -112,8 +115,30 @@ public class TeacherMainActivity extends Fragment implements View.OnClickListene
     public void onBackPressed() {
         TeacherMainActivity myFragment = (TeacherMainActivity)getActivity().getSupportFragmentManager().findFragmentByTag("MY_FRAGMENT");
         if (myFragment != null && myFragment.isVisible()) {
-            getActivity().finish();
-            System.exit(0);
+            AlertDialog.Builder alertDialogBuilder;
+            alertDialogBuilder = new AlertDialog.Builder(getActivity());
+            alertDialogBuilder.setTitle("EXIT !");
+            alertDialogBuilder.setMessage("Are you sure you want to close this app ?");
+            alertDialogBuilder.setIcon(R.drawable.exit);
+            alertDialogBuilder.setCancelable(false);
+
+            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    getActivity().finish();
+                    System.exit(0);
+                }
+            });
+
+            alertDialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
         }
     }
 }

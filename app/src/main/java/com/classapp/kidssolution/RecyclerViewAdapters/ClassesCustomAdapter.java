@@ -32,7 +32,6 @@ public class ClassesCustomAdapter extends RecyclerView.Adapter<ClassesCustomAdap
     FragmentTransaction fragmentTransaction;
     Context context;
     ArrayList<StoreClassesData> storeClassesData;
-    DatabaseReference databaseReference;
 
     public ClassesCustomAdapter(Context c, ArrayList<StoreClassesData> p) {
         context = c;
@@ -58,33 +57,18 @@ public class ClassesCustomAdapter extends RecyclerView.Adapter<ClassesCustomAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String teacherUserPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-                databaseReference.child(teacherUserPhone).child("username").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String teacherUserName = snapshot.getValue(String.class);
-                        if(ClassTeacherTitle.equals(teacherUserName)){
-                            Bundle bundle=new Bundle();
-                            bundle.putString("IdKey", ClassIdTitle);
-                            bundle.putString("NameKey", ClassNameTitle);
-                            bundle.putString("TeacherKey", ClassTeacherTitle);
+                Bundle bundle=new Bundle();
+                bundle.putString("IdKey", ClassIdTitle);
+                bundle.putString("NameKey", ClassNameTitle);
+                bundle.putString("TeacherKey", ClassTeacherTitle);
 
-                            fragment = new ParticularClassTcActivity();
-                            fragment.setArguments(bundle);
+                fragment = new ParticularClassTcActivity();
+                fragment.setArguments(bundle);
 
-                            AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                            fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-                            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-                            fragmentTransaction.replace(R.id.fragmentID, fragment).addToBackStack(null).commit();
-
-                        } else {
-                            Toast.makeText(context, "Access Denied", Toast.LENGTH_LONG).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {}
-                });
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+                fragmentTransaction.replace(R.id.fragmentID, fragment).addToBackStack(null).commit();
             }
         });
     }
@@ -99,9 +83,6 @@ public class ClassesCustomAdapter extends RecyclerView.Adapter<ClassesCustomAdap
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-
-            databaseReference = FirebaseDatabase.getInstance().getReference("Teacher Information");
-
             textView1 = itemView.findViewById(R.id.classIdTitleID);
             textView2 = itemView.findViewById(R.id.classNameTitleID);
             textView3 = itemView.findViewById(R.id.classTeacherTitleID);

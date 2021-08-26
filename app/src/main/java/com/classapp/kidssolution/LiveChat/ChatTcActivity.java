@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,12 +23,14 @@ import com.classapp.kidssolution.AppAction.GuardianMainActivity;
 import com.classapp.kidssolution.AppAction.TeacherMainActivity;
 import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ClassDetails.ParticularClassGdActivity;
+import com.classapp.kidssolution.ModelClasses.StoreGdClassesData;
 import com.classapp.kidssolution.ModelClasses.StoreGuardianData;
 import com.classapp.kidssolution.ModelClasses.StoreNotebookData;
 import com.classapp.kidssolution.R;
 import com.classapp.kidssolution.RecyclerViewAdapters.ChatCustomAdapterTc;
 import com.classapp.kidssolution.RecyclerViewAdapters.NotebookCustomAdapterGd;
 import com.classapp.kidssolution.databinding.ChatCustomAdapterTcBinding;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,19 +47,21 @@ public class ChatTcActivity extends Fragment implements View.OnClickListener, Ba
     View views;
     TextView circleImageView;
     RecyclerView recyclerView;
-    ArrayList<StoreGuardianData> storeGuardianDataArrayList;
+    ArrayList<StoreGdClassesData> storeGdClassesDataArrayList;
     ChatCustomAdapterTc chatCustomAdapterTc;
     ProgressBar progressBar;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference1, databaseReference2;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
     ConnectivityManager cm;
     NetworkInfo netInfo;
+    String guardianPhone, userPhone, teacherName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         views = inflater.inflate(R.layout.activity_chat_tc, container, false);
 
+        userPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         progressBar = views.findViewById(R.id.chatListProgressbarTcId);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -72,11 +78,12 @@ public class ChatTcActivity extends Fragment implements View.OnClickListener, Ba
             }
         });
 
-        storeGuardianDataArrayList = new ArrayList<StoreGuardianData>();
+        storeGdClassesDataArrayList = new ArrayList<StoreGdClassesData>();
 
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         netInfo = cm.getActiveNetworkInfo();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Guardian Information");
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("Teacher Information");
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("Classes Information Guardian");
 
         loadGuardianList();
 
@@ -85,28 +92,53 @@ public class ChatTcActivity extends Fragment implements View.OnClickListener, Ba
 
     private void loadGuardianList(){
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            databaseReference.addValueEventListener(new ValueEventListener() {
+            databaseReference1.child(userPhone).child("username").addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    storeGuardianDataArrayList.clear();
-                    for (DataSnapshot item : dataSnapshot.getChildren()) {
-                        StoreGuardianData storeGuardianData = item.getValue(StoreGuardianData.class);
-                        storeGuardianDataArrayList.add(storeGuardianData);
-                    }
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    teacherName = snapshot.getValue(String.class);
 
-                    chatCustomAdapterTc = new ChatCustomAdapterTc(getActivity(), storeGuardianDataArrayList);
-                    recyclerView.setAdapter(chatCustomAdapterTc);
-                    chatCustomAdapterTc.notifyDataSetChanged();
-                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+                    databaseReference2.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            storeGdClassesDataArrayList.clear();
 
-                    progressBar.setVisibility(View.GONE);
+                            for (DataSnapshot item : snapshot.getChildren()) {
+                                for (DataSnapshot dataSnapshot : item.getChildren()) {
+
+                                    try {
+                                        String teacherUserName = dataSnapshot.child("classTeacherNameGd").getValue().toString();
+
+                                        if(teacherName.equals(teacherUserName)){
+                                            StoreGdClassesData storeGdClassesData = dataSnapshot.getValue(StoreGdClassesData.class);
+                                            storeGdClassesDataArrayList.add(storeGdClassesData);
+                                        }
+
+                                    } catch (Exception e) {
+                                        Log.i("Error_Class_Data ", e.getMessage());
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+
+                                chatCustomAdapterTc = new ChatCustomAdapterTc(getActivity(), storeGdClassesDataArrayList);
+                                recyclerView.setAdapter(chatCustomAdapterTc);
+                                chatCustomAdapterTc.notifyDataSetChanged();
+                                recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
                 }
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    progressBar.setVisibility(View.GONE);
-                }
+                public void onCancelled(@NonNull DatabaseError error) {}
             });
+
         } else {
             Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_LONG).show();
         }

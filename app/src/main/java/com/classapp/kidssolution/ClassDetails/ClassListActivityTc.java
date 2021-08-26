@@ -1,5 +1,6 @@
 package com.classapp.kidssolution.ClassDetails;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,8 @@ import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.ModelClasses.StoreClassesData;
 import com.classapp.kidssolution.R;
 import com.classapp.kidssolution.RecyclerViewAdapters.ClassesCustomAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,16 +51,18 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
     ClassesCustomAdapter classesCustomAdapter;
     LinearLayout createNewClassBtn;
     ProgressBar progressBar;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReference2;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
     ConnectivityManager cm;
     NetworkInfo netInfo;
+    String userPhone, teacherUserName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         views = inflater.inflate(R.layout.activity_class_list_tc, container, false);
 
+        userPhone = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         progressBar = views.findViewById(R.id.classesListProgressbarId);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -80,6 +86,7 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         netInfo = cm.getActiveNetworkInfo();
         databaseReference = FirebaseDatabase.getInstance().getReference("Classes Information");
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("Teacher Information");
 
         loadClassList();
 
@@ -101,32 +108,47 @@ public class ClassListActivityTc extends Fragment implements View.OnClickListene
 
     private void loadClassList() {
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            // Retrieve unknown key
-//            Query query = databaseReference.orderByKey();
-//            query.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            databaseReference.addValueEventListener(new ValueEventListener() {
+            databaseReference2.child(userPhone).child("username").addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    storeClassesDataArrayList.clear();
-                    for (DataSnapshot item : dataSnapshot.getChildren()) {
-                        StoreClassesData storeClassesData = item.getValue(StoreClassesData.class);
-                        storeClassesDataArrayList.add(storeClassesData);
-                    }
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    teacherUserName = snapshot.getValue(String.class);
 
-                    classesCustomAdapter = new ClassesCustomAdapter(getActivity(), storeClassesDataArrayList);
-                    recyclerView.setAdapter(classesCustomAdapter);
-                    classesCustomAdapter.notifyDataSetChanged();
-                    recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            storeClassesDataArrayList.clear();
+                            for (DataSnapshot item : dataSnapshot.getChildren()) {
+                                try {
+                                    String teacherName = item.child("classTeacherName").getValue().toString();
 
-                    progressBar.setVisibility(View.GONE);
+                                    if (teacherName.equals(teacherUserName)) {
+                                        StoreClassesData storeClassesData = item.getValue(StoreClassesData.class);
+                                        storeClassesDataArrayList.add(storeClassesData);
+                                    }
+                                } catch (Exception e) {
+                                    Log.i("Error ", e.getMessage());
+                                }
+                            }
+
+                            classesCustomAdapter = new ClassesCustomAdapter(getActivity(), storeClassesDataArrayList);
+                            recyclerView.setAdapter(classesCustomAdapter);
+                            classesCustomAdapter.notifyDataSetChanged();
+                            recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
+                            progressBar.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
                 }
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    progressBar.setVisibility(View.GONE);
-                }
+                public void onCancelled(@NonNull DatabaseError error) {}
             });
+
         } else {
             Toast.makeText(getActivity(), "Turn on internet connection", Toast.LENGTH_LONG).show();
         }

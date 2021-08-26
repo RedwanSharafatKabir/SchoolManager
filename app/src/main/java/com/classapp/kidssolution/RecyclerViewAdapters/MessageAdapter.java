@@ -3,6 +3,7 @@ package com.classapp.kidssolution.RecyclerViewAdapters;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,20 +70,27 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.MyViewHolder holder, int position) {
-        StoreChatData storeChatData1 = storeChatData.get(position);
         String messages = storeChatData.get(position).getMessage();
         String images = storeChatData.get(position).getImageUrl();
 
-        if(messages.equals("No_Message")){
-            holder.show_message.setVisibility(View.GONE);
-            holder.show_image.setVisibility(View.VISIBLE);
-            Picasso.get().load(images).into(holder.show_image);
+        try {
+            if(messages.equals("No_Message")){
+                holder.show_message.setVisibility(View.GONE);
+                holder.show_image.setVisibility(View.VISIBLE);
+                Picasso.get().load(images).into(holder.show_image);
+            }
+        } catch(Exception e){
+            Log.i("Message_Error ", e.getMessage() + " " + messages);
         }
 
-        if(images.equals("No_Image")){
-            holder.show_image.setVisibility(View.GONE);
-            holder.show_message.setVisibility(View.VISIBLE);
-            holder.show_message.setText(messages);
+        try {
+            if (images.equals("No_Image")) {
+                holder.show_image.setVisibility(View.GONE);
+                holder.show_message.setVisibility(View.VISIBLE);
+                holder.show_message.setText(messages);
+            }
+        } catch(Exception e){
+            Log.i("Image_Error ", e.getMessage() + " " + images);
         }
 
     }

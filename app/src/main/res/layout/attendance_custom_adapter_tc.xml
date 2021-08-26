@@ -50,7 +50,6 @@
                     android:id="@+id/studentNameID"
                     android:textSize="16sp"
                     android:textColor="#606060"
-                    android:text="Student name: "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"/>
@@ -59,7 +58,6 @@
                     android:id="@+id/attendanceDateID"
                     android:textSize="16sp"
                     android:textColor="#106506"
-                    android:text="Date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -69,7 +67,6 @@
                     android:id="@+id/attendanceDayID"
                     android:textSize="16sp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:text="Day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
