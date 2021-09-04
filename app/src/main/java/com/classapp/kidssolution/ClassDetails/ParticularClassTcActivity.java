@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.classapp.kidssolution.AppAction.GuardianMainActivity;
-import com.classapp.kidssolution.AppAction.TeacherMainActivity;
+import com.classapp.kidssolution.Attendance.AttendanceSheet;
 import com.classapp.kidssolution.Attendance.AttendanceTcActivity;
 import com.classapp.kidssolution.BackFromFragment.BackListenerFragment;
 import com.classapp.kidssolution.LiveChat.ChatTcActivity;
@@ -30,7 +28,7 @@ public class ParticularClassTcActivity extends Fragment implements View.OnClickL
     FragmentTransaction fragmentTransaction;
     CircleImageView circleImageView;
     TextView classNameTextView, teacherNameTextView;
-    LinearLayout takeAttendance, giveNotebook, chatWithGuardian;
+    LinearLayout takeAttendance, giveNotebook, chatWithGuardian, attendanceSheet;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +46,8 @@ public class ParticularClassTcActivity extends Fragment implements View.OnClickL
         giveNotebook.setOnClickListener(this);
         chatWithGuardian = views.findViewById(R.id.chatWithGuardianId);
         chatWithGuardian.setOnClickListener(this);
+        attendanceSheet = views.findViewById(R.id.attendanceSheetId);
+        attendanceSheet.setOnClickListener(this);
 
         classNameTextView = views.findViewById(R.id.classNameTextViewId);
         teacherNameTextView = views.findViewById(R.id.teacherNameTextViewId);
@@ -96,6 +96,20 @@ public class ParticularClassTcActivity extends Fragment implements View.OnClickL
             bundle.putString("TeacherKey", classTeacherText);
 
             fragment = new AttendanceTcActivity();
+            fragment.setArguments(bundle);
+            fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+            fragmentTransaction.replace(R.id.fragmentID, fragment);
+            fragmentTransaction.commit();
+        }
+
+        if(v.getId()==R.id.attendanceSheetId){
+            Bundle bundle = new Bundle();
+            bundle.putString("IdKey", classIdText);
+            bundle.putString("NameKey", classNameText);
+            bundle.putString("TeacherKey", classTeacherText);
+
+            fragment = new AttendanceSheet();
             fragment.setArguments(bundle);
             fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);

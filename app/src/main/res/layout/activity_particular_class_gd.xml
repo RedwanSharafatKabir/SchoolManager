@@ -119,7 +119,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Notebook"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
+                            android:paddingRight="5dp"
+                            android:paddingLeft="5dp"
                             android:gravity="center"
                             android:textColor="#079A2C"
                             android:fontFamily="sans-serif"
@@ -153,11 +155,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Attendance"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:gravity="center"
                             android:textColor="#079A2C"
                             android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>/>
+                            android:paddingRight="5dp"
+                            android:paddingLeft="5dp"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 
@@ -200,11 +204,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Communicate With Teacher"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:gravity="center"
                             android:textColor="#079A2C"
                             android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>/>
+                            android:paddingRight="5dp"
+                            android:paddingLeft="5dp"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 

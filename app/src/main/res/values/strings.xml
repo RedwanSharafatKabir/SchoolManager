@@ -9,5 +9,7 @@
     <string name="drawerClose">drawerClose</string>
     <string name="about_app">Kids-Solution is an android app for children educaion.\nGuardian can enroll classes and make live chat with subject teachers.</string>
     <string name="logoutText"><u>Log Out</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

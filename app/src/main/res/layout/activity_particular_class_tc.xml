@@ -49,13 +49,6 @@
 
         </LinearLayout>
 
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:cardElevation="5dp"-->
-<!--            app:cardCornerRadius="10dp"-->
-<!--            android:layout_margin="15dp">-->
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/backFromParticularClassPageTcId"
             android:layout_width="wrap_content"
@@ -70,8 +63,6 @@
             android:padding="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_baseline_arrow_back_24" />
-
-<!--        </androidx.cardview.widget.CardView>-->
 
     </RelativeLayout>
 
@@ -100,41 +91,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    app:cardElevation="5dp"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:id="@+id/giveNotebookId"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:paddingBottom="10dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:src="@drawable/notes"
-                            android:padding="35dp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Notebook"
-                            android:textSize="18sp"
-                            android:gravity="center"
-                            android:textColor="#079A2C"
-                            android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="5"
                     app:cardElevation="5dp"
                     app:cardUseCompatPadding="true">
@@ -156,11 +113,49 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Attendance"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:gravity="center"
                             android:textColor="#079A2C"
                             android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>/>
+                            android:textStyle="bold"
+                            android:paddingRight="5dp"
+                            android:paddingLeft="5dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:id="@+id/attendanceSheetId"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/paper_sheet"
+                            android:padding="35dp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Attendance Sheet"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:textColor="#079A2C"
+                            android:fontFamily="sans-serif"
+                            android:textStyle="bold"
+                            android:paddingRight="5dp"
+                            android:paddingLeft="5dp"/>
 
                     </LinearLayout>
 
@@ -181,8 +176,45 @@
                 android:paddingLeft="20dp">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:id="@+id/giveNotebookId"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/notes"
+                            android:padding="35dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Notebook"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:textColor="#079A2C"
+                            android:fontFamily="sans-serif"
+                            android:paddingRight="5dp"
+                            android:paddingLeft="5dp"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
                     app:cardElevation="5dp"
                     app:cardUseCompatPadding="true">
 
@@ -195,19 +227,21 @@
 
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
+                            android:layout_height="150dp"
                             android:src="@drawable/live_chat"
-                            android:padding="10dp"/>
+                            android:padding="35dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Communicate With Guardians"
-                            android:textSize="18sp"
+                            android:text="Live Chat"
+                            android:textSize="16sp"
                             android:gravity="center"
                             android:textColor="#079A2C"
                             android:fontFamily="sans-serif"
-                            android:textStyle="bold"/>/>
+                            android:paddingRight="5dp"
+                            android:paddingLeft="5dp"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 

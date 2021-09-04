@@ -28,13 +28,16 @@
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_chat_gd.xml" value="0.1953125" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_chat_tc.xml" value="0.1953125" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_class_gd.xml" value="0.209375" />
-        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_class_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_particular_class_tc.xml" value="0.22" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_profile_gd.xml" value="0.22" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_profile_tc.xml" value="0.25" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_register.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/activity_signin_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/attendance_custom_adapter.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/attendance_custom_adapter_tc.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/attendance_sheet_adapter.xml" value="0.22" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/create_class_dialog.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/fragment_attendance_sheet.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/message_left.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/message_right.xml" value="0.209375" />
         <entry key="..\:/Android Projects/KidsSolution/app/src/main/res/layout/reset_password.xml" value="0.209375" />

@@ -20,6 +20,7 @@ import com.classapp.kidssolution.About_and_Profile.AboutInstituteGd;
 import com.classapp.kidssolution.About_and_Profile.AboutInstituteTc;
 import com.classapp.kidssolution.About_and_Profile.ProfileGdActivity;
 import com.classapp.kidssolution.Attendance.AttendanceGdActivity;
+import com.classapp.kidssolution.Attendance.AttendanceSheet;
 import com.classapp.kidssolution.Attendance.AttendanceTcActivity;
 import com.classapp.kidssolution.ClassDetails.ClassListActivityGd;
 import com.classapp.kidssolution.ClassDetails.ClassListActivityTc;
@@ -230,6 +231,10 @@ public class MainActivityGd extends AppCompatActivity implements BottomNavigatio
 
         if(NoteBookTcActivity.backBtnListener!=null){
             NoteBookTcActivity.backBtnListener.onBackPressed();
+        }
+
+        if(AttendanceSheet.backBtnListener!=null){
+            AttendanceSheet.backBtnListener.onBackPressed();
         }
     }
 }
