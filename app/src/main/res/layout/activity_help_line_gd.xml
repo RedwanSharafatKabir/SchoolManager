@@ -26,68 +26,99 @@
                 android:gravity="center"
                 android:layout_marginTop="75dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Help and Support"
-                    android:textSize="16sp"
-                    android:textColor="#000"
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="170dp"
+                    android:src="@drawable/support"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:fontFamily="serif-monospace"
-                    android:padding="10dp"
-                    android:textStyle="bold"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:background="@color/colorPrimary"
-                    android:layout_marginTop="30dp"/>
+                    android:padding="30dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Version: 1.0.1"
-                    android:textSize="18sp"
+                    android:text="Emergency Contact"
+                    android:textSize="20sp"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="serif-monospace"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:padding="5dp"/>
+                    android:layout_marginTop="20dp"/>
 
-                <View
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:background="@color/colorPrimary"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/border_shape"
+                    android:layout_margin="20dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="&#169; Kids-Solution Ltd."
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:padding="5dp"
-                    android:fontFamily="serif"
-                    android:textStyle="italic"
-                    android:gravity="center"
-                    android:layout_marginTop="30dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Admin Support:"
+                        android:textSize="18sp"
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="+8801918319564\n+8801918319564"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:layout_marginTop="15dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Emergency Help:"
+                        android:textSize="18sp"
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="999"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:fontFamily="sans-serif"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </ScrollView>
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/backFromHelpLineGdPage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                android:layout_gravity="center|start"
-                android:background="@drawable/back_design"
-                android:layout_margin="15dp"
-                android:gravity="center"
-                android:scaleType="centerCrop"
-                android:padding="10dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/backFromHelpLineGdPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/back_design"
+            android:gravity="center"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
 
 
     </RelativeLayout>
