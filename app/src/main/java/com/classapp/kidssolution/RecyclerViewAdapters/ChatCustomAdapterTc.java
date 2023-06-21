@@ -82,16 +82,13 @@ public class ChatCustomAdapterTc extends RecyclerView.Adapter<ChatCustomAdapterT
             Log.i("Error ", e.getMessage());
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                Intent intent = new Intent(activity, ParticularChatPageTc.class);
-                intent.putExtra("guardianNameKey", guardianName);
-                intent.putExtra("guardianPhoneKey", guardianPhone);
-                activity.startActivity(intent);
-                activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            Intent intent = new Intent(activity, ParticularChatPageTc.class);
+            intent.putExtra("guardianNameKey", guardianName);
+            intent.putExtra("guardianPhoneKey", guardianPhone);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
 

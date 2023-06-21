@@ -42,9 +42,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatTcActivity extends Fragment implements View.OnClickListener, BackListenerFragment {
 
+    View views;
     public static BackListenerFragment backBtnListener;
     Parcelable recyclerViewState;
-    View views;
     TextView circleImageView;
     RecyclerView recyclerView;
     ArrayList<StoreGdClassesData> storeGdClassesDataArrayList;
