@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kids Solution</string>
+    <string name="app_name">School Manager</string>
 
     <string name="register"><u>Sign up</u></string>
     <string name="alert_title">Exit ?</string>
@@ -7,9 +7,7 @@
     <string name="email_alert">Email is already used\nYou can use one email address only once</string>
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
-    <string name="about_app">Kids-Solution is an android app for children educaion.\nGuardian can enroll classes and make live chat with subject teachers.</string>
+    <string name="about_app">School-Manager is an android app for children educaion.\nGuardian can enroll classes and make live chat with subject teachers.</string>
     <string name="logoutText"><u>Log Out</u></string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "319858273089",
-    "project_id": "kids-solution",
-    "storage_bucket": "kids-solution.appspot.com"
+    "project_number": "101784199276",
+    "project_id": "school-manager-ee16e",
+    "storage_bucket": "school-manager-ee16e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:319858273089:android:664f021f76589df8828fc0",
+        "mobilesdk_app_id": "1:101784199276:android:cae98c7039f181d97fb849",
         "android_client_info": {
-          "package_name": "com.classapp.kidssolution"
+          "package_name": "com.school.manager"
         }
       },
       "oauth_client": [
         {
-          "client_id": "319858273089-n43unle6p24gd1m83t9vrgfqbn5ss3rv.apps.googleusercontent.com",
+          "client_id": "101784199276-3391v5cc3ipgfsidpi3oibgaaost5t2l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.classapp.kidssolution",
-            "certificate_hash": "fab83aa7788ae07724c561e862f53f36579441fa"
+            "package_name": "com.school.manager",
+            "certificate_hash": "9260306235feae463684554cc031ee7941592929"
           }
         },
         {
-          "client_id": "319858273089-1ppbbc1vrocda78ettruo6g7mgf9k5g6.apps.googleusercontent.com",
+          "client_id": "101784199276-5n8a7nge6eu9lr95a8puumqug3190qbn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAR-qEr0uYlcw3XytjY5hnCfru8Ujm6uiA"
+          "current_key": "AIzaSyCELZAUQQm3OxUB3-gajcSiMSzwyFU5-u0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "319858273089-1ppbbc1vrocda78ettruo6g7mgf9k5g6.apps.googleusercontent.com",
+              "client_id": "101784199276-5n8a7nge6eu9lr95a8puumqug3190qbn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

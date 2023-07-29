@@ -70,7 +70,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="&#169; Kids-Solution Ltd."
+                    android:text="&#169; School-Manager Ltd."
                     android:textSize="16sp"
                     android:textColor="#000000"
                     android:padding="5dp"

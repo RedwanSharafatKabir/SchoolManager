@@ -16,7 +16,7 @@
 
         <fragment
             android:id="@+id/fragmentGdID"
-            android:name="com.classapp.kidssolution.AppAction.GuardianMainActivity"
+            android:name="com.school.manager.AppAction.GuardianMainActivity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

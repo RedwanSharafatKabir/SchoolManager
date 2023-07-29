@@ -1,0 +1,6 @@
+
+SchoolManager -
+key - schoolmanagersigningkey
+alias: School97Manager
+pass: School97Manager
+first and last name: Redwan Sharafat
