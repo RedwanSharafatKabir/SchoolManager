@@ -1,4 +1,4 @@
-### KidsSolution
+### SchoolManager
 Class management app for kindergarten school.
 - - - -
 #### Hardware & OS -
