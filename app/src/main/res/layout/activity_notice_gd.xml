@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -39,14 +38,12 @@
                     android:id="@+id/backFromNoticeGdId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_arrow_back_24"
                     android:layout_gravity="center|start"
-                    android:background="@drawable/back_design"
-                    android:layout_margin="15dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:padding="10dp"
                     android:scaleType="centerCrop"
-                    android:padding="10dp"/>
-
+                    android:src="@drawable/ic_baseline_arrow_back_24" />
 
         </RelativeLayout>
 

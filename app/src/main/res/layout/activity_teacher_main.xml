@@ -51,8 +51,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/firstlinearlayoutId"
@@ -70,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     app:cardElevation="5dp"
+                    app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true">
 
                     <LinearLayout
@@ -103,6 +103,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:cardElevation="5dp"
+                    app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true"
                     android:layout_weight="5">
 
@@ -150,6 +151,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:cardElevation="5dp"
+                    app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true"
                     android:layout_weight="5">
 
@@ -185,6 +187,7 @@
                     android:layout_height="wrap_content"
                     app:cardElevation="5dp"
                     android:layout_weight="5"
+                    app:cardCornerRadius="10dp"
                     app:cardUseCompatPadding="true">
 
                     <LinearLayout

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@android:color/transparent"
     android:gravity="center">
@@ -11,40 +11,38 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@android:color/white"
-        card_view:cardElevation="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp">
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
+            android:padding="3dp"
             android:gravity="center">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left|center"
+                android:layout_gravity="center"
                 android:id="@+id/leftLinearLayout">
 
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/notice_board"
-                    android:padding="10dp"/>
+                    android:padding="20dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_centerInParent="true"
                 android:orientation="vertical"
-                android:layout_toRightOf="@+id/leftLinearLayout"
-                android:padding="10dp">
+                android:layout_toRightOf="@+id/leftLinearLayout">
 
                 <TextView
                     android:id="@+id/noticeTitleGdID"
@@ -62,8 +60,7 @@
                     android:text="Description: "
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:layout_marginTop="5dp"/>
+                    android:fontFamily="sans-serif"/>
 
                 <TextView
                     android:id="@+id/noticeDateGdID"
@@ -72,8 +69,7 @@
                     android:text="Date: "
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:layout_marginTop="5dp"/>
+                    android:fontFamily="sans-serif"/>
 
             </LinearLayout>
 

@@ -13,13 +13,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:paddingLeft="10dp">
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/teacherImageId"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@drawable/ic_baseline_profile"
                 android:padding="10dp"/>
 

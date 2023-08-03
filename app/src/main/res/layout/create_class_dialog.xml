@@ -8,83 +8,80 @@
     android:background="#fff"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-
-            <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+            <EditText
+                android:id="@+id/classNameInputID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp">
-                <EditText
-                    android:id="@+id/classNameInputID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=" Class Name"
-                    android:textAllCaps="false"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:fontFamily="sans-serif"
-                    android:inputType="text"
-                    android:layout_gravity="center" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:hint=" Class Name"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:fontFamily="sans-serif"
+                android:inputType="text"
+                android:layout_gravity="center" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp">
+            <EditText
+                android:id="@+id/classIdInputID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
-                <EditText
-                    android:id="@+id/classIdInputID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=" Class Id"
-                    android:textAllCaps="false"
-                    android:textSize="16sp"
-                    android:textColor="#000000"
-                    android:fontFamily="sans-serif"
-                    android:inputType="text"
-                    android:layout_gravity="center"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:hint=" Class Id"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:fontFamily="sans-serif"
+                android:inputType="text"
+                android:layout_gravity="center"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.cardview.widget.CardView
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp">
+
+            <Button
+                android:id="@+id/createClassCompleteID"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="5dp"
-                android:layout_marginTop="50dp"
+                android:layout_height="40dp"
+                android:background="#FF58A0"
+                android:text="Create"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:textAllCaps="false"
                 android:layout_gravity="center"
-                android:layout_marginBottom="5dp">
+                android:gravity="center"/>
 
-                <Button
-                    android:id="@+id/createClassCompleteID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:background="#FF58A0"
-                    android:text="Create"
-                    android:textSize="18sp"
-                    android:fontFamily="sans-serif"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textAllCaps="false"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
+        </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>
