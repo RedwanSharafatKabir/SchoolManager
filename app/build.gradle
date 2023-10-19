@@ -5,7 +5,7 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.school.manager"
+        applicationId "com.kids.schoolmanager"
         minSdkVersion 18
         targetSdkVersion 33
         versionCode 3

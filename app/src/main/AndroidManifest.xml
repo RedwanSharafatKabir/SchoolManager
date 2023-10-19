@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.school.manager">
+    package="com.kids.schoolmanager">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,22 +17,22 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name="com.school.manager.LiveChat.ParticularChatPageTc"
+            android:name="com.kids.schoolmanager.LiveChat.ParticularChatPageTc"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.school.manager.LiveChat.ParticularChatPageGd"
+            android:name="com.kids.schoolmanager.LiveChat.ParticularChatPageGd"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.school.manager.Authentication.SigninGdActivity"
+            android:name="com.kids.schoolmanager.Authentication.SigninGdActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.school.manager.Authentication.SigninTcActivity"
+            android:name="com.kids.schoolmanager.Authentication.SigninTcActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.school.manager.Authentication.RegisterActivity"
+            android:name="com.kids.schoolmanager.Authentication.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.school.manager.AppAction.SplashScreen"
+            android:name="com.kids.schoolmanager.AppAction.SplashScreen"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.school.manager.AppAction.MainActivity"
+            android:name="com.kids.schoolmanager.AppAction.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.school.manager.AppAction.MainActivityGd"
+        <activity android:name="com.kids.schoolmanager.AppAction.MainActivityGd"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>

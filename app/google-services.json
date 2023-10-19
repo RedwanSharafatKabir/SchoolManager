@@ -1,26 +1,19 @@
 {
   "project_info": {
     "project_number": "101784199276",
+    "firebase_url": "https://school-manager-ee16e-default-rtdb.firebaseio.com",
     "project_id": "school-manager-ee16e",
     "storage_bucket": "school-manager-ee16e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:101784199276:android:cae98c7039f181d97fb849",
+        "mobilesdk_app_id": "1:101784199276:android:3015d0cc943c6c167fb849",
         "android_client_info": {
-          "package_name": "com.school.manager"
+          "package_name": "com.kids.schoolmanager"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "101784199276-3391v5cc3ipgfsidpi3oibgaaost5t2l.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.school.manager",
-            "certificate_hash": "9260306235feae463684554cc031ee7941592929"
-          }
-        },
         {
           "client_id": "101784199276-5n8a7nge6eu9lr95a8puumqug3190qbn.apps.googleusercontent.com",
           "client_type": 3
