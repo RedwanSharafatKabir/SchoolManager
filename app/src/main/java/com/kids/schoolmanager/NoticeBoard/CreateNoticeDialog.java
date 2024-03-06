@@ -40,10 +40,7 @@ public class CreateNoticeDialog extends AppCompatDialogFragment implements View.
         LayoutInflater inflater = getActivity().getLayoutInflater();
         view = inflater.inflate(R.layout.create_notice_dialog, null);
         builder.setView(view).setCancelable(false).setTitle("Create new notice")
-                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {}
-                });
+                .setNegativeButton("Close", (dialog, which) -> {});
 
         cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         netInfo = cm.getActiveNetworkInfo();
